@@ -1,0 +1,47 @@
+{
+  "name": "currency-cloud",
+  "description": "Currency Cloud API v2 JavaScript client",
+  "version": "",
+  "author": "",
+  "contributors": [
+    {
+      "name": "",
+      "email": ""
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CurrencyCloud/currencycloud-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CurrencyCloud/currencycloud-js/issues"
+  },
+  "homepage": "https://connect.currencycloud.com",
+  "keywords": [
+    "currency cloud",
+    "api",
+    "client",
+    "client library"
+  ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "request-promise": "^0.4.3"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "mocha": "^2.3.3"
+  },
+  "scripts": {
+    "lint": "",
+    "test": ""
+  },
+  "settings": {
+    "mode": {
+      "demo": "https://devapi.thecurrencycloud.com",
+      "production": "https://api.thecurrencycloud.com"
+    }
+  }
+}
