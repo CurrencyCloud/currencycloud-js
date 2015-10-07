@@ -24,6 +24,7 @@
     "client",
     "client library"
   ],
+  "main": "./lib/currency-cloud",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -32,11 +33,13 @@
   },
   "devDependencies": {
     "chai": "^3.3.0",
+    "jshint": "^2.8.0",
     "mocha": "^2.3.3"
   },
   "scripts": {
-    "lint": "",
-    "test": ""
+    "lint": "jshint examples lib test",
+    "test": "mocha test/",
+    "pretest": "npm run lint"
   },
   "settings": {
     "mode": {

@@ -1,0 +1,9 @@
+{
+  "curly" : true,
+  "eqeqeq" : true,   
+  "jasmine": true,
+  "node": true,
+  "undef": true,
+  "unused": true,
+  "shadow": true
+}

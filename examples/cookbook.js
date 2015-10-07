@@ -22,4 +22,5 @@ var logout = function() {
 
 login()
   .then(getQuote)
-  .then(logout);
+  .then(logout)
+  .catch(console.error);
