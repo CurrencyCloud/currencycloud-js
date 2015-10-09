@@ -11,8 +11,8 @@ describe('client.authenticate', function(){
     good: function() {
       return client.authenticate({
         mode: 'demo', 
-        loginId: 'rjnienaber@gmail.com', 
-        apiKey: 'ef0fd50fca1fb14c1fab3a8436b9ecb65f02f129fd87eafa45ded8ae257528f0',
+        loginId: 'your_login_id', 
+        apiKey: 'your_api_key',
         authUrl: '/v2/authenticate/api'
       });
     },
