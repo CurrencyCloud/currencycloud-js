@@ -1,9 +1,14 @@
 {
   "curly" : true,
-  "eqeqeq" : true,   
-  "jasmine": true,
+  "eqeqeq" : true,
+  "expr": true,
+  "mocha": true,
   "node": true,
   "undef": true,
   "unused": true,
-  "shadow": true
+  "shadow": true,
+  "globals": {
+    "setup": true,
+    "teardown": true
+  }
 }

@@ -29,22 +29,26 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "request-promise": "^0.4.3"
+    "request-promise": "^0.4.3",    
+    "camelize": "^1.0.0",
+    "snakeize": "^0.1.0"
   },
   "devDependencies": {
     "chai": "^3.3.0",
     "jshint": "^2.8.0",
-    "mocha": "^2.3.3"
+    "mocha": "^2.3.3",
+    "nock": "^2.15.0"
   },
   "scripts": {
     "lint": "jshint examples lib test",
-    "test": "mocha test/",
+    "test": "mocha test/api/ --timeout 15000",
     "pretest": "npm run lint"
   },
   "settings": {
-    "mode": {
+    "environment": {
       "demo": "https://devapi.thecurrencycloud.com",
-      "production": "https://api.thecurrencycloud.com"
+      "production": "https://api.thecurrencycloud.com",
+      "uat": "https://api-uat1.ccycloud.com"
     }
   }
 }

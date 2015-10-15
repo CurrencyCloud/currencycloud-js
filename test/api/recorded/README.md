@@ -1,0 +1,1 @@
+Mock requests generated using https://github.com/pgte/nock#recording.
