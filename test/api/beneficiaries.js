@@ -1,11 +1,11 @@
 'use strict';
 
 var expect = require('chai').expect;
-var currencyCloud = require('../../lib/currency-cloud')();
-var shared = require('../shared')();
-var setup = shared.setup;
-var teardown = shared.teardown;
-var mock = shared.mock.beneficiaries;
+var currencyCloud = require('../../lib/currency-cloud');
+var prepost = require('../prepost');
+var setup = prepost.setup;
+var teardown = prepost.teardown;
+var mock = require('../mocks').beneficiaries;
 
 describe('beneficiaries', function() {
   before(setup.login);
@@ -47,14 +47,9 @@ describe('beneficiaries', function() {
       currencyCloud.beneficiaries.create(mock.beneficiary1)
       .then(function(created) {
         expect(mock.schema.validate(created)).is.true;
-        expect(created.id).is.not.empty;
         done();
       })
       .catch(done);
-    });
-    
-    it('successfully creates a beneficiary on behalf of other account', function() {
-      
     });
   });
   
@@ -68,15 +63,15 @@ describe('beneficiaries', function() {
     it('successfully gets a beneficiary', function(done) {
       currencyCloud.beneficiaries.create(mock.beneficiary1)
       .then(function(created) {
-        currencyCloud.beneficiaries.get({
+        return currencyCloud.beneficiaries.get({
           id: created.id
         })
         .then(function(gotten) {
           expect(gotten).to.eql(created);
           done();
-        })
-        .catch(done);
-      });
+        });
+      })
+      .catch(done);      
     });
   });
 });

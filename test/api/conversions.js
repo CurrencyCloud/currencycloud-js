@@ -1,11 +1,11 @@
 'use strict';
 
 var expect = require('chai').expect;
-var currencyCloud = require('../../lib/currency-cloud')();
-var shared = require('../shared')();
-var setup = shared.setup;
-var teardown = shared.teardown;
-var mock = shared.mock.conversions;
+var currencyCloud = require('../../lib/currency-cloud');
+var prepost = require('../prepost');
+var setup = prepost.setup;
+var teardown = prepost.teardown;
+var mock = require('../mocks').conversions;
 
 describe('conversions', function() {
   before(setup.login);
@@ -73,7 +73,6 @@ describe('conversions', function() {
       currencyCloud.conversions.create(mock.conversion1)
       .then(function(created) {
         expect(mock.schema.validate(created)).is.true;
-        expect(created.id).is.not.empty;
         done();
       })
       .catch(done);
@@ -90,15 +89,15 @@ describe('conversions', function() {
     it('successfully gets a conversion', function(done) {
       currencyCloud.conversions.create(mock.conversion1)
       .then(function(created) {
-        currencyCloud.conversions.get({
+        return currencyCloud.conversions.get({
           id: created.id
         })
         .then(function(gotten) {
           expect(gotten).to.eql(created);
           done();
-        })
-        .catch(done);
-      });
+        });
+      })
+      .catch(done);      
     });
   });
 });

@@ -1,11 +1,11 @@
 'use strict';
 
 var expect = require('chai').expect;
-var currencyCloud = require('../../lib/currency-cloud')();
-var shared = require('../shared')();
-var setup = shared.setup;
-var teardown = shared.teardown;
-var mock = shared.mock.settlements;
+var currencyCloud = require('../../lib/currency-cloud');
+var prepost = require('../prepost');
+var setup = prepost.setup;
+var teardown = prepost.teardown;
+var mock = require('../mocks').settlements;
 
 describe('settlements', function() {
   before(setup.login);
@@ -16,7 +16,6 @@ describe('settlements', function() {
       currencyCloud.settlements.create(mock.settlement1)
       .then(function(created) {
         expect(mock.schema.validate(created)).is.true;
-        expect(created.id).is.not.empty;
         done();
       })
       .catch(done);
@@ -28,6 +27,20 @@ describe('settlements', function() {
       expect(function() {
         currencyCloud.settlements.get(/*no params*/);
       }).to.throw();
+    });
+    
+    it('successfully gets a settlement', function(done) {
+      currencyCloud.settlements.create(mock.settlement1)
+      .then(function(created) {
+        return currencyCloud.settlements.get({
+          id: created.id
+        })
+        .then(function(gotten) {
+          expect(gotten).to.eql(created);
+          done();
+        });
+      })
+      .catch(done);
     });
   });
   

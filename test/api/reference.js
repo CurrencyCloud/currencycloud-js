@@ -1,10 +1,10 @@
 'use strict';
 
 var expect = require('chai').expect;
-var currencyCloud = require('../../lib/currency-cloud')();
-var shared = require('../shared')();
-var setup = shared.setup;
-var teardown = shared.teardown;
+var currencyCloud = require('../../lib/currency-cloud');
+var prepost = require('../prepost');
+var setup = prepost.setup;
+var teardown = prepost.teardown;
 
 describe('reference', function() {
   before(setup.login);

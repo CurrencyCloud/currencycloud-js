@@ -1,10 +1,11 @@
 'use strict';
 
 var expect = require('chai').expect;
-var currencyCloud = require('../../lib/currency-cloud')();
-var shared = require('../shared')();
-var setup = shared.setup;
-var teardown = shared.teardown;
+var currencyCloud = require('../../lib/currency-cloud');
+var prepost = require('../prepost');
+var setup = prepost.setup;
+var teardown = prepost.teardown;
+var mock = require('../mocks').balances;
 
 describe('balances', function() {
   before(setup.login);
@@ -22,7 +23,7 @@ describe('balances', function() {
         currency: 'GBP'
       })
       .then(function(gotten) {
-        expect(gotten).to.not.be.empty;
+        expect(mock.schema.validate(gotten)).is.true;
         done();
       })
       .catch(done);

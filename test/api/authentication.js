@@ -1,10 +1,10 @@
 'use strict';
 
 var expect = require('chai').expect;
-var currencyCloud = require('../../lib/currency-cloud')();
-var shared = require('../shared')();
-var setup = shared.setup;
-var teardown = shared.teardown;
+var currencyCloud = require('../../lib/currency-cloud');
+var prepost = require('../prepost');
+var setup = prepost.setup;
+var teardown = prepost.teardown;
 
 describe('authentication', function() {
   describe('login', function() {
@@ -39,45 +39,67 @@ describe('authentication', function() {
       }).to.throw();
     });
     
-    it('successfully authenticates and retrieves nonempty authentication token', function(done) {
+    it('fails to make an API call before logging in', function() {
+      expect(function() {
+        currencyCloud.accounts.getCurrent();
+      }).to.throw();
+    });
+    
+    it('successfully authenticates', function(done) {
       setup.login()
-      .then(function(token) {
-        expect(token).to.not.be.empty;
+      .then(function() {
         done();
       })
       .catch(done)
       .finally(teardown.logout);
     });
 
-    it('persists authentication token and so can make a subsequent API call', function() {
-//      setup.login()
-//        .then(request)
-//        .then(done)
-////        .catch(function(err) {
-////          done(new Error('authentication or subsequent API call failed unexpectedly. Details: ' + JSON.stringify(err)));
-////        })
-//        .finally(teardown.logout);
+    it('persists authentication token and so can make a subsequent API call', function(done) {
+      setup.login()
+      .then(currencyCloud.accounts.getCurrent)
+      .then(function() {
+        done();
+      })
+      .catch(done)
+      .finally(teardown.logout);
     });
     
-    it('fails to make subsequent API call if token is invalid', function() {
-
-    });
-
-    it('fails if login_id is invalid', function() {
-//      badlogin()
-//        .then(function() {
-//          done(new Error('authentication should have failed.'));
-//        })
-//        .catch(function(err) {
-//          expect(err).to.not.be.empty;
-//          done();
-//      });
+    it('silently re-authenticates if token has expired', function(done) {
+      var client = require('../../lib/client');
+      var expired = '3907f05da86533710efc589d58f51f45';
+      
+      client._token.set(expired);
+      
+      setup.login()
+      .then(currencyCloud.accounts.getCurrent)
+      .then(function() {
+        expect(client._token.get()).not.equals(expired);
+        done();
+      })
+      .catch(done)
+      .finally(teardown.logout);
     });
   });
 
   describe('logout', function() {
-    it('successfully logs out', function() {
-
+    it('fails to make an API call once logged out', function(done) {
+      setup.login()
+      .then(currencyCloud.authentication.logout)
+      .then(function() {
+        expect(function() {
+          currencyCloud.accounts.getCurrent();
+        }).to.throw();
+        done();
+      });
+    });
+    
+    it('successfully logs out', function(done) {
+      setup.login()
+      .then(currencyCloud.authentication.logout)
+      .then(function() {
+        done();
+      })
+      .catch(done);
     });
   });
 });

@@ -1,11 +1,11 @@
 'use strict';
 
 var expect = require('chai').expect;
-var currencyCloud = require('../../lib/currency-cloud')();
-var shared = require('../shared')();
-var setup = shared.setup;
-var teardown = shared.teardown;
-var mock = shared.mock.contacts;
+var currencyCloud = require('../../lib/currency-cloud');
+var prepost = require('../prepost');
+var setup = prepost.setup;
+var teardown = prepost.teardown;
+var mock = require('../mocks').contacts;
 
 describe('contacts', function() {
   before(setup.login);
@@ -59,7 +59,6 @@ describe('contacts', function() {
       currencyCloud.contacts.create(mock.contact1)
       .then(function(created) {
         expect(mock.schema.validate(created)).is.true;
-        expect(created.id).is.not.empty;
         done();
       })
       .catch(done);
@@ -76,15 +75,15 @@ describe('contacts', function() {
     it('successfully gets a contact', function(done) {
       currencyCloud.contacts.create(mock.contact1)
       .then(function(created) {
-        currencyCloud.contacts.get({
+        return currencyCloud.contacts.get({
           id: created.id
         })
         .then(function(gotten) {
           expect(gotten).to.eql(created);
           done();
-        })
-        .catch(done);
-      });
+        });
+      })
+      .catch(done);      
     });
   });
   
@@ -93,6 +92,17 @@ describe('contacts', function() {
       expect(function() {
         currencyCloud.contacts.update(/*no params*/);
       }).to.throw();
+    });
+  });
+  
+  describe('getCurrent', function() {
+    it('successfully gets current contact', function(done) {
+      currencyCloud.contacts.getCurrent()
+      .then(function(current) {
+        expect(mock.schema.validate(current)).is.true;
+        done();
+      })
+      .catch(done);
     });
   });
 });

@@ -1,11 +1,11 @@
 'use strict';
 
 var expect = require('chai').expect;
-var currencyCloud = require('../../lib/currency-cloud')();
-var shared = require('../shared')();
-var setup = shared.setup;
-var teardown = shared.teardown;
-var mock = shared.mock;
+var currencyCloud = require('../../lib/currency-cloud');
+var prepost = require('../prepost');
+var setup = prepost.setup;
+var teardown = prepost.teardown;
+var mock = require('../mocks').payments;
 
 var createPrerequisites = function() {
   var res = {};
@@ -80,14 +80,13 @@ describe('payments', function() {
         payment.conversionId = res.conversionId;
         payment.beneficiaryId = res.beneficiaryId;        
         
-        currencyCloud.payments.create(payment)
+        return currencyCloud.payments.create(payment)
         .then(function(created) {
           expect(mock.payments.schema.validate(created)).is.true;
-          expect(created.id).is.not.empty;
           done();
-        })
-        .catch(done);
-      });
+        });
+      })
+      .catch(done);      
     });
   });
   
@@ -105,18 +104,18 @@ describe('payments', function() {
         payment.conversionId = res.conversionId;
         payment.beneficiaryId = res.beneficiaryId;        
         
-        currencyCloud.payments.create(payment)
+        return currencyCloud.payments.create(payment)
         .then(function(created) {
-          currencyCloud.payments.get({
+          return currencyCloud.payments.get({
             id: created.id
           })
           .then(function(gotten) {
             expect(gotten).to.eql(created);
             done();
-          })
-          .catch(done);
+          });
         });
-      });
+      })
+      .catch(done);      
     });
   });
   

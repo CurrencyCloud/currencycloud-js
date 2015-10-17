@@ -1,11 +1,11 @@
 'use strict';
 
 var expect = require('chai').expect;
-var currencyCloud = require('../../lib/currency-cloud')();
-var shared = require('../shared')();
-var setup = shared.setup;
-var teardown = shared.teardown;
-var mock = shared.mock;
+var currencyCloud = require('../../lib/currency-cloud');
+var prepost = require('../prepost');
+var setup = prepost.setup;
+var teardown = prepost.teardown;
+var mock = require('../mocks').payers;
 
 var createPrerequisites = function() {
   var payment = mock.payments.payment1;
@@ -39,15 +39,15 @@ describe('payers', function() {
     it('successfully gets a payer', function(done) {
       createPrerequisites()
       .then(function(res) {
-        currencyCloud.payers.get({
+        return currencyCloud.payers.get({
           id: res.payerId
         })
         .then(function(gotten) {
           expect(mock.payers.schema.validate(gotten)).is.true;
           done();
-        })
-        .catch(done);
-      });
+        });
+      })
+      .catch(done);      
     });
   });
 });

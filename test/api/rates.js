@@ -1,10 +1,11 @@
 'use strict';
 
 var expect = require('chai').expect;
-var currencyCloud = require('../../lib/currency-cloud')();
-var shared = require('../shared')();
-var setup = shared.setup;
-var teardown = shared.teardown;
+var currencyCloud = require('../../lib/currency-cloud');
+var prepost = require('../prepost');
+var setup = prepost.setup;
+var teardown = prepost.teardown;
+var mock = require('../mocks').rates;
 
 describe('rates', function() {
   before(setup.login);
@@ -40,6 +41,15 @@ describe('rates', function() {
           fixedSide: 'present'
         });
       }).to.throw();
+    });
+    
+    it('successfully gets a rate', function(done) {
+      currencyCloud.rates.get(mock.conversion1)
+      .then(function(gotten) {
+        expect(mock.schema.validate(gotten)).is.true;
+        done();
+      })
+      .catch(done);
     });
   });
   
