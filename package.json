@@ -41,7 +41,7 @@
   },
   "scripts": {
     "lint": "jshint examples lib test",
-    "test": "mocha test/api/ --timeout 5000",
+    "test": "mocha test/ test/api/ --timeout 5000",
     "pretest": "npm run lint"
   },
   "settings": {
