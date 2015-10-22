@@ -51,9 +51,7 @@ describe.only('authentication', function() {
     it('successfully logs in', function(done) {
       currencyCloud.authentication.login(mock.credentials)
       .then(currencyCloud.authentication.logout)
-      .then(function() {
-        done();
-      })
+      .then(done)
       .catch(done);
     });
 
