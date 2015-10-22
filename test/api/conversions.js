@@ -1,15 +1,27 @@
 'use strict';
 
-var expect = require('chai').expect;
 var currencyCloud = require('../../lib/currency-cloud');
+var expect = require('chai').expect;
+var mock = require('../mocks');
 var prepost = require('../prepost');
+var recorder = prepost.recorder('conversions');
 var setup = prepost.setup;
 var teardown = prepost.teardown;
-var mock = require('../mocks').conversions;
 
 describe('conversions', function() {
-  before(setup.login);
-  after(teardown.logout);
+  before(function(done) {
+    recorder.read();    
+    setup.login()
+    .then(function() {
+      done();
+    });
+  });
+  after(function(done) {
+    teardown.logout()
+    .then(function() {
+      recorder.write(done);
+    });
+  });
   
   describe('create', function() {
     it('fails if required parameters are missing', function() {
@@ -70,9 +82,9 @@ describe('conversions', function() {
     });
     
     it('successfully creates a conversion', function(done) {
-      currencyCloud.conversions.create(mock.conversion1)
+      currencyCloud.conversions.create(new mock.conversions.conversion1())
       .then(function(created) {
-        expect(mock.schema.validate(created)).is.true;
+        expect(mock.conversions.schema.validate(created)).is.true;
         done();
       })
       .catch(done);
@@ -87,7 +99,7 @@ describe('conversions', function() {
     });
     
     it('successfully gets a conversion', function(done) {
-      currencyCloud.conversions.create(mock.conversion1)
+      currencyCloud.conversions.create(new mock.conversions.conversion1())
       .then(function(created) {
         return currencyCloud.conversions.get({
           id: created.id
@@ -98,6 +110,23 @@ describe('conversions', function() {
         });
       })
       .catch(done);      
+    });
+  });
+  
+  describe('find', function() {
+    it('successfully finds a conversion', function(done) {
+      currencyCloud.conversions.create(new mock.conversions.conversion1())
+      .then(function(created) {
+        return currencyCloud.conversions.find({
+          conversionIds: [created.id]
+        })
+        .then(function(found) {
+          expect(found).to.have.property('conversions').that.contain(created);
+          expect(found).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
+          done();
+        });
+      })
+      .catch(done);
     });
   });
 });

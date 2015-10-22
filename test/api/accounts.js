@@ -1,15 +1,27 @@
 'use strict';
 
-var expect = require('chai').expect;
 var currencyCloud = require('../../lib/currency-cloud');
+var expect = require('chai').expect;
+var mock = require('../mocks');
 var prepost = require('../prepost');
+var recorder = prepost.recorder('accounts');
 var setup = prepost.setup;
 var teardown = prepost.teardown;
-var mock = require('../mocks').accounts;
 
 describe('accounts', function() {
-  before(setup.login);
-  after(teardown.logout);
+  before(function(done) {
+    recorder.read();    
+    setup.login()
+    .then(function() {
+      done();
+    });
+  });
+  after(function(done) {
+    teardown.logout()
+    .then(function() {
+      recorder.write(done);
+    });
+  });
   
   describe('create', function() {
     it('fails if required parameters are missing', function() {
@@ -26,9 +38,9 @@ describe('accounts', function() {
     });
 
     it('successfully creates an account', function(done) {
-      currencyCloud.accounts.create(mock.account1)
+      currencyCloud.accounts.create(new mock.accounts.account1())
       .then(function(created) {
-        expect(mock.schema.validate(created)).is.true;
+        expect(mock.accounts.schema.validate(created)).is.true;
         done();
       })
       .catch(done);
@@ -43,7 +55,7 @@ describe('accounts', function() {
     });
 
     it('successfully gets an account', function(done) {
-      currencyCloud.accounts.create(mock.account1)
+      currencyCloud.accounts.create(new mock.accounts.account1())
       .then(function(created) {
         return currencyCloud.accounts.get({
           id: created.id
@@ -65,10 +77,12 @@ describe('accounts', function() {
     });
 
     it('successfully updates an account', function(done) {
-      currencyCloud.accounts.create(mock.account1)
+      currencyCloud.accounts.create(new mock.accounts.account1())
       .then(function(created) {
-        mock.account2.id = created.id; //refactor plain clone
-        return currencyCloud.accounts.update(mock.account2)
+        var account = new mock.accounts.account2();
+        account.id = created.id;
+        
+        return currencyCloud.accounts.update(account)
         .then(function(updated) {
           return currencyCloud.accounts.get({
             id: created.id
@@ -85,17 +99,21 @@ describe('accounts', function() {
   
   describe('find', function() {
     it('successfully finds an account', function(done) {
-      currencyCloud.accounts.create(mock.account1)
-      .then(function() {
-        return currencyCloud.accounts.find(mock.account1)
+      currencyCloud.accounts.getCurrent()
+      .then(function(current) {
+        return currencyCloud.accounts.find({
+          accountName: current.accountName,
+          order: 'created_at',
+          orderAscDesc: 'desc',
+          perPage: 5
+        })
         .then(function(found) {
-          expect(found).to.have.property('accounts').and.to.not.be.empty;
-          expect(found).to.have.property('pagination');
-          
+          expect(found).to.have.property('accounts').that.contain(current);
+          expect(found).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
           done();
         });
       })
-      .catch(done);      
+      .catch(done);
     });
   });
   
@@ -103,7 +121,7 @@ describe('accounts', function() {
     it('successfully gets current account', function(done) {
       currencyCloud.accounts.getCurrent()
       .then(function(current) {
-        expect(mock.schema.validate(current)).is.true;
+        expect(mock.accounts.schema.validate(current)).is.true;
         done();
       })
       .catch(done);

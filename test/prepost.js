@@ -8,22 +8,18 @@ var fs = require('fs');
 
 module.exports = {
   recorder: function(name) {
-    var recPath = path.normalize('test/api/recordings/' + name + '.js');
+    var recPath = path.normalize('test/api/fixtures/' + name + '.js');
     var isRec;  
     
     return {
       read: function () {
         try {
-          require('../' + recPath);
-
-          isRec = true;
+          isRec = require('../' + recPath);
         } 
         catch (e) {
           nock.recorder.rec({
             dont_print: true
           });
-
-          isRec = false;
         }
       },
 
@@ -35,7 +31,6 @@ module.exports = {
           recordings.forEach(function(rec) {
             recText = recText + decodeURIComponent(rec);
           });
-
           fs.writeFile(recPath, recText, done);
         } 
         else {
@@ -46,24 +41,16 @@ module.exports = {
   },
   
   setup: {
-    login: function(done) {
-      client.authenticate(mock.credentials)
-      .then(function() {
-        done();
-      })
-      .catch(done);
+    login: function() {
+      return client.authenticate(mock.credentials);
     }
   },
 
   teardown: {
-    logout: function(done) {
-      client.close({
+    logout: function() {
+      return client.close({
         url: '/v2/authenticate/close_session'
-      })
-      .then(function() {
-        done();
-      })
-      .catch(done);
+      });
     }
   }
 };

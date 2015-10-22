@@ -1,20 +1,21 @@
 'use strict';
 
-var expect = require('chai').expect;
 var currencyCloud = require('../../lib/currency-cloud');
+var expect = require('chai').expect;
+var mock = require('../mocks');
 var prepost = require('../prepost');
+var recorder = prepost.recorder('payers');
 var setup = prepost.setup;
 var teardown = prepost.teardown;
-var mock = require('../mocks').payers;
 
-var createPrerequisites = function() {
-  var payment = mock.payments.payment1;
+var getPrerequisites = function() {
+  var payment = new mock.payments.payment1();
   
-  var promise = currencyCloud.conversions.create(mock.conversions.conversion1)
+  var promise = currencyCloud.conversions.create(new mock.conversions.conversion1())
   .then(function(conversion) {
     payment.conversionId = conversion.id;
 
-    return currencyCloud.beneficiaries.create(mock.beneficiaries.beneficiary1)
+    return currencyCloud.beneficiaries.create(new mock.beneficiaries.beneficiary1())
     .then(function(beneficiary) {
       payment.beneficiaryId = beneficiary.id;
       
@@ -26,8 +27,19 @@ var createPrerequisites = function() {
 };
 
 describe('payers', function() {
-  before(setup.login);
-  after(teardown.logout);
+  before(function(done) {
+    recorder.read();    
+    setup.login()
+    .then(function() {
+      done();
+    });
+  });
+  after(function(done) {
+    teardown.logout()
+    .then(function() {
+      recorder.write(done);
+    });
+  });
   
   describe('get', function() {
     it('fails if required parameters are missing', function() {
@@ -37,7 +49,7 @@ describe('payers', function() {
     });
     
     it('successfully gets a payer', function(done) {
-      createPrerequisites()
+      getPrerequisites()
       .then(function(res) {
         return currencyCloud.payers.get({
           id: res.payerId

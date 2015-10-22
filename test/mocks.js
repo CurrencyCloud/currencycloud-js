@@ -22,32 +22,36 @@ module.exports = {
   },
 
   accounts: {
-    account1: {
-      accountName: 'Acme Ltd.',
-      legalEntityType: 'company',
-      yourReference: 'POS-UID-23523',
-      status: 'enabled',
-      street: '164 Bishops Gate',
-      city: 'London',
-      stateOrProvince: 'Ontario',
-      postalCode: 'CR4 3RZ',
-      country: 'GB',
-      spreadTable: 'no_markup',
-      identificationType: 'none'
+    account1: function() {
+      return {
+        accountName: 'Acme Ltd.',
+        legalEntityType: 'company',
+        yourReference: 'POS-UID-23523',
+        status: 'enabled',
+        street: '164 Bishops Gate',
+        city: 'London',
+        stateOrProvince: 'Ontario',
+        postalCode: 'CR4 3RZ',
+        country: 'GB',
+        spreadTable: 'no_markup',
+        identificationType: 'none'
+      };
     },
-    account2: {
-      accountName: 'Company PLC',
-      legalEntityType: 'company',
-      yourReference: '0012345564ABC',
-      status: 'enabled',
-      street: '1 London Road',
-      city: 'London',
-      stateOrProvince: '',
-      postalCode: 'AB12 CD1',
-      country: 'GB',
-      spreadTable: 'flat_0.5_percent',
-      identificationType: 'green_card',
-      identificationValue: '19900303-8998'
+    account2: function() {
+      return {
+        accountName: 'Company PLC',
+        legalEntityType: 'company',
+        yourReference: '0012345564ABC',
+        status: 'enabled',
+        street: '1 London Road',
+        city: 'London',
+        stateOrProvince: '',
+        postalCode: 'AB12 CD1',
+        country: 'GB',
+        spreadTable: 'flat_0.5_percent',
+        identificationType: 'green_card',
+        identificationValue: '19900303-8998'
+      };
     },
     schema: new JSONschema({
       id: 'UUID',
@@ -82,34 +86,67 @@ module.exports = {
   },
 
   beneficiaries: {
-    beneficiary1: {
-      bankAccountHolderName: 'John Doe',
-      bankCountry: 'DE',
-      currency:	'EUR',
-      name: 'Employee Funds',
-      email: 'john.doe@acme.com',
-      beneficiaryAddress: '23 Acacia Road',
-      beneficiaryCountry: 'GB',
-      accountNumber: '13071472',
-      routingCodeType1: 'sort_code',
-      routingCodeValue1: '200605',
-      routingCodeType2: 'aba',
-      routingCodeValue2: '789',  
-      bicSwift: 'COBADEFF',
-      iban: 'DE89370400440532013000',
-      defaultBeneficiary: true,
-      bankAddress: '4356 Wisteria Lane',
-      bankName: 'HSBC Bank',
-      bankAccountType: 'checking',
-      beneficiaryEntityType: 'company',
-      beneficiaryCompanyName: 'Some Company LLC',
-      beneficiaryFirstName: 'John',
-      beneficiaryLastName: 'Doe',
-      beneficiaryCity: 'London',
-      beneficiaryPostcode: 'W11 2BQ',
-      beneficiaryStateOrProvince: 'TX',
-      beneficiaryDateOfBirth: '1990-07-20',
-      beneficiaryIdentificationType: 'none'
+    beneficiary1: function() {
+      return {
+        bankAccountHolderName: 'John Doe',
+        bankCountry: 'DE',
+        currency:	'EUR',
+        name: 'Employee Funds',
+        email: 'john.doe@acme.com',
+        beneficiaryAddress: '23 Acacia Road',
+        beneficiaryCountry: 'GB',
+        accountNumber: '13071472',
+        routingCodeType1: 'sort_code',
+        routingCodeValue1: '200605',
+        routingCodeType2: 'aba',
+        routingCodeValue2: '789',  
+        bicSwift: 'COBADEFF',
+        iban: 'DE89370400440532013000',
+        defaultBeneficiary: true,
+        bankAddress: '4356 Wisteria Lane',
+        bankName: 'HSBC Bank',
+        bankAccountType: 'checking',
+        beneficiaryEntityType: 'company',
+        beneficiaryCompanyName: 'Some Company LLC',
+        beneficiaryFirstName: 'John',
+        beneficiaryLastName: 'Doe',
+        beneficiaryCity: 'London',
+        beneficiaryPostcode: 'W11 2BQ',
+        beneficiaryStateOrProvince: 'TX',
+        beneficiaryDateOfBirth: '1990-07-20',
+        beneficiaryIdentificationType: 'none'
+      };
+    },
+    beneficiary2: function() {
+      return {
+        bankAccountHolderName: 'Martin McFly',
+        bankCountry: 'US',
+        currency:	'USD',
+        name: 'Employee Funds',
+        email: 'martin@mcfly.com',
+        beneficiaryAddress: '9303 Roslyndale Ave.',
+        beneficiaryCountry: 'US',
+        accountNumber: '13071472',
+        routingCodeType1: 'sort_code',
+        routingCodeValue1: '200606',
+        routingCodeType2: 'aba',
+        routingCodeValue2: '780',  
+        bicSwift: 'COBADEFF',
+        iban: 'US89370400440532013000',
+        defaultBeneficiary: true,
+        bankAddress: '1 Courthouse Square',
+        bankName: 'Emmet Bank',
+        bankAccountType: 'checking',
+        beneficiaryEntityType: 'company',
+        beneficiaryCompanyName: 'Back to the Future',
+        beneficiaryFirstName: 'Martin',
+        beneficiaryLastName: 'McFly',
+        beneficiaryCity: 'Hill Valley',
+        beneficiaryPostcode: '91331',
+        beneficiaryStateOrProvince: 'CA',
+        beneficiaryDateOfBirth: '1968-06-09',
+        beneficiaryIdentificationType: 'none'
+      };
     },
     schema: new JSONschema({
       id: 'UUID',
@@ -147,49 +184,71 @@ module.exports = {
     })
   },
 
-  contacts: {
-    contact1: {
-      accountId: '87077161-91de-012f-e284-1e0030c7f352',
-      firstName: 'John',
-      lastName: 'Smith',
-      emailAddress: 'john.smith@company.com',  
-      phoneNumber: '06554 87845',
-      yourReference: 'ACME12345',
-      mobilePhoneNumber: '07564 534 54',
-      loginId: 'john.smith',
-      status: 'enabled',
-      locale: 'en-US',
-      timezone: 'Europe/London',
-      dateOfBirth: '1980-01-22' 
-    },
-    schema: new JSONschema({
-      loginId: 'string',
-      id: 'UUID',
-      yourReference: 'string',
-      firstName: 'string',
-      lastName: 'string',
-      accountId: 'UUID',
-      accountName: 'string',
-      status: 'string',
-      phoneNumber: 'string',
-      mobilePhoneNumber: 'string',
-      locale: 'string',
-      timezone: 'string',
-      emailAddress: 'string',
-      dateOfBirth: 'date',
-      createdAt: 'date',
-      updatedAt: 'date'
-    })               
+  contacts: function() {
+    var suffix = 0;
+    
+    return {
+      contact1: function() {
+        return {
+          firstName: 'John',
+          lastName: 'Smith',
+          emailAddress: 'john.smith@company.com',  
+          phoneNumber: '06554 87845',
+          yourReference: 'ACME12345',
+          mobilePhoneNumber: '07564 534 54',
+          loginId: 'smith.john'.concat(++suffix),
+          status: 'enabled',
+          locale: 'en-US',
+          timezone: 'Europe/London',
+          dateOfBirth: '1980-01-22' 
+        };
+      },
+      contact2: function() {
+        return {
+          firstName: 'Emmet',
+          lastName: 'Brown',
+          emailAddress: 'dr.emmet.brown@company.com',  
+          phoneNumber: '073 789 1661',
+          yourReference: 'doc',
+          mobilePhoneNumber: '073 789 1661',
+          loginId: 'brown.emmet'.concat(++suffix),
+          status: 'enabled',
+          locale: 'en-US',
+          timezone: 'Europe/London',
+          dateOfBirth: '1960-01-29' 
+        };
+      },
+      schema: new JSONschema({
+        loginId: 'string',
+        id: 'UUID',
+        yourReference: 'string',
+        firstName: 'string',
+        lastName: 'string',
+        accountId: 'UUID',
+        accountName: 'string',
+        status: 'string',
+        phoneNumber: 'string',
+        mobilePhoneNumber: 'string',
+        locale: 'string',
+        timezone: 'string',
+        emailAddress: 'string',
+        dateOfBirth: 'date',
+        createdAt: 'date',
+        updatedAt: 'date'
+      })
+    };
   },
 
   conversions: {
-    conversion1: {
-      buyCurrency: 'EUR',
-      sellCurrency: 'GBP',
-      fixedSide: 'buy',
-      amount: 10000.23,
-      reason: 'Settling invoices',
-      termAgreement: true
+    conversion1: function() {
+      return {
+        buyCurrency: 'EUR',
+        sellCurrency: 'GBP',
+        fixedSide: 'buy',
+        amount: 10000.23,
+        reason: 'Settling invoices',
+        termAgreement: true
+      };
     },
     schema: new JSONschema({
       id: 'UUID',
@@ -244,23 +303,45 @@ module.exports = {
   },
 
   payments: {
-    payment1: {
-      currency: 'EUR',
-      amount: 10000,
-      reason: 'Salary for March',
-      reference: 'INVOICE 9876',
-      paymentType: 'regular',
-      payerEntityType: 'individual',
-      payerCompanyName: 'Some Company LLC',
-      payerFirstName: 'John',
-      payerLastName: 'Doe',
-      payerCity: 'London',
-      payerAddress: '27 Colmore Row',
-      payerPostcode: 'W11 2BQ',
-      payerStateOrProvince: 'TX',
-      payerCountry: 'GB',
-      payerDateOfBirth: '1980-10-10',
-      payerIdentificationType: 'none'
+    payment1: function() {
+      return {
+        currency: 'EUR',
+        amount: 10000,
+        reason: 'Salary for March',
+        reference: 'INVOICE 9876',
+        paymentType: 'regular',
+        payerEntityType: 'individual',
+        payerCompanyName: 'Some Company LLC',
+        payerFirstName: 'John',
+        payerLastName: 'Doe',
+        payerCity: 'London',
+        payerAddress: '27 Colmore Row',
+        payerPostcode: 'W11 2BQ',
+        payerStateOrProvince: 'TX',
+        payerCountry: 'GB',
+        payerDateOfBirth: '1980-10-10',
+        payerIdentificationType: 'none'
+      };
+    },  
+    payment2: function() {
+      return {
+        currency: 'EUR',
+        amount: 5000,
+        reason: 'Prepayment of salary for April',
+        reference: 'INVOICE 122/1',
+        paymentType: 'regular',
+        payerEntityType: 'individual',
+        payerCompanyName: 'Jens enskild firma',
+        payerFirstName: 'Jennifer',
+        payerLastName: 'Waylon',
+        payerCity: 'Stockholm',
+        payerAddress: '22 Garvargatan',
+        payerPostcode: '12332',
+        payerStateOrProvince: 'Stockholm',
+        payerCountry: 'SE',
+        payerDateOfBirth: '1981-12-10',
+        payerIdentificationType: 'none'
+      };
     },  
     schema: new JSONschema({
       id: 'UUID',
@@ -286,12 +367,6 @@ module.exports = {
   },
   
   rates: {
-    conversion1: {
-      buyCurrency: 'EUR',
-      sellCurrency: 'GBP',
-      fixedSide: 'buy',
-      amount: 6700
-    },
     schema: new JSONschema({
       settlementCutOffTime: 'date',
       currencyPair: 'string',
@@ -311,8 +386,10 @@ module.exports = {
   },
 
   settlements: {
-    settlement1: {
-      type: 'net'
+    settlement1: function() {
+      return {
+        type: 'net'
+      };
     },
     schema: new JSONschema({
       id: 'UUID',
@@ -345,6 +422,19 @@ module.exports = {
       createdAt: 'date',
       updatedAt: 'date',
       completedAt: 'date'
+    })
+  },
+  
+  pagination: {
+    schema: new JSONschema({
+      totalEntries: 'number',
+      totalPages: 'number',
+      currentPage: 'number',
+      previousPage: 'number',
+      nextPage: 'number',
+      perPage: 'number',
+      order: 'string',
+      orderAscDesc: 'string'    
     })
   }
 };

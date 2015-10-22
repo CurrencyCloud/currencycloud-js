@@ -1,15 +1,27 @@
 'use strict';
 
-var expect = require('chai').expect;
 var currencyCloud = require('../../lib/currency-cloud');
+var expect = require('chai').expect;
+var mock = require('../mocks');
 var prepost = require('../prepost');
+var recorder = prepost.recorder('balances');
 var setup = prepost.setup;
 var teardown = prepost.teardown;
-var mock = require('../mocks').balances;
 
 describe('balances', function() {
-  before(setup.login);
-  after(teardown.logout);
+  before(function(done) {
+    recorder.read();    
+    setup.login()
+    .then(function() {
+      done();
+    });
+  });
+  after(function(done) {
+    teardown.logout()
+    .then(function() {
+      recorder.write(done);
+    });
+  });
   
   describe('get', function() {
     it('fails if required parameters are missing', function() {
@@ -23,7 +35,19 @@ describe('balances', function() {
         currency: 'GBP'
       })
       .then(function(gotten) {
-        expect(mock.schema.validate(gotten)).is.true;
+        expect(mock.balances.schema.validate(gotten)).is.true;
+        done();
+      })
+      .catch(done);
+    });
+  });
+  
+  describe('find', function() {
+    it('successfully finds a balance', function(done) {
+      currencyCloud.balances.find()
+      .then(function(found) {
+        expect(found).to.have.property('balances');
+        expect(found).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
         done();
       })
       .catch(done);

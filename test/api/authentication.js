@@ -1,8 +1,8 @@
 'use strict';
 
-var expect = require('chai').expect;
 var client = require('../../lib/client');
 var currencyCloud = require('../../lib/currency-cloud');
+var expect = require('chai').expect;
 var mock = require('../mocks').authentication;
 var recorder = require('../prepost').recorder('authentication');
     
