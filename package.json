@@ -1,14 +1,12 @@
 {
   "name": "currency-cloud",
   "description": "Currency Cloud API v2 JavaScript client",
-  "version": "",
-  "author": "",
-  "contributors": [
-    {
-      "name": "",
-      "email": ""
-    }
-  ],
+  "version": "0.1.0",
+  "author": "Currency Cloud",
+  "contributors": [{
+    "name": "Irina Gudkova",
+    "email": "irina.gudkova@gmail.com"
+  }],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -39,7 +37,7 @@
   },
   "scripts": {
     "lint": "jshint examples lib test",
-    "test": "mocha test/ test/api/ --timeout 15000",
+    "test": "mocha test/api/ --timeout 15000",
     "pretest": "npm run lint"
   },
   "settings": {

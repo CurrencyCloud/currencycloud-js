@@ -2,12 +2,12 @@ var nock = require('nock');
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/authenticate/api')
-  .query({"login_id":"test.it.now@mailinator.com","api_key":"f6761d15ca6a205b40af2592fb0515af370f929b549ae845b9f3ed09befe269d"})
-  .reply(200, {"auth_token":"cdfcc001dd567ca91f375fb0b12a648e"}, { server: 'nginx',
+  .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
+  .reply(200, {"auth_token":"034d23d24490718e8766853e14d480b7"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:06 GMT',
-  'x-request-id': '2900965351058580689',
+  date: 'Sun, 01 Nov 2015 20:59:10 GMT',
+  'x-request-id': '2910007469756093752',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '49' });
@@ -17,31 +17,31 @@ nock('https://devapi.thecurrencycloud.com:443')
   .reply(200, {}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:06 GMT',
-  'x-request-id': '2900965354363702482',
+  date: 'Sun, 01 Nov 2015 20:59:11 GMT',
+  'x-request-id': '2910007472633409851',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '2' });
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/authenticate/api')
-  .query({"login_id":"test.it.now@mailinator.com","api_key":"f6761d15ca6a205b40af2592fb0515af370f929b549ae845b9f3ed09befe269d"})
-  .reply(200, {"auth_token":"99e6b92e6653943c3fd8b58596883c94"}, { server: 'nginx',
+  .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
+  .reply(200, {"auth_token":"9ee85342c432434fbe3035db5d41f4dd"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:07 GMT',
-  'x-request-id': '2900965356720919763',
+  date: 'Sun, 01 Nov 2015 20:59:11 GMT',
+  'x-request-id': '2910007474755712317',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '49' });
 
 nock('https://devapi.thecurrencycloud.com:443')
   .get('/v2/accounts/current')
-  .reply(200, {"id":"78618e58-da3c-447f-ad59-1796accfeff9","account_name":"Toptal","brand":"currencycloud","your_reference":null,"status":"enabled","street":null,"city":null,"state_or_province":null,"country":null,"postal_code":null,"spread_table":"fxcg_rfx_default","legal_entity_type":null,"created_at":"2015-10-13T11:47:30+00:00","updated_at":"2015-10-14T15:29:22+00:00","identification_type":null,"identification_value":null,"short_reference":"151013-00006"}, { server: 'nginx',
+  .reply(200, {"id":"3a7d2f90-ae1f-493c-a8d6-26ad43700259","account_name":"Toptal","brand":"currencycloud","your_reference":null,"status":"enabled","street":null,"city":null,"state_or_province":null,"country":null,"postal_code":null,"spread_table":"fxcg_rfx_default","legal_entity_type":null,"created_at":"2015-10-30T13:46:49+00:00","updated_at":"2015-10-30T13:52:32+00:00","identification_type":null,"identification_value":null,"short_reference":"151030-00006"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:07 GMT',
-  'x-request-id': '2900965359656930516',
+  date: 'Sun, 01 Nov 2015 20:59:11 GMT',
+  'x-request-id': '2910007477557509438',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '448' });
@@ -51,31 +51,31 @@ nock('https://devapi.thecurrencycloud.com:443')
   .reply(200, {}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:07 GMT',
-  'x-request-id': '2900965363012365525',
+  date: 'Sun, 01 Nov 2015 20:59:12 GMT',
+  'x-request-id': '2910007480543838527',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '2' });
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/authenticate/api')
-  .query({"login_id":"test.it.now@mailinator.com","api_key":"f6761d15ca6a205b40af2592fb0515af370f929b549ae845b9f3ed09befe269d"})
-  .reply(200, {"auth_token":"472014bfd2864227bbaafc2284fe3c60"}, { server: 'nginx',
+  .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
+  .reply(200, {"auth_token":"14c3a6d2bef6b3fabbd84f4a0924e828"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:08 GMT',
-  'x-request-id': '2900965365226940631',
+  date: 'Sun, 01 Nov 2015 20:59:12 GMT',
+  'x-request-id': '2910007483295318345',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '49' });
 
 nock('https://devapi.thecurrencycloud.com:443')
   .get('/v2/accounts/current')
-  .reply(200, {"id":"78618e58-da3c-447f-ad59-1796accfeff9","account_name":"Toptal","brand":"currencycloud","your_reference":null,"status":"enabled","street":null,"city":null,"state_or_province":null,"country":null,"postal_code":null,"spread_table":"fxcg_rfx_default","legal_entity_type":null,"created_at":"2015-10-13T11:47:30+00:00","updated_at":"2015-10-14T15:29:22+00:00","identification_type":null,"identification_value":null,"short_reference":"151013-00006"}, { server: 'nginx',
+  .reply(200, {"id":"3a7d2f90-ae1f-493c-a8d6-26ad43700259","account_name":"Toptal","brand":"currencycloud","your_reference":null,"status":"enabled","street":null,"city":null,"state_or_province":null,"country":null,"postal_code":null,"spread_table":"fxcg_rfx_default","legal_entity_type":null,"created_at":"2015-10-30T13:46:49+00:00","updated_at":"2015-10-30T13:52:32+00:00","identification_type":null,"identification_value":null,"short_reference":"151030-00006"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:08 GMT',
-  'x-request-id': '2900965367953239256',
+  date: 'Sun, 01 Nov 2015 20:59:12 GMT',
+  'x-request-id': '2910007485996416333',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '448' });
@@ -85,20 +85,20 @@ nock('https://devapi.thecurrencycloud.com:443')
   .reply(200, {}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:08 GMT',
-  'x-request-id': '2900965370528546010',
+  date: 'Sun, 01 Nov 2015 20:59:13 GMT',
+  'x-request-id': '2910007488882120015',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '2' });
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/authenticate/api')
-  .query({"login_id":"test.it.now@mailinator.com","api_key":"f6761d15ca6a205b40af2592fb0515af370f929b549ae845b9f3ed09befe269d"})
-  .reply(200, {"auth_token":"88a6b9d4187226cfbb5ae392f27d6334"}, { server: 'nginx',
+  .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
+  .reply(200, {"auth_token":"439c7a366dede548bb1878dc4045bc60"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:08 GMT',
-  'x-request-id': '2900965372961266907',
+  date: 'Sun, 01 Nov 2015 20:59:13 GMT',
+  'x-request-id': '2910007490979295569',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '49' });
@@ -108,20 +108,20 @@ nock('https://devapi.thecurrencycloud.com:443')
   .reply(200, {}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:09 GMT',
-  'x-request-id': '2900965375939214556',
+  date: 'Sun, 01 Nov 2015 20:59:13 GMT',
+  'x-request-id': '2910007493562968402',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '2' });
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/authenticate/api')
-  .query({"login_id":"test.it.now@mailinator.com","api_key":"f6761d15ca6a205b40af2592fb0515af370f929b549ae845b9f3ed09befe269d"})
-  .reply(200, {"auth_token":"b96c3d89b1b5bac39f8c5fe819f832d3"}, { server: 'nginx',
+  .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
+  .reply(200, {"auth_token":"e1f125fcd33af884fbbdf4597e18a2a1"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:09 GMT',
-  'x-request-id': '2900965378069919965',
+  date: 'Sun, 01 Nov 2015 20:59:13 GMT',
+  'x-request-id': '2910007495593032019',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '49' });
@@ -131,8 +131,8 @@ nock('https://devapi.thecurrencycloud.com:443')
   .reply(200, {}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
-  date: 'Tue, 20 Oct 2015 09:34:09 GMT',
-  'x-request-id': '2900965381047867614',
+  date: 'Sun, 01 Nov 2015 20:59:14 GMT',
+  'x-request-id': '2910007498294146388',
   'x-content-type-options': 'nosniff',
   connection: 'close',
   'content-length': '2' });

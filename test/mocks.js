@@ -15,8 +15,8 @@ module.exports = {
   authentication: {
     credentials: {
       environment: 'demo', 
-      loginId: 'test.it.now@mailinator.com', 
-      apiKey: 'f6761d15ca6a205b40af2592fb0515af370f929b549ae845b9f3ed09befe269d',
+      loginId: 'test.it@mailinator.com', 
+      apiKey: 'b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4',
       authUrl: '/v2/authenticate/api'
     }
   },
@@ -49,8 +49,7 @@ module.exports = {
         postalCode: 'AB12 CD1',
         country: 'GB',
         spreadTable: 'flat_0.5_percent',
-        identificationType: 'green_card',
-        identificationValue: '19900303-8998'
+        identificationType: 'none'
       };
     },
     schema: new JSONschema({
@@ -196,7 +195,7 @@ module.exports = {
           phoneNumber: '06554 87845',
           yourReference: 'ACME12345',
           mobilePhoneNumber: '07564 534 54',
-          loginId: 'smith.john'.concat(++suffix),
+          loginId: 'john.'.concat(++suffix),
           status: 'enabled',
           locale: 'en-US',
           timezone: 'Europe/London',
@@ -211,7 +210,7 @@ module.exports = {
           phoneNumber: '073 789 1661',
           yourReference: 'doc',
           mobilePhoneNumber: '073 789 1661',
-          loginId: 'brown.emmet'.concat(++suffix),
+          loginId: 'emmet.'.concat(++suffix),
           status: 'enabled',
           locale: 'en-US',
           timezone: 'Europe/London',
@@ -326,7 +325,7 @@ module.exports = {
     payment2: function() {
       return {
         currency: 'EUR',
-        amount: 5000,
+        amount: 0.23,
         reason: 'Prepayment of salary for April',
         reference: 'INVOICE 122/1',
         paymentType: 'regular',

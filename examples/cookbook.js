@@ -1,6 +1,6 @@
 /**
  * This is JavaScript implementation of the
- * {@link https://connect.currencycloud.com/documentation/getting-started/cookbook Currency Cloud API v2.0 Cookbook example}.
+ * {@link https://connect.currencycloud.com/documentation/getting-started/cookbook Currency Cloud API v2.0 Cookbook} example.
  */
 
 'use strict';
@@ -10,8 +10,8 @@ var currencyCloud = require('../lib/currency-cloud');
 var login = function() {
   return currencyCloud.authentication.login({
     environment: 'demo', 
-    loginId: 'test.it.now@mailinator.com', 
-    apiKey: 'f6761d15ca6a205b40af2592fb0515af370f929b549ae845b9f3ed09befe269d'
+    loginId: 'test.it@mailinator.com', 
+    apiKey: 'b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4'
   });
 };
 

@@ -32,6 +32,7 @@ describe('onBehalfOf', function() {
       done();
     });
   });
+  
   after(function(done) {
     teardown.logout()
     .then(function() {

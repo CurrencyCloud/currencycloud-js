@@ -34,6 +34,7 @@ describe('payments', function() {
       done();
     });
   });
+  
   after(function(done) {
     teardown.logout()
     .then(function() {
@@ -143,11 +144,11 @@ describe('payments', function() {
       .then(function(res) {
         var payment1 = new mock.payments.payment1();
         payment1.conversionId = res.conversionId;
-        payment1.beneficiaryId = res.beneficiaryId;        
+        payment1.beneficiaryId = res.beneficiaryId;
         
         var payment2 = new mock.payments.payment2();
         payment2.conversionId = res.conversionId;
-        payment2.beneficiaryId = res.beneficiaryId;        
+        payment2.beneficiaryId = res.beneficiaryId;
         
         return currencyCloud.payments.create(payment1)
         .then(function(created) {
@@ -204,28 +205,35 @@ describe('payments', function() {
     it('successfully deletes a payment', function(done) {
       getPrerequisites()
       .then(function(res) {
-        var payment = new mock.payments.payment1();
-        payment.conversionId = res.conversionId;
-        payment.beneficiaryId = res.beneficiaryId;        
+        var payment1 = new mock.payments.payment1();
+        payment1.conversionId = res.conversionId;
+        payment1.beneficiaryId = res.beneficiaryId;
         
-        return currencyCloud.payments.create(payment)
+        var payment2 = new mock.payments.payment2();
+        payment2.conversionId = res.conversionId;
+        payment2.beneficiaryId = res.beneficiaryId;
+        
+        return currencyCloud.payments.create(payment1)
+        .then(function() {
+          return currencyCloud.payments.create(payment2);
+        })
         .then(function(created) {
           return currencyCloud.payments.delete({
             id: created.id
+          });
+        })
+        .then(function(deleted) {
+          expect(mock.payments.schema.validate(deleted)).is.true;
+
+          return currencyCloud.payments.get({
+            id: deleted.id
           })
-          .then(function(deleted) {
-            expect(mock.payments.schema.validate(deleted)).is.true;
-          
-            return currencyCloud.payments.get({
-              id: deleted.id
-            })
-            .then(function() {
-              done(new Error('should have failed.'));
-            })
-            .catch(function(err) {
-              expect(err.cause.statusCode).equals(404);
-              done();
-            });
+          .then(function() {
+            done(new Error('should have failed.'));
+          })
+          .catch(function(err) {
+            expect(err.cause.statusCode).equals(404);
+            done();
           });
         });
       })

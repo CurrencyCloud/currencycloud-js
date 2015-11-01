@@ -6,8 +6,9 @@ var expect = require('chai').expect;
 var mock = require('../mocks').authentication;
 var recorder = require('../prepost').recorder('authentication');
     
-describe.only('authentication', function() {
+describe('authentication', function() {
   before(recorder.read);
+  
   after(recorder.write);
   
   describe('login', function() {
@@ -50,7 +51,11 @@ describe.only('authentication', function() {
     
     it('successfully logs in', function(done) {
       currencyCloud.authentication.login(mock.credentials)
-      .then(currencyCloud.authentication.logout)
+      .then(function(token) {
+        expect(token).is.not.empty;
+        
+        return currencyCloud.authentication.logout();
+      })
       .then(done)
       .catch(done);
     });
@@ -59,9 +64,7 @@ describe.only('authentication', function() {
       currencyCloud.authentication.login(mock.credentials)
       .then(currencyCloud.accounts.getCurrent)
       .then(currencyCloud.authentication.logout)      
-      .then(function() {
-        done();
-      })
+      .then(done)
       .catch(done);
     });
     
@@ -75,11 +78,9 @@ describe.only('authentication', function() {
       .then(function() {
         expect(client._token.get()).not.equals(expired);
         
-        currencyCloud.authentication.logout()
-        .then(function() {
-          done();
-        });
+        return currencyCloud.authentication.logout();
       })
+      .then(done)
       .catch(done);
     });
   });

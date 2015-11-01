@@ -10,12 +10,13 @@ var teardown = prepost.teardown;
 
 describe('transactions', function() {
   before(function(done) {
-    recorder.read();    
+    recorder.read();
     setup.login()
     .then(function() {
       done();
     });
   });
+  
   after(function(done) {
     teardown.logout()
     .then(function() {
@@ -31,12 +32,24 @@ describe('transactions', function() {
     });
     
     it('successfully gets a transaction', function(done) {
-      currencyCloud.transactions.get({
-        id: ''
-      })
-      .then(function(gotten) {
-        expect(mock.transactions.schema.validate(gotten)).is.true;
-        done();
+      currencyCloud.conversions.create(new mock.conversions.conversion1())
+      .then(function(created) {
+        return currencyCloud.transactions.find({
+          order: 'created_at',
+          orderAscDesc: 'desc',
+          perPage: 5
+        })
+        .then(function(found) {
+          return currencyCloud.transactions.get({
+            id: found.transactions[0].id
+          })
+          .then(function(gotten) {
+            expect(mock.transactions.schema.validate(gotten)).is.true;
+            expect(gotten).to.have.property('relatedEntityType', 'conversion');
+            expect(gotten).to.have.property('relatedEntityId', created.id);
+            done();
+          });
+        });
       })
       .catch(done);
     });
@@ -44,11 +57,20 @@ describe('transactions', function() {
   
   describe('find', function() {
     it('successfully finds a transaction', function(done) {
-      currencyCloud.transactions.find()
-      .then(function(found) {console.log(found);
-        expect(found).to.have.property('transactions');
-        expect(found).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
-        done();
+      currencyCloud.conversions.create(new mock.conversions.conversion1())
+      .then(function(created) {
+        return currencyCloud.transactions.find({
+          order: 'created_at',
+          orderAscDesc: 'desc',
+          perPage: 5
+        })
+        .then(function(found) {
+          expect(found).to.have.property('transactions');
+          expect(found.transactions[0]).to.have.property('relatedEntityType', 'conversion');
+          expect(found.transactions[0]).to.have.property('relatedEntityId', created.id);
+          expect(found).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
+          done();
+        });
       })
       .catch(done);
     });

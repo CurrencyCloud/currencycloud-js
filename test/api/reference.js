@@ -15,6 +15,7 @@ describe('reference', function() {
       done();
     });
   });
+  
   after(function(done) {
     teardown.logout()
     .then(function() {

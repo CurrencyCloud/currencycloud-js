@@ -25,6 +25,7 @@ describe('settlements', function() {
       done();
     });
   });
+  
   after(function(done) {
     teardown.logout()
     .then(function() {
