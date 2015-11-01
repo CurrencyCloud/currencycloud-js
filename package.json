@@ -24,7 +24,7 @@
   ],
   "main": "./lib/currency-cloud",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.0.0"
   },
   "dependencies": {
     "request-promise": "^0.4.3"
