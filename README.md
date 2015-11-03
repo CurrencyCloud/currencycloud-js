@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/currency-cloud) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/CurrencyCloud/currencycloud-js) [![David](https://img.shields.io/david/strongloop/express.svg)](https://david-dm.org/CurrencyCloud/currencycloud-js.svg)
+[![npm](https://img.shields.io/npm/v/currency-cloud.svg)](https://www.npmjs.com/package/currency-cloud) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/CurrencyCloud/currencycloud-js) [![David](https://img.shields.io/david/strongloop/express.svg)](https://david-dm.org/CurrencyCloud/currencycloud-js.svg)
 
 # Currency Cloud
 
