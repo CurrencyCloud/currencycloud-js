@@ -5,7 +5,7 @@
 
 'use strict';
 
-var currencyCloud = require('../lib/currency-cloud');
+var currencyCloud = require('currency-cloud');
 
 var login = function() {
   return currencyCloud.authentication.login({

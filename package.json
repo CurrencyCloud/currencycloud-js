@@ -3,10 +3,12 @@
   "description": "Currency Cloud API v2 JavaScript client",
   "version": "0.1.0",
   "author": "Currency Cloud",
-  "contributors": [{
-    "name": "Irina Gudkova",
-    "email": "irina.gudkova@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Irina Gudkova",
+      "email": "irina.gudkova@gmail.com"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -27,7 +29,7 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "request-promise": "^0.4.3"
+    "request-promise": "^1.0.2"
   },
   "devDependencies": {
     "chai": "^3.3.0",
