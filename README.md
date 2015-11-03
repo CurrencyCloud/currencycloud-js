@@ -18,7 +18,7 @@ The least supported Node version is 4.0.0.
 
 # Usage
 
-The following example retrieves a list of all tradeable currencies:
+The following example retrieves all tradeable currencies list:
 
 ``` js
 var currencyCloud = require('currency-cloud');
@@ -43,17 +43,20 @@ More extensive examples can be found in the [examples] folder.
 
 ## Service client
 
-To interact with the various Currency Cloud's APIs a service client object must be created; then a particular API can be accessed via its corresponding property:
+To interact with the various Currency Cloud's APIs a service client object must be created; then a particular API can be accessed via the corresponding property of this object:
 
 ``` js
+// create service client object
 var currencyCloud = require('currency-cloud');
 
+// access authentication API
 currencyCloud.authentication.login({
   environment: 'demo', 
   loginId: 'login_id', 
   apiKey: 'api_key'
 })
 .then(function() {
+  // access reference API
   return currencyCloud.reference.getBeneficiaryRequiredDetails({
     currency: 'EUR',
     bankAccountCountry: 'DE'
@@ -80,7 +83,7 @@ currencyCloud.authentication.login({
   ...
 });
 ```
-The above code retrieves authentication token, which is then passed with all subsequent API calls. If a call fails due to token is expired, then re-authentication is attempted, so that the token is refreshed, and the failed request is retried.
+The above code retrieves authentication token, which is passed with all subsequent API calls. If a call fails due to token is expired, then re-authentication is attempted, so that the token is refreshed and the failed request is retried.
 
 When working with API is finished, it is recommended to close the session by calling `currencyCloud.authentication.logout()`.
 
@@ -89,6 +92,8 @@ When working with API is finished, it is recommended to close the session by cal
 SDK functions accept arguments as a single object, which holds both required and optional parameters: 
 
 ``` js
+var currencyCloud = require('currency-cloud');
+
 currencyCloud.accounts.create({
   /* required parameters */
   accountName: 'Firma AB',
@@ -116,6 +121,8 @@ Each API call is an asynchronous operation, so Promises/A+ pattern is used heavi
 Some API calls can be executed on behalf of another user (e.g. someone who has a sub-account with the logged in user). For this sake, `onBehalfOf` field with a value of corresponding contact id should be added to a parameters object of a SDK function:
 
 ``` js
+var currencyCloud = require('currency-cloud');
+
 currencyCloud.rates.get({
   buyCurrency: 'SEK', 
   sellurrency: 'GBP', 
@@ -125,9 +132,11 @@ currencyCloud.rates.get({
 })
 .then(console.log);
 ```
-Another option is to run a bunch of API calls using `currencyCloud.onBehalfOf` method; it expects contact id and a promise as parameters and returns the given promise resolved:
+Another option is to run a bunch of API calls using `onBehalfOf(id, promise)` method; it expects contact id and a promise as parameters and returns the given promise resolved:
 
 ``` js
+var currencyCloud = require('currency-cloud');
+
 currencyCloud.onBehalfOf('8f639ab2-2b85-4327-9eb1-01ee4f0c77bc', function() {
   var beneficiary = {
     ...
@@ -157,9 +166,11 @@ currencyCloud.onBehalfOf('8f639ab2-2b85-4327-9eb1-01ee4f0c77bc', function() {
 ```
 ## Errors
 
-If an API call fails, corresponding SDK function returns rejected promise with the received API error wrapped into `APIerror` object:
+If an API call fails, the SDK function returns rejected promise with the received API error wrapped into `APIerror` object:
 
 ``` js
+var currencyCloud = require('currency-cloud');
+
 currencyCloud.balances.get({
   currency: 'XYZ'
 })
