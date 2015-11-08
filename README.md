@@ -166,7 +166,7 @@ currencyCloud.onBehalfOf('8f639ab2-2b85-4327-9eb1-01ee4f0c77bc', function() {
 ```
 ## Errors
 
-If an API call fails, the SDK function returns rejected promise with the received API error wrapped into `APIerror` object:
+If an API call fails, the SDK function returns rejected promise with the error wrapped into `APIerror` class object. More specifically, it's an object of one of the classes, inheriting from `APIerror` and representing different types of errors. Apart from standard serialization methods they expose `toYAML()` method, which converts error object to human-readable YAML string:
 
 ``` js
 var currencyCloud = require('currency-cloud');
@@ -175,31 +175,33 @@ currencyCloud.balances.get({
   currency: 'XYZ'
 })
 .catch(function(err) {
-  console.log(JSON.stringify(err, null, 2));
+  // the error might be not of APIerror type (e.g connection error)
+  if(err instanceof currencyCloud.APIerror) {
+    console.log(err.toYAML());
+  } 
+  else {
+    console.log(err);
+  }  
 });
 
 /* outputs
-{
-  "name": "APIerror",
-  "message": "invalid_currency",
-  "cause": {
-    "statusCode": 400,
-    "error": {
-      "errorCode": "invalid_currency",
-      "errorMessages": {
-        "currency": [
-          {
-            "code": "invalid_currency",
-            "message": "XYZ is not a valid ISO 4217 currency code",
-            "params": {
-              "currency": "XYZ"
-            }
-          }
-        ]
-      }
-    }
-  }
-}
+BadRequestError
+---
+platform: node v4.1.1
+request:
+  parameters: {}
+  verb: GET
+  url: https://devapi.thecurrencycloud.com/v2/balances/XYZ
+response:
+  statusCode: 400
+  date: Mon, 09 Nov 2015 15:06:11 GMT
+  requestId: 2914269054259094430
+errors:
+- field: currency
+  code: currency_is_in_invalid_format
+  message: currency is not a valid ISO 4217 currency code
+  params:
+    type: currency
 */
 ```
 # Development

@@ -14,7 +14,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .get('/v2/balances/GBP')
-  .query({"currency":"GBP"})
   .reply(200, {"id":"07ee18e7-430e-4743-a42e-676061718a41","account_id":"3a7d2f90-ae1f-493c-a8d6-26ad43700259","currency":"GBP","amount":"0.00","created_at":"2015-10-30T13:51:11+00:00","updated_at":"2015-10-30T13:51:11+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',

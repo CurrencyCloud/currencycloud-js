@@ -86,7 +86,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .get('/v2/payments/c365b1b2-0451-40cb-a87a-2a299ba7c4ed')
-  .query({"id":"c365b1b2-0451-40cb-a87a-2a299ba7c4ed"})
   .reply(200, {"id":"c365b1b2-0451-40cb-a87a-2a299ba7c4ed","amount":"10000.00","beneficiary_id":"236c6192-cd4c-47e8-8d27-230455a3b6a3","currency":"EUR","reference":"INVOICE 9876","reason":"Salary for March","status":"ready_to_send","creator_contact_id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","payment_type":"regular","payment_date":"2015-10-29","transferred_at":"","authorisation_steps_required":"0","last_updater_contact_id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","short_reference":"151027-CMCRZC001","conversion_id":"e204e1da-0ed2-4098-b1d2-9a67f531ab32","failure_reason":"","payer_id":"e598308d-1829-430c-b3d8-662170811622","payer_details_source":"payer","created_at":"2015-10-27T19:53:16+00:00","updated_at":"2015-10-27T19:53:16+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -134,7 +133,7 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/payments/48bf6096-8b17-4d9f-b8de-5a1c253f3bf8')
-  .query({"currency":"EUR","amount":"0.23","reason":"Prepayment of salary for April","reference":"INVOICE 122/1","payment_type":"regular","payer_entity_type":"individual","payer_company_name":"Jens enskild firma","payer_first_name":"Jennifer","payer_last_name":"Waylon","payer_city":"Stockholm","payer_address":"22 Garvargatan","payer_postcode":"12332","payer_state_or_province":"Stockholm","payer_country":"SE","payer_date_of_birth":"1981-12-10","payer_identification_type":"none","conversion_id":"5c4716dc-42dd-4571-b4bf-0aa299fff928","beneficiary_id":"16d351fb-94ba-4c75-b554-49c793d69459","id":"48bf6096-8b17-4d9f-b8de-5a1c253f3bf8"})
+  .query({"currency":"EUR","amount":"0.23","reason":"Prepayment of salary for April","reference":"INVOICE 122/1","payment_type":"regular","payer_entity_type":"individual","payer_company_name":"Jens enskild firma","payer_first_name":"Jennifer","payer_last_name":"Waylon","payer_city":"Stockholm","payer_address":"22 Garvargatan","payer_postcode":"12332","payer_state_or_province":"Stockholm","payer_country":"SE","payer_date_of_birth":"1981-12-10","payer_identification_type":"none","conversion_id":"5c4716dc-42dd-4571-b4bf-0aa299fff928","beneficiary_id":"16d351fb-94ba-4c75-b554-49c793d69459"})
   .reply(200, {"id":"48bf6096-8b17-4d9f-b8de-5a1c253f3bf8","amount":"0.23","beneficiary_id":"16d351fb-94ba-4c75-b554-49c793d69459","currency":"EUR","reference":"INVOICE 122/1","reason":"Prepayment of salary for April","status":"ready_to_send","creator_contact_id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","payment_type":"regular","payment_date":"2015-10-29","transferred_at":"","authorisation_steps_required":"0","last_updater_contact_id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","short_reference":"151027-ZMNZZB001","conversion_id":"5c4716dc-42dd-4571-b4bf-0aa299fff928","failure_reason":"","payer_id":"9a234e2f-7d25-46f5-8fcf-b473e2b5b36d","payer_details_source":"payer","created_at":"2015-10-27T19:53:19+00:00","updated_at":"2015-10-27T19:53:21+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -146,7 +145,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .get('/v2/payments/48bf6096-8b17-4d9f-b8de-5a1c253f3bf8')
-  .query({"id":"48bf6096-8b17-4d9f-b8de-5a1c253f3bf8"})
   .reply(200, {"id":"48bf6096-8b17-4d9f-b8de-5a1c253f3bf8","amount":"0.23","beneficiary_id":"16d351fb-94ba-4c75-b554-49c793d69459","currency":"EUR","reference":"INVOICE 122/1","reason":"Prepayment of salary for April","status":"ready_to_send","creator_contact_id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","payment_type":"regular","payment_date":"2015-10-29","transferred_at":"","authorisation_steps_required":"0","last_updater_contact_id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","short_reference":"151027-ZMNZZB001","conversion_id":"5c4716dc-42dd-4571-b4bf-0aa299fff928","failure_reason":"","payer_id":"9a234e2f-7d25-46f5-8fcf-b473e2b5b36d","payer_details_source":"payer","created_at":"2015-10-27T19:53:19+00:00","updated_at":"2015-10-27T19:53:21+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -254,7 +252,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/payments/cc0933c9-0c16-467c-8a3b-2fa96b6cede3/delete')
-  .query({"id":"cc0933c9-0c16-467c-8a3b-2fa96b6cede3"})
   .reply(200, {"id":"cc0933c9-0c16-467c-8a3b-2fa96b6cede3","amount":"0.23","beneficiary_id":"85fd10c0-0b6d-460e-a93a-ce97108ef81a","currency":"EUR","reference":"INVOICE 122/1","reason":"Prepayment of salary for April","status":"ready_to_send","creator_contact_id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","payment_type":"regular","payment_date":"2015-10-29","transferred_at":"","authorisation_steps_required":"0","last_updater_contact_id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","short_reference":"151027-BZMLHF002","conversion_id":"1c200c1d-f53b-42eb-a4b4-f14a08d5851e","failure_reason":"","payer_id":"9a234e2f-7d25-46f5-8fcf-b473e2b5b36d","payer_details_source":null,"created_at":"2015-10-27T19:53:29+00:00","updated_at":"2015-10-27T19:53:29+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -266,7 +263,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .get('/v2/payments/cc0933c9-0c16-467c-8a3b-2fa96b6cede3')
-  .query({"id":"cc0933c9-0c16-467c-8a3b-2fa96b6cede3"})
   .reply(404, {"error_code":"payment_not_found","error_messages":{"id":[{"code":"payment_not_found","message":"Payment was not found for this id","params":{}}]}}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',

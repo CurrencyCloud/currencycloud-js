@@ -38,7 +38,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .get('/v2/settlements/c22cdcd8-561d-4b1f-bf6a-72f85cd3c1a3')
-  .query({"id":"c22cdcd8-561d-4b1f-bf6a-72f85cd3c1a3"})
   .reply(200, {"id":"c22cdcd8-561d-4b1f-bf6a-72f85cd3c1a3","status":"open","short_reference":"20151101-MCPRSH","type":"net","conversion_ids":[],"entries":[],"created_at":"2015-11-01T19:37:34+00:00","updated_at":"2015-11-01T19:37:34+00:00","released_at":""}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -86,7 +85,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/settlements/1d8f23ae-f4a2-4aa7-a829-c709a21efdf5/delete')
-  .query({"id":"1d8f23ae-f4a2-4aa7-a829-c709a21efdf5"})
   .reply(200, {"id":"1d8f23ae-f4a2-4aa7-a829-c709a21efdf5","status":"open","short_reference":"20151101-QWXBKR","type":"net","conversion_ids":[],"entries":[],"created_at":"2015-11-01T19:37:36+00:00","updated_at":"2015-11-01T19:37:36+00:00","released_at":""}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -98,7 +96,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .get('/v2/settlements/1d8f23ae-f4a2-4aa7-a829-c709a21efdf5')
-  .query({"id":"1d8f23ae-f4a2-4aa7-a829-c709a21efdf5"})
   .reply(404, {"error_code":"settlement_not_found","error_messages":{"id":[{"code":"settlement_not_found","message":"Settlement was not found for this id","params":{}}]}}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -134,7 +131,7 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/settlements/ceb6bd78-8873-4767-a704-66a67bee4257/add_conversion')
-  .query({"id":"ceb6bd78-8873-4767-a704-66a67bee4257","conversion_id":"7761099e-4073-4f22-9b40-c2f2740744ff"})
+  .query({"conversion_id":"7761099e-4073-4f22-9b40-c2f2740744ff"})
   .reply(200, {"id":"ceb6bd78-8873-4767-a704-66a67bee4257","status":"open","short_reference":"20151101-GHDXQM","type":"net","conversion_ids":["7761099e-4073-4f22-9b40-c2f2740744ff"],"entries":[{"GBP":{"receive_amount":"0.00","send_amount":"0.00"}}],"created_at":"2015-11-01T19:37:38+00:00","updated_at":"2015-11-01T19:37:38+00:00","released_at":""}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -170,7 +167,7 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/settlements/551d338c-fd22-48f5-a3fb-26af483278d9/add_conversion')
-  .query({"id":"551d338c-fd22-48f5-a3fb-26af483278d9","conversion_id":"baf169b2-8430-4352-b7b0-1b13bb14bbbd"})
+  .query({"conversion_id":"baf169b2-8430-4352-b7b0-1b13bb14bbbd"})
   .reply(200, {"id":"551d338c-fd22-48f5-a3fb-26af483278d9","status":"open","short_reference":"20151101-MYXGBX","type":"net","conversion_ids":["baf169b2-8430-4352-b7b0-1b13bb14bbbd"],"entries":[{"GBP":{"receive_amount":"0.00","send_amount":"0.00"}}],"created_at":"2015-11-01T19:37:39+00:00","updated_at":"2015-11-01T19:37:39+00:00","released_at":""}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -182,7 +179,7 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/settlements/551d338c-fd22-48f5-a3fb-26af483278d9/remove_conversion')
-  .query({"id":"551d338c-fd22-48f5-a3fb-26af483278d9","conversion_id":"baf169b2-8430-4352-b7b0-1b13bb14bbbd"})
+  .query({"conversion_id":"baf169b2-8430-4352-b7b0-1b13bb14bbbd"})
   .reply(200, {"id":"551d338c-fd22-48f5-a3fb-26af483278d9","status":"open","short_reference":"20151101-MYXGBX","type":"net","conversion_ids":[],"entries":[{"GBP":{"receive_amount":"0.00","send_amount":"0.00"}}],"created_at":"2015-11-01T19:37:39+00:00","updated_at":"2015-11-01T19:37:39+00:00","released_at":""}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -218,7 +215,7 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/settlements/eff04f2b-97d1-4338-8fd3-1828b609f673/add_conversion')
-  .query({"id":"eff04f2b-97d1-4338-8fd3-1828b609f673","conversion_id":"46e450fc-7d52-4e3e-ba16-83e8b5c82116"})
+  .query({"conversion_id":"46e450fc-7d52-4e3e-ba16-83e8b5c82116"})
   .reply(200, {"id":"eff04f2b-97d1-4338-8fd3-1828b609f673","status":"open","short_reference":"20151101-DXTZSN","type":"net","conversion_ids":["46e450fc-7d52-4e3e-ba16-83e8b5c82116"],"entries":[{"GBP":{"receive_amount":"0.00","send_amount":"0.00"}}],"created_at":"2015-11-01T19:37:42+00:00","updated_at":"2015-11-01T19:37:42+00:00","released_at":""}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -230,7 +227,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/settlements/eff04f2b-97d1-4338-8fd3-1828b609f673/release')
-  .query({"id":"eff04f2b-97d1-4338-8fd3-1828b609f673"})
   .reply(200, {"id":"eff04f2b-97d1-4338-8fd3-1828b609f673","status":"released","short_reference":"20151101-DXTZSN","type":"net","conversion_ids":["46e450fc-7d52-4e3e-ba16-83e8b5c82116"],"entries":[{"GBP":{"receive_amount":"0.00","send_amount":"0.00"}}],"created_at":"2015-11-01T19:37:42+00:00","updated_at":"2015-11-01T19:37:42+00:00","released_at":"2015-11-01T19:37:42+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -266,7 +262,7 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/settlements/dee62f1e-4643-4bc4-a762-c18a0f5770ae/add_conversion')
-  .query({"id":"dee62f1e-4643-4bc4-a762-c18a0f5770ae","conversion_id":"d949c647-87ec-4ff0-9ed5-a8ce915ec42d"})
+  .query({"conversion_id":"d949c647-87ec-4ff0-9ed5-a8ce915ec42d"})
   .reply(200, {"id":"dee62f1e-4643-4bc4-a762-c18a0f5770ae","status":"open","short_reference":"20151101-NYYLYY","type":"net","conversion_ids":["d949c647-87ec-4ff0-9ed5-a8ce915ec42d"],"entries":[{"GBP":{"receive_amount":"0.00","send_amount":"0.00"}}],"created_at":"2015-11-01T19:37:44+00:00","updated_at":"2015-11-01T19:37:44+00:00","released_at":""}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -278,7 +274,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/settlements/dee62f1e-4643-4bc4-a762-c18a0f5770ae/release')
-  .query({"id":"dee62f1e-4643-4bc4-a762-c18a0f5770ae"})
   .reply(200, {"id":"dee62f1e-4643-4bc4-a762-c18a0f5770ae","status":"released","short_reference":"20151101-NYYLYY","type":"net","conversion_ids":["d949c647-87ec-4ff0-9ed5-a8ce915ec42d"],"entries":[{"GBP":{"receive_amount":"0.00","send_amount":"0.00"}}],"created_at":"2015-11-01T19:37:44+00:00","updated_at":"2015-11-01T19:37:45+00:00","released_at":"2015-11-01T19:37:45+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -290,7 +285,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/settlements/dee62f1e-4643-4bc4-a762-c18a0f5770ae/unrelease')
-  .query({"id":"dee62f1e-4643-4bc4-a762-c18a0f5770ae"})
   .reply(200, {"id":"dee62f1e-4643-4bc4-a762-c18a0f5770ae","status":"open","short_reference":"20151101-NYYLYY","type":"net","conversion_ids":["d949c647-87ec-4ff0-9ed5-a8ce915ec42d"],"entries":[{"GBP":{"receive_amount":"0.00","send_amount":"0.00"}}],"created_at":"2015-11-01T19:37:44+00:00","updated_at":"2015-11-01T19:37:45+00:00","released_at":""}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',

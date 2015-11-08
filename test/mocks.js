@@ -20,7 +20,7 @@ module.exports = {
       authUrl: '/v2/authenticate/api'
     }
   },
-
+  
   accounts: {
     account1: function() {
       return {

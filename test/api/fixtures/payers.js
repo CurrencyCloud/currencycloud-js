@@ -50,7 +50,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .get('/v2/payers/e598308d-1829-430c-b3d8-662170811622')
-  .query({"id":"e598308d-1829-430c-b3d8-662170811622"})
   .reply(200, {"id":"e598308d-1829-430c-b3d8-662170811622","legal_entity_type":"individual","company_name":"Some Company LLC","first_name":"John","last_name":"Doe","address":"27 Colmore Row","city":"London","state_or_province":"TX","country":"GB","postcode":"W11 2BQ","date_of_birth":"1980-10-10","identification_type":"none","identification_value":null,"created_at":"2015-10-15T00:39:24+00:00","updated_at":"2015-10-21T04:15:20+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',

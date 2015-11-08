@@ -108,7 +108,7 @@ describe('settlements', function() {
             done(new Error('should have failed.'));
           })
           .catch(function(err) {
-            expect(err.cause.statusCode).equals(404);
+            expect(err.response.statusCode).equals(404);
             done();
           });
         });

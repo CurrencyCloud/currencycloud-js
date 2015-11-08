@@ -106,6 +106,18 @@ nock('https://devapi.thecurrencycloud.com:443')
   'content-length': '1108' });
 
 nock('https://devapi.thecurrencycloud.com:443')
+  .get('/v2/reference/beneficiary_required_details')
+  .query({"currency":"US","bank_account_country":"US"})
+  .reply(400, {"error_code":"beneficiary_required_details_failed","error_messages":{"currency":[{"code":"currency_is_in_invalid_format","message":"currency is not a valid ISO 4217 currency code","params":{"type":"currency"}}]}}, { server: 'nginx',
+  vary: 'Origin',
+  'content-type': 'application/json;charset=utf-8',
+  date: 'Sat, 07 Nov 2015 17:28:36 GMT',
+  'x-request-id': '2914250135666307067',
+  'x-content-type-options': 'nosniff',
+  connection: 'close',
+  'content-length': '213' });
+
+nock('https://devapi.thecurrencycloud.com:443')
   .post('/v2/authenticate/close_session')
   .reply(200, {}, { server: 'nginx',
   vary: 'Origin',

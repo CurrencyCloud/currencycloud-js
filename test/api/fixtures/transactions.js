@@ -38,7 +38,6 @@ nock('https://devapi.thecurrencycloud.com:443')
 
 nock('https://devapi.thecurrencycloud.com:443')
   .get('/v2/transactions/1a96d33f-93b9-4f76-bfe7-e548db281948')
-  .query({"id":"1a96d33f-93b9-4f76-bfe7-e548db281948"})
   .reply(200, {"id":"1a96d33f-93b9-4f76-bfe7-e548db281948","balance_id":"07ee18e7-430e-4743-a42e-676061718a41","account_id":"3a7d2f90-ae1f-493c-a8d6-26ad43700259","currency":"GBP","amount":"10000.23","balance_amount":null,"type":"credit","related_entity_type":"conversion","related_entity_id":"4a709856-2f20-472d-8ebf-9f2826cec174","related_entity_short_reference":"20151101-NXTTGQ","status":"pending","reason":"","settles_at":"2015-11-03T14:00:00+00:00","created_at":"2015-11-01T19:36:53+00:00","updated_at":"2015-11-01T19:36:53+00:00","completed_at":"","action":"conversion"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',

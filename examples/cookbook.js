@@ -107,4 +107,11 @@ login()
 .then(createBeneficiary)
 .then(createPayment)
 .then(logout)
-.catch(console.log);
+.catch(function(err) {
+  if(err instanceof currencyCloud.APIerror) {
+    console.log(err.toYAML());
+  } 
+  else {
+    console.log(err);
+  }  
+});

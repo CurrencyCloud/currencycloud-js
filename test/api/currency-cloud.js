@@ -23,8 +23,8 @@ var getPrerequisites = function() {
 
   return promise;
 };
-    
-describe('onBehalfOf', function() {
+  
+describe('currency-cloud', function() {
   before(function(done) {
     recorder.read();    
     setup.login()
@@ -39,58 +39,89 @@ describe('onBehalfOf', function() {
       recorder.write(done);
     });
   });
-  
-  it('fails if required parameters are missing', function() {
-    expect(function() {
-      currencyCloud.onBehalfOf(/*no params*/);
-    }).to.throw();
-    expect(function() {
-      currencyCloud.onBehalfOf('id');
-    }).to.throw();
-  });
 
-  it('fails if id parameter is invalid', function() {
-    expect(function() {
-      currencyCloud.onBehalfOf('wrong');
-    }).to.throw();
-  });
+  describe('onBehalfOf', function() {
+    it('fails if required parameters are missing', function() {
+      expect(function() {
+        currencyCloud.onBehalfOf(/*no params*/);
+      }).to.throw();
+      expect(function() {
+        currencyCloud.onBehalfOf('id');
+      }).to.throw();
+    });
 
-  it('fails if already been called and not yet completed', function(done) {
-    getPrerequisites()
-    .then(function(contactId) {
-      return currencyCloud.onBehalfOf(contactId, function() { 
-        return currencyCloud.beneficiaries.create(new mock.beneficiaries.beneficiary1())
-        .then(function() {
-          expect(function() {
-            currencyCloud.onBehalfOf('53477161-91de-012f-e284-1e0030c7f352', function() {});
-          }).to.throw();
-          done();
-        });
-      });
-    })
-    .catch(done);
-  });
+    it('fails if id parameter is invalid', function() {
+      expect(function() {
+        currencyCloud.onBehalfOf('wrong');
+      }).to.throw();
+    });
 
-  it('executes API calls on behalf of specified id; once completed, resets the id', function(done) {
-    getPrerequisites()
-    .then(function(contactId) {
-      return currencyCloud.onBehalfOf(contactId, function() { 
-        return currencyCloud.beneficiaries.create(new mock.beneficiaries.beneficiary1())
-        .then(function(beneficiary) {
-          expect(beneficiary.creatorContactId).equals(contactId);
-        });
-      })
-      .then(function() {
-        return currencyCloud.contacts.getCurrent()
-        .then(function(current) {
+    it('fails if already been called and not yet completed', function(done) {
+      getPrerequisites()
+      .then(function(contactId) {
+        return currencyCloud.onBehalfOf(contactId, function() { 
           return currencyCloud.beneficiaries.create(new mock.beneficiaries.beneficiary1())
-          .then(function(beneficiary) {
-            expect(beneficiary.creatorContactId).equals(current.id);
+          .then(function() {
+            expect(function() {
+              currencyCloud.onBehalfOf('53477161-91de-012f-e284-1e0030c7f352', function() {});
+            }).to.throw();
             done();
           });
         });
+      })
+      .catch(done);
+    });
+
+    it('executes API calls on behalf of specified id; once completed, resets the id', function(done) {
+      getPrerequisites()
+      .then(function(contactId) {
+        return currencyCloud.onBehalfOf(contactId, function() { 
+          return currencyCloud.beneficiaries.create(new mock.beneficiaries.beneficiary1())
+          .then(function(beneficiary) {
+            expect(beneficiary.creatorContactId).equals(contactId);
+          });
+        })
+        .then(function() {
+          return currencyCloud.contacts.getCurrent()
+          .then(function(current) {
+            return currencyCloud.beneficiaries.create(new mock.beneficiaries.beneficiary1())
+            .then(function(beneficiary) {
+              expect(beneficiary.creatorContactId).equals(current.id);
+              done();
+            });
+          });
+        });
+      })
+      .catch(done);
+    });
+  });
+
+  describe('APIerror', function() {
+    it('returns properly structured error', function(done) {
+      var params = {
+        currency: 'US',
+        bankAccountCountry: 'US'
+      };
+      
+      currencyCloud.reference.getBeneficiaryRequiredDetails(params)
+      .then(function() {
+        done(new Error('should have failed.'));
+      })
+      .catch(function(err) {
+        expect(err.platform).is.not.empty;
+        
+        expect(err.request.parameters).eql(params);
+        expect(err.request.verb).is.not.empty;
+        expect(err.request.url).is.not.empty;
+        
+        expect(err.response.statusCode).equals(400);
+        expect(err.response.date).is.not.empty;
+        expect(err.response.requestId).is.not.empty;
+
+        expect(err.errors).to.have.length.above(0);
+        
+        done();
       });
-    })
-    .catch(done);
+    });
   });
 });
