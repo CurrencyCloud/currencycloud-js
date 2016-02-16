@@ -2,7 +2,7 @@
 
 # Currency Cloud
 
-This is the official Javascript SDK for v2 of Currency Cloud's API. Additional documentation for each API endpoint can be found at [Currency Cloud API documentation][introduction]. If you have any queries or you require support, please contact our implementation team at implementation@currencycloud.com.
+This is the official Javascript SDK for v2 of Currency Cloud's API. Additional documentation for each API endpoint can be found at [Currency Cloud API documentation][introduction]. If you have any queries or you require support, please contact our sales team at sales@currencycloud.com.
 
 ## Installation
 
