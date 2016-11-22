@@ -1,8 +1,8 @@
 [![npm](https://img.shields.io/npm/v/currency-cloud.svg)](https://www.npmjs.com/package/currency-cloud) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/CurrencyCloud/currencycloud-js) [![David](https://img.shields.io/david/strongloop/express.svg)](https://david-dm.org/CurrencyCloud/currencycloud-js.svg)
 
-# Currency Cloud
+# Currencycloud
 
-This is the official Javascript SDK for v2 of Currency Cloud's API. Additional documentation for each API endpoint can be found at [Currency Cloud API documentation][introduction]. If you have any queries or you require support, please contact our sales team at sales@currencycloud.com.
+This is the official Javascript SDK for v2 of Currencycloud's API. Additional documentation for each API endpoint can be found at [Currencycloud API documentation][introduction]. If you have any queries or you require support, please contact our sales team at sales@currencycloud.com.
 
 ## Installation
 
@@ -43,7 +43,7 @@ More extensive examples can be found in the [examples] folder.
 
 ## Service client
 
-To interact with the various Currency Cloud's APIs a service client object must be created; then a particular API can be accessed via the corresponding property of this object:
+To interact with the various Currencycloud's APIs a service client object must be created; then a particular API can be accessed via the corresponding property of this object:
 
 ``` js
 // create service client object
@@ -65,7 +65,7 @@ currencyCloud.authentication.login({
 .then(console.log)
 .then(currencyCloud.authentication.logout);
 ```
-Supported APIs are listed in the [Currency Cloud API overview][overview].
+Supported APIs are listed in the [Currencycloud API overview][overview].
 
 ## Authentication
 
@@ -216,7 +216,7 @@ This project uses [semantic versioning][semver]. You can safely express a depend
 
 # Copyright
 
-Copyright (c) 2015 Currency Cloud. See [LICENSE][license] for details.
+Copyright (c) 2016 Currencycloud. See [LICENSE][license] for details.
 
 [introduction]:    https://developer.currencycloud.com/documentation/getting-started/introduction
 [overview]:        https://developer.currencycloud.com/documentation/api-docs/overview/
