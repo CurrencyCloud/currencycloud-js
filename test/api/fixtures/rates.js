@@ -1,6 +1,6 @@
 var nock = require('nock');
 
-nock('https://devapi.thecurrencycloud.com:443')
+nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/api')
   .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
   .reply(200, {"auth_token":"2f473d1951dfb3418ba8a81c88eb1d42"}, { server: 'nginx',
@@ -12,7 +12,7 @@ nock('https://devapi.thecurrencycloud.com:443')
   connection: 'close',
   'content-length': '49' });
 
-nock('https://devapi.thecurrencycloud.com:443')
+nock('https://devapi.currencycloud.com:443')
   .get('/v2/rates/detailed')
   .query({"buy_currency":"EUR","sell_currency":"GBP","fixed_side":"buy","amount":"6700"})
   .reply(200, {"settlement_cut_off_time":"2015-10-23T14:00:00Z","currency_pair":"EURGBP","client_buy_currency":"EUR","client_sell_currency":"GBP","client_buy_amount":"6700.00","client_sell_amount":"4929.19","fixed_side":"buy","mid_market_rate":"0.7354","client_rate":"0.7357","partner_rate":null,"core_rate":"0.7357","deposit_required":null,"deposit_amount":"0.0","deposit_currency":"GBP"}, { server: 'nginx',
@@ -24,7 +24,7 @@ nock('https://devapi.thecurrencycloud.com:443')
   connection: 'close',
   'content-length': '375' });
 
-nock('https://devapi.thecurrencycloud.com:443')
+nock('https://devapi.currencycloud.com:443')
   .get('/v2/rates/find')
   .query({"currency_pair":"USDGBP"})
   .reply(200, {"rates":{"USDGBP":["0.648353","0.648672"]},"unavailable":[]}, { server: 'nginx',
@@ -36,7 +36,7 @@ nock('https://devapi.thecurrencycloud.com:443')
   connection: 'close',
   'content-length': '61' });
 
-nock('https://devapi.thecurrencycloud.com:443')
+nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/close_session')
   .reply(200, {}, { server: 'nginx',
   vary: 'Origin',

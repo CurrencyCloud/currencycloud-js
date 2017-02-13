@@ -44,8 +44,8 @@
   },
   "settings": {
     "environment": {
-      "demo": "https://devapi.thecurrencycloud.com",
-      "production": "https://api.thecurrencycloud.com",
+      "demo": "https://devapi.currencycloud.com",
+      "production": "https://api.currencycloud.com",
       "uat": "https://api-uat1.ccycloud.com"
     }
   }
