@@ -1,8 +1,9 @@
 var nock = require('nock');
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/authenticate/api')
-  .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
+  .post('/v2/authenticate/api', {
+    "login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"
+  })
   .reply(200, {"auth_token":"034d23d24490718e8766853e14d480b7"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -24,8 +25,9 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '2' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/authenticate/api')
-  .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
+  .post('/v2/authenticate/api', {
+    "login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"
+  })
   .reply(200, {"auth_token":"9ee85342c432434fbe3035db5d41f4dd"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -58,8 +60,9 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '2' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/authenticate/api')
-  .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
+  .post('/v2/authenticate/api', {
+    "login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"
+  })
   .reply(200, {"auth_token":"14c3a6d2bef6b3fabbd84f4a0924e828"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -92,8 +95,9 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '2' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/authenticate/api')
-  .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
+  .post('/v2/authenticate/api', {
+    "login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"
+  })
   .reply(200, {"auth_token":"439c7a366dede548bb1878dc4045bc60"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -115,8 +119,9 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '2' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/authenticate/api')
-  .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
+  .post('/v2/authenticate/api', {
+    "login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"
+  })
   .reply(200, {"auth_token":"e1f125fcd33af884fbbdf4597e18a2a1"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',

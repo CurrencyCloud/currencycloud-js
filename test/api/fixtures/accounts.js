@@ -1,8 +1,9 @@
 var nock = require('nock');
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/authenticate/api')
-  .query({"login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"})
+  .post('/v2/authenticate/api', {
+    "login_id":"test.it@mailinator.com","api_key":"b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4"
+  })
   .reply(200, {"auth_token":"3e7c564909890f97bb0e5548325d73ea"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
