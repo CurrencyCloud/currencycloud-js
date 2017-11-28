@@ -25,8 +25,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '448' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/contacts/create')
-  .query({"first_name":"John","last_name":"Smith","email_address":"john.smith@company.com","phone_number":"06554 87845","your_reference":"ACME12345","mobile_phone_number":"07564 534 54","login_id":"john.1","status":"enabled","locale":"en-US","timezone":"Europe/London","date_of_birth":"1980-01-22","account_id":"78618e58-da3c-447f-ad59-1796accfeff9"})
+  .post('/v2/contacts/create', {"first_name":"John","last_name":"Smith","email_address":"john.smith@company.com","phone_number":"06554 87845","your_reference":"ACME12345","mobile_phone_number":"07564 534 54","login_id":"john.1","status":"enabled","locale":"en-US","timezone":"Europe/London","date_of_birth":"1980-01-22","account_id":"78618e58-da3c-447f-ad59-1796accfeff9"})
   .reply(200, {"login_id":"john.1","id":"38b2e976-60c3-416a-be2e-51c700aed246","first_name":"John","last_name":"Smith","account_id":"78618e58-da3c-447f-ad59-1796accfeff9","account_name":"Toptal","status":"enabled","locale":"en-US","timezone":"Europe/London","email_address":"john.smith@company.com","mobile_phone_number":"07564 534 54","phone_number":"06554 87845","your_reference":"ACME12345","date_of_birth":"1980-01-22","created_at":"2015-10-27T18:34:41+00:00","updated_at":"2015-10-27T18:34:41+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -37,8 +36,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '500' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/contacts/reset_token/create')
-  .query({"login_id":"john.1"})
+  .post('/v2/contacts/reset_token/create', {"login_id":"john.1"})
   .reply(200, {}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -60,8 +58,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '448' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/contacts/create')
-  .query({"first_name":"John","last_name":"Smith","email_address":"john.smith@company.com","phone_number":"06554 87845","your_reference":"ACME12345","mobile_phone_number":"07564 534 54","login_id":"john.2","status":"enabled","locale":"en-US","timezone":"Europe/London","date_of_birth":"1980-01-22","account_id":"78618e58-da3c-447f-ad59-1796accfeff9"})
+  .post('/v2/contacts/create', {"first_name":"John","last_name":"Smith","email_address":"john.smith@company.com","phone_number":"06554 87845","your_reference":"ACME12345","mobile_phone_number":"07564 534 54","login_id":"john.2","status":"enabled","locale":"en-US","timezone":"Europe/London","date_of_birth":"1980-01-22","account_id":"78618e58-da3c-447f-ad59-1796accfeff9"})
   .reply(200, {"login_id":"john.2","id":"601cb2ed-52a2-48cf-a3f5-912bc64d8050","first_name":"John","last_name":"Smith","account_id":"78618e58-da3c-447f-ad59-1796accfeff9","account_name":"Toptal","status":"enabled","locale":"en-US","timezone":"Europe/London","email_address":"john.smith@company.com","mobile_phone_number":"07564 534 54","phone_number":"06554 87845","your_reference":"ACME12345","date_of_birth":"1980-01-22","created_at":"2015-10-27T18:34:42+00:00","updated_at":"2015-10-27T18:34:42+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -83,8 +80,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '448' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/contacts/create')
-  .query({"first_name":"John","last_name":"Smith","email_address":"john.smith@company.com","phone_number":"06554 87845","your_reference":"ACME12345","mobile_phone_number":"07564 534 54","login_id":"john.3","status":"enabled","locale":"en-US","timezone":"Europe/London","date_of_birth":"1980-01-22","account_id":"78618e58-da3c-447f-ad59-1796accfeff9"})
+  .post('/v2/contacts/create', {"first_name":"John","last_name":"Smith","email_address":"john.smith@company.com","phone_number":"06554 87845","your_reference":"ACME12345","mobile_phone_number":"07564 534 54","login_id":"john.3","status":"enabled","locale":"en-US","timezone":"Europe/London","date_of_birth":"1980-01-22","account_id":"78618e58-da3c-447f-ad59-1796accfeff9"})
   .reply(200, {"login_id":"john.3","id":"1c9f4b28-656e-4087-a6c9-d8d92735892f","first_name":"John","last_name":"Smith","account_id":"78618e58-da3c-447f-ad59-1796accfeff9","account_name":"Toptal","status":"enabled","locale":"en-US","timezone":"Europe/London","email_address":"john.smith@company.com","mobile_phone_number":"07564 534 54","phone_number":"06554 87845","your_reference":"ACME12345","date_of_birth":"1980-01-22","created_at":"2015-10-27T18:34:43+00:00","updated_at":"2015-10-27T18:34:43+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -117,8 +113,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '448' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/contacts/create')
-  .query({"first_name":"John","last_name":"Smith","email_address":"john.smith@company.com","phone_number":"06554 87845","your_reference":"ACME12345","mobile_phone_number":"07564 534 54","login_id":"john.4","status":"enabled","locale":"en-US","timezone":"Europe/London","date_of_birth":"1980-01-22","account_id":"78618e58-da3c-447f-ad59-1796accfeff9"})
+  .post('/v2/contacts/create', {"first_name":"John","last_name":"Smith","email_address":"john.smith@company.com","phone_number":"06554 87845","your_reference":"ACME12345","mobile_phone_number":"07564 534 54","login_id":"john.4","status":"enabled","locale":"en-US","timezone":"Europe/London","date_of_birth":"1980-01-22","account_id":"78618e58-da3c-447f-ad59-1796accfeff9"})
   .reply(200, {"login_id":"john.4","id":"7673d3c7-cbe2-4e2e-be33-85a0cd9bc124","first_name":"John","last_name":"Smith","account_id":"78618e58-da3c-447f-ad59-1796accfeff9","account_name":"Toptal","status":"enabled","locale":"en-US","timezone":"Europe/London","email_address":"john.smith@company.com","mobile_phone_number":"07564 534 54","phone_number":"06554 87845","your_reference":"ACME12345","date_of_birth":"1980-01-22","created_at":"2015-10-27T18:34:44+00:00","updated_at":"2015-10-27T18:34:44+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -129,8 +124,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '500' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/contacts/7673d3c7-cbe2-4e2e-be33-85a0cd9bc124')
-  .query({"first_name":"Emmet","last_name":"Brown","email_address":"dr.emmet.brown@company.com","phone_number":"073 789 1661","your_reference":"doc","mobile_phone_number":"073 789 1661","login_id":"emmet.5","status":"enabled","locale":"en-US","timezone":"Europe/London","date_of_birth":"1960-01-29"})
+  .post('/v2/contacts/7673d3c7-cbe2-4e2e-be33-85a0cd9bc124', {"first_name":"Emmet","last_name":"Brown","email_address":"dr.emmet.brown@company.com","phone_number":"073 789 1661","your_reference":"doc","mobile_phone_number":"073 789 1661","login_id":"emmet.5","status":"enabled","locale":"en-US","timezone":"Europe/London","date_of_birth":"1960-01-29"})
   .reply(200, {"login_id":"emmet.5","id":"7673d3c7-cbe2-4e2e-be33-85a0cd9bc124","first_name":"Emmet","last_name":"Brown","account_id":"78618e58-da3c-447f-ad59-1796accfeff9","account_name":"Toptal","status":"enabled","locale":"en-US","timezone":"Europe/London","email_address":"dr.emmet.brown@company.com","mobile_phone_number":"073 789 1661","phone_number":"073 789 1661","your_reference":"doc","date_of_birth":"1960-01-29","created_at":"2015-10-27T18:34:44+00:00","updated_at":"2015-10-27T18:34:44+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',

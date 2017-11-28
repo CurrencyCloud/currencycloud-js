@@ -14,8 +14,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '49' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/conversions/create')
-  .query({"buy_currency":"EUR","sell_currency":"GBP","fixed_side":"buy","amount":"10000.23","reason":"Settling invoices","term_agreement":"true"})
+  .post('/v2/conversions/create', {"buy_currency":"EUR","sell_currency":"GBP","fixed_side":"buy","amount":"10000.23","reason":"Settling invoices","term_agreement":"true"})
   .reply(200, {"id":"4a709856-2f20-472d-8ebf-9f2826cec174","settlement_date":"2015-11-01T19:36:53+00:00","conversion_date":"2015-11-01T19:36:53+00:00","short_reference":"20151027-ZGBRYR","creator_contact_id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","account_id":"78618e58-da3c-447f-ad59-1796accfeff9","currency_pair":"EURGBP","status":"awaiting_funds","buy_currency":"EUR","sell_currency":"GBP","client_buy_amount":"10000.23","client_sell_amount":"7215.17","fixed_side":"buy","mid_market_rate":"0.7216","core_rate":"0.7215","partner_rate":"","partner_status":"funds_arrived","partner_buy_amount":"0.00","partner_sell_amount":"0.00","client_rate":"0.7215","deposit_required":false,"deposit_amount":"0.00","deposit_currency":"","deposit_status":"not_required","deposit_required_at":"","payment_ids":[],"created_at":"2015-11-01T19:36:53+00:00","updated_at":"2015-11-01T19:36:53+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -49,8 +48,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '563' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/conversions/create')
-  .query({"buy_currency":"EUR","sell_currency":"GBP","fixed_side":"buy","amount":"10000.23","reason":"Settling invoices","term_agreement":"true"})
+  .post('/v2/conversions/create', {"buy_currency":"EUR","sell_currency":"GBP","fixed_side":"buy","amount":"10000.23","reason":"Settling invoices","term_agreement":"true"})
   .reply(200, {"id":"d2126864-44c8-4f19-9510-79482816c65b","settlement_date":"2015-11-01T19:36:55+00:00","conversion_date":"2015-11-01T19:36:55+00:00","short_reference":"20151027-CMCRZC","creator_contact_id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","account_id":"78618e58-da3c-447f-ad59-1796accfeff9","currency_pair":"EURGBP","status":"awaiting_funds","buy_currency":"EUR","sell_currency":"GBP","client_buy_amount":"10000.23","client_sell_amount":"7215.17","fixed_side":"buy","mid_market_rate":"0.7216","core_rate":"0.7215","partner_rate":"","partner_status":"funds_arrived","partner_buy_amount":"0.00","partner_sell_amount":"0.00","client_rate":"0.7215","deposit_required":false,"deposit_amount":"0.00","deposit_currency":"","deposit_status":"not_required","deposit_required_at":"","payment_ids":[],"created_at":"2015-11-01T19:36:55+00:00","updated_at":"2015-11-01T19:36:55+00:00"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',

@@ -14,8 +14,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '49' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/accounts/create')
-  .query({"account_name":"Acme Ltd.","legal_entity_type":"company","your_reference":"POS-UID-23523","status":"enabled","street":"164 Bishops Gate","city":"London","state_or_province":"Ontario","postal_code":"CR4 3RZ","country":"GB","spread_table":"no_markup","identification_type":"none"})
+  .post('/v2/accounts/create', {"account_name":"Acme Ltd.","legal_entity_type":"company","your_reference":"POS-UID-23523","status":"enabled","street":"164 Bishops Gate","city":"London","state_or_province":"Ontario","postal_code":"CR4 3RZ","country":"GB","spread_table":"no_markup","identification_type":"none"})
   .reply(200, {"id":"9c9c2492-b0f3-4cfe-9243-b062c9985a9c","account_name":"Acme Ltd.","brand":"currencycloud","your_reference":"POS-UID-23523","status":"enabled","street":"164 Bishops Gate","city":"London","state_or_province":"Ontario","country":"GB","postal_code":"CR4 3RZ","spread_table":"no_markup","legal_entity_type":"company","created_at":"2015-10-21T17:22:37+00:00","updated_at":"2015-10-21T17:22:37+00:00","identification_type":"none","identification_value":null,"short_reference":"151021-00021"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -26,8 +25,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '490' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/accounts/create')
-  .query({"account_name":"Acme Ltd.","legal_entity_type":"company","your_reference":"POS-UID-23523","status":"enabled","street":"164 Bishops Gate","city":"London","state_or_province":"Ontario","postal_code":"CR4 3RZ","country":"GB","spread_table":"no_markup","identification_type":"none"})
+  .post('/v2/accounts/create',{"account_name":"Acme Ltd.","legal_entity_type":"company","your_reference":"POS-UID-23523","status":"enabled","street":"164 Bishops Gate","city":"London","state_or_province":"Ontario","postal_code":"CR4 3RZ","country":"GB","spread_table":"no_markup","identification_type":"none"})
   .reply(200, {"id":"5908d350-1120-4177-a12a-94e302a68f70","account_name":"Acme Ltd.","brand":"currencycloud","your_reference":"POS-UID-23523","status":"enabled","street":"164 Bishops Gate","city":"London","state_or_province":"Ontario","country":"GB","postal_code":"CR4 3RZ","spread_table":"no_markup","legal_entity_type":"company","created_at":"2015-10-21T17:22:37+00:00","updated_at":"2015-10-21T17:22:37+00:00","identification_type":"none","identification_value":null,"short_reference":"151021-00022"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -49,8 +47,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '490' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/accounts/create')
-  .query({"account_name":"Acme Ltd.","legal_entity_type":"company","your_reference":"POS-UID-23523","status":"enabled","street":"164 Bishops Gate","city":"London","state_or_province":"Ontario","postal_code":"CR4 3RZ","country":"GB","spread_table":"no_markup","identification_type":"none"})
+  .post('/v2/accounts/create',{"account_name":"Acme Ltd.","legal_entity_type":"company","your_reference":"POS-UID-23523","status":"enabled","street":"164 Bishops Gate","city":"London","state_or_province":"Ontario","postal_code":"CR4 3RZ","country":"GB","spread_table":"no_markup","identification_type":"none"})
   .reply(200, {"id":"2fbb0ea1-3d7d-4b45-bc8a-73f59f39b4f6","account_name":"Acme Ltd.","brand":"currencycloud","your_reference":"POS-UID-23523","status":"enabled","street":"164 Bishops Gate","city":"London","state_or_province":"Ontario","country":"GB","postal_code":"CR4 3RZ","spread_table":"no_markup","legal_entity_type":"company","created_at":"2015-10-21T17:22:38+00:00","updated_at":"2015-10-21T17:22:38+00:00","identification_type":"none","identification_value":null,"short_reference":"151021-00023"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
@@ -61,8 +58,7 @@ nock('https://devapi.currencycloud.com:443')
   'content-length': '490' });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/accounts/2fbb0ea1-3d7d-4b45-bc8a-73f59f39b4f6')
-  .query({"account_name":"Company PLC","legal_entity_type":"company","your_reference":"0012345564ABC","status":"enabled","street":"1 London Road","city":"London","state_or_province":"","postal_code":"AB12 CD1","country":"GB","spread_table":"flat_0.5_percent","identification_type":"none"})
+  .post('/v2/accounts/2fbb0ea1-3d7d-4b45-bc8a-73f59f39b4f6',{"account_name":"Company PLC","legal_entity_type":"company","your_reference":"0012345564ABC","status":"enabled","street":"1 London Road","city":"London","state_or_province":"","postal_code":"AB12 CD1","country":"GB","spread_table":"flat_0.5_percent","identification_type":"none"})
   .reply(200, {"id":"2fbb0ea1-3d7d-4b45-bc8a-73f59f39b4f6","account_name":"Company PLC","brand":"currencycloud","your_reference":"0012345564ABC","status":"enabled","street":"1 London Road","city":"London","state_or_province":"","country":"GB","postal_code":"AB12 CD1","spread_table":"flat_0.5_percent","legal_entity_type":"company","created_at":"2015-10-21T17:22:38+00:00","updated_at":"2015-10-21T17:22:38+00:00","identification_type":"none","identification_value":null,"short_reference":"151021-00023"}, { server: 'nginx',
   vary: 'Origin',
   'content-type': 'application/json;charset=utf-8',
