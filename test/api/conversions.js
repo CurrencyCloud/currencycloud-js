@@ -130,4 +130,36 @@ describe('conversions', function() {
       .catch(done);
     });
   });
+
+  describe('cancel', function() {
+    it('fails if required parameters are missing', function() {
+      expect(function () {
+        currencyCloud.conversions.cancel(/*no params*/);
+      }).to.throw();
+      expect(function () {
+        currencyCloud.conversions.cancel({
+          onBehalfOf: 'present'
+        });
+        expect(function () {
+          currencyCloud.conversions.cancel({
+            note: 'present'
+          });
+        }).to.throw();
+      });
+    });
+
+    it('successfully cancels a conversion', function(done) {
+      currencyCloud.conversions.create(new mock.conversions.conversion1())
+        .then(function(created) {
+          return currencyCloud.conversions.cancel({
+            id: created.id
+          })
+            .then(function(gotten) {
+              expect(gotten.conversionId).to.eql(created.id);
+              done();
+            });
+        })
+        .catch(done);
+    });
+  });
 });
