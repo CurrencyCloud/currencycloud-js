@@ -7,96 +7,110 @@ var recorder = prepost.recorder('reference');
 var setup = prepost.setup;
 var teardown = prepost.teardown;
 
-describe('reference', function() {
-  before(function(done) {
-    recorder.read();    
+describe('reference', function () {
+  before(function (done) {
+    recorder.read();
     setup.login()
-    .then(function() {
-      done();
-    });
+      .then(function () {
+        done();
+      });
   });
-  
-  after(function(done) {
+
+  after(function (done) {
     teardown.logout()
-    .then(function() {
-      recorder.write(done);
-    });
+      .then(function () {
+        recorder.write(done);
+      });
   });
-  
-  describe('getBeneficiaryRequiredDetails', function() {
-    it('successfully gets beneficiary required details', function(done) {
+
+  describe('getBeneficiaryRequiredDetails', function () {
+    it('successfully gets beneficiary required details', function (done) {
       currencyCloud.reference.getBeneficiaryRequiredDetails({
         currency: 'GBP',
         bankAccountCountry: 'GB',
         beneficiaryCountry: 'GB'
       })
-      .then(function(res) {
-        expect(res).is.not.empty;
-        done();
-      })
-      .catch(done);      
+        .then(function (res) {
+          expect(res).is.not.empty;
+          done();
+        })
+        .catch(done);
     });
   });
 
-  describe('getConversionDates', function() {
-    it('fails if required parameters are missing', function() {
-      expect(function() {
+  describe('getConversionDates', function () {
+    it('fails if required parameters are missing', function () {
+      expect(function () {
         currencyCloud.reference.getConversionDates(/*no params*/);
       }).to.throw();
     });
-    
-    it('successfully gets conversion dates', function(done) {
+
+    it('successfully gets conversion dates', function (done) {
       currencyCloud.reference.getConversionDates({
         conversionPair: 'USDGBP'
       })
-      .then(function(res) {
-        expect(res).is.not.empty;
-        done();
-      })
-      .catch(done);      
+        .then(function (res) {
+          expect(res).is.not.empty;
+          done();
+        })
+        .catch(done);
     });
   });
-  
-  describe('getAvailableCurrencies', function() {
-    it('successfully gets available currencies', function(done) {
+
+  describe('getAvailableCurrencies', function () {
+    it('successfully gets available currencies', function (done) {
       currencyCloud.reference.getAvailableCurrencies()
-      .then(function(res) {
-        expect(res).is.not.empty;
-        done();
-      })
-      .catch(done);      
+        .then(function (res) {
+          expect(res).is.not.empty;
+          done();
+        })
+        .catch(done);
     });
   });
-  
-  describe('getPaymentDates', function() {
-    it('fails if required parameters are missing', function() {
-      expect(function() {
+
+  describe('getPaymentDates', function () {
+    it('fails if required parameters are missing', function () {
+      expect(function () {
         currencyCloud.reference.getPaymentDates(/*no params*/);
       }).to.throw();
     });
-    
-    it('successfully gets payment dates', function(done) {
+
+    it('successfully gets payment dates', function (done) {
       currencyCloud.reference.getPaymentDates({
         currency: 'USD'
       })
-      .then(function(res) {
-        expect(res).is.not.empty;        
-        done();
-      })
-      .catch(done);      
+        .then(function (res) {
+          expect(res).is.not.empty;
+          done();
+        })
+        .catch(done);
     });
   });
-  
-  describe('getSettlementAccounts', function() {
-    it('successfully gets settlement accounts', function(done) {
+
+  describe('getSettlementAccounts', function () {
+    it('successfully gets settlement accounts', function (done) {
       currencyCloud.reference.getSettlementAccounts({
         currency: 'EUR'
       })
-      .then(function(res) {
-        expect(res).is.not.empty;        
-        done();
+        .then(function (res) {
+          expect(res).is.not.empty;
+          done();
+        })
+        .catch(done);
+    });
+  });
+
+  describe('getPayerRequiredDetails', function () {
+    it('successfully gets payer required details', function (done) {
+      currencyCloud.reference.getPayerRequiredDetails({
+        payerCountry: 'GB'
       })
-      .catch(done);      
+        .then(function (res) {
+          expect(res).is.not.empty;
+          expect(res).to.have.property('details').that.is.not.null;
+          done();
+        })
+        .catch(done);
     });
   });
 });

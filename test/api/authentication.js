@@ -69,7 +69,7 @@ describe('authentication', function() {
     });
     
     it('silently re-authenticates if token has expired', function(done) {
-      var expired = '3907f05da86533710efc589d58f51f45';
+      var expired = 'deadbeefdeadbeefdeadbeefdeadbeef';
       
       client._token.set(expired);
       
