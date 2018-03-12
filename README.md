@@ -2,7 +2,7 @@
 
 # Currencycloud
 
-This is the official Javascript SDK for v2 of Currencycloud's API. Additional documentation for each API endpoint can be found at [Currencycloud API documentation][introduction]. If you have any queries or you require support, please contact our sales team at sales@currencycloud.com.
+This is the official Javascript SDK for v2 of Currencycloud's API. Additional documentation for each API endpoint can be found at [Currencycloud API documentation][introduction]. If you have any queries or you require support, please contact our development team at development@currencycloud.com
 
 ## Installation
 
@@ -191,10 +191,10 @@ platform: node v4.1.1
 request:
   parameters: {}
   verb: GET
-  url: https://devapi.thecurrencycloud.com/v2/balances/XYZ
+  url: https://devapi.currencycloud.com/v2/balances/XYZ
 response:
   statusCode: 400
-  date: Mon, 09 Nov 2015 15:06:11 GMT
+  date: Mon, 09 Nov 2017 15:06:11 GMT
   requestId: 2914269054259094430
 errors:
 - field: currency
@@ -214,13 +214,31 @@ errors:
 
 This project uses [semantic versioning][semver]. You can safely express a dependency on a major version and expect all minor and patch versions to be backwards compatible.
 
+# Testing
+
+Testing of the SDK relies on the [Mocha][mocha] test framework, [Chai][chai] assertions library and [Nock][nock] HTTP mocking and expectations library. To run all test cases simply execute:
+
+``` sh
+$ npm run test
+```
+
+The SDK includes valid mocked HTTP responses in `./test/api/fixtures`. If you would like to test against the live API, please ensure there are no `js` files in that folder. The Nock library will regenerate them by recording the responses from the live run and use those next time the tests are executed.
+
+IMPORTANT: Remember to change the `loginId` and `apiKey` properties in `./test/mocks.js` to use your login ID and API key.
+
+If you don't have a valid login or key, you can get them [here][registration]
+
 # Copyright
 
-Copyright (c) 2016 Currencycloud. See [LICENSE][license] for details.
+Copyright (c) 2015-2018 Currencycloud. See [LICENSE][license] for details.
 
 [introduction]:    https://developer.currencycloud.com/documentation/getting-started/introduction
 [overview]:        https://developer.currencycloud.com/documentation/api-docs/overview/
 [examples]:        examples
 [request-promise]: https://www.npmjs.com/package/request-promise
 [semver]:          http://semver.org/
+[mocha]:           https://mochajs.org/
+[chai]:            http://chaijs.com/
+[nock]:            https://github.com/node-nock/nock
+[registration]:    https://developer.currencycloud.com/api-register/
 [license]:         LICENSE.md
