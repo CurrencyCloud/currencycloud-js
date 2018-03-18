@@ -8,46 +8,46 @@ var recorder = prepost.recorder('rates');
 var setup = prepost.setup;
 var teardown = prepost.teardown;
 
-describe('rates', function() {
-  before(function(done) {
-    recorder.read();    
+describe('rates', function () {
+  before(function (done) {
+    recorder.read();
     setup.login()
-    .then(function() {
-      done();
-    });
+      .then(function () {
+        done();
+      });
   });
-  
-  after(function(done) {
+
+  after(function (done) {
     teardown.logout()
-    .then(function() {
-      recorder.write(done);
-    });
+      .then(function () {
+        recorder.write(done);
+      });
   });
-  
-  describe('get', function() {
-    it('fails if required parameters are missing', function() {
-      expect(function() {
+
+  describe('get', function () {
+    it('fails if required parameters are missing', function () {
+      expect(function () {
         currencyCloud.rates.get({
           sellCurrency: 'present',
           fixedSide: 'present',
           amount: 'present'
         });
       }).to.throw();
-      expect(function() {
+      expect(function () {
         currencyCloud.rates.get({
           buyCurrency: 'present',
           fixedSide: 'present',
           amount: 'present'
         });
       }).to.throw();
-      expect(function() {
+      expect(function () {
         currencyCloud.rates.get({
           buyCurrency: 'present',
           sellCurrency: 'present',
           amount: 'present'
         });
       }).to.throw();
-      expect(function() {
+      expect(function () {
         currencyCloud.rates.get({
           buyCurrency: 'present',
           sellCurrency: 'present',
@@ -55,38 +55,38 @@ describe('rates', function() {
         });
       }).to.throw();
     });
-    
-    it('successfully gets a rate', function(done) {
+
+    it('successfully gets a rate', function (done) {
       currencyCloud.rates.get({
         buyCurrency: 'EUR',
         sellCurrency: 'GBP',
         fixedSide: 'buy',
         amount: 6700
       })
-      .then(function(gotten) {
-        expect(mock.schema.validate(gotten)).is.true;
-        done();
-      })
-      .catch(done);
+        .then(function (gotten) {
+          expect(mock.schema.validate(gotten)).is.true;
+          done();
+        })
+        .catch(done);
     });
   });
-  
-  describe('find', function() {
-    it('fails if required parameters are missing', function() {
-      expect(function() {
+
+  describe('find', function () {
+    it('fails if required parameters are missing', function () {
+      expect(function () {
         currencyCloud.rates.find(/*no params*/);
       }).to.throw();
     });
-    
-    it('successfully finds a rate', function(done) {
+
+    it('successfully finds a rate', function (done) {
       currencyCloud.rates.find({
         currencyPair: 'USDGBP'
       })
-      .then(function(found) {
-        expect(found).to.have.property('rates');
-        done();
-      })
-      .catch(done);
+        .then(function (found) {
+          expect(found).to.have.property('rates');
+          done();
+        })
+        .catch(done);
     });
   });
 });
