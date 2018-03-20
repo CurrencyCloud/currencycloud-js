@@ -109,7 +109,7 @@ describe('accounts', function() {
           perPage: 5
         })
         .then(function(found) {
-          expect(found).to.have.property('accounts').that.contain(current);
+          expect(found).to.have.property('accounts').that.deep.includes(current);
           expect(found).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
           done();
         });

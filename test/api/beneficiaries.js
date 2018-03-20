@@ -166,7 +166,7 @@ describe('beneficiaries', function() {
           perPage: 5
         })
         .then(function(found) {
-          expect(found).to.have.property('beneficiaries').that.contain(created);
+          expect(found).to.have.property('beneficiaries').that.deep.includes(created);
           expect(found).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
           done();
         });
@@ -190,7 +190,7 @@ describe('beneficiaries', function() {
         })
         .then(function(deleted) {
           expect(mock.beneficiaries.schema.validate(deleted)).is.true;
-          
+
           return currencyCloud.beneficiaries.get({
             id: deleted.id
           })
@@ -198,7 +198,7 @@ describe('beneficiaries', function() {
             done(new Error('should have failed.'));
           })
           .catch(function(err) {
-            expect(err.cause.statusCode).equals(404);
+            expect(err.response.statusCode).equals(404);
             done();
           });
         });

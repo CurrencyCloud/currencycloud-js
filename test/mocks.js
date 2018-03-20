@@ -1,9 +1,9 @@
 'use strict';
 
-var JSONschema = function(schema) {
-  this.validate = function(obj) {
-    for(var prop in schema) {
-      if(schema.hasOwnProperty(prop) && !obj.hasOwnProperty(prop)) {
+var JSONschema = function (schema) {
+  this.validate = function (obj) {
+    for (var prop in schema) {
+      if (schema.hasOwnProperty(prop) && !obj.hasOwnProperty(prop)) {
         return false;
       }
     }
@@ -14,15 +14,15 @@ var JSONschema = function(schema) {
 module.exports = {
   authentication: {
     credentials: {
-      environment: 'demo', 
-      loginId: 'test.it@mailinator.com', 
-      apiKey: 'b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4',
+      environment: 'demo',
+      loginId: 'development@currencycloud.com',
+      apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef',
       authUrl: '/v2/authenticate/api'
     }
   },
-  
+
   accounts: {
-    account1: function() {
+    account1: function () {
       return {
         accountName: 'Acme Ltd.',
         legalEntityType: 'company',
@@ -37,7 +37,7 @@ module.exports = {
         identificationType: 'none'
       };
     },
-    account2: function() {
+    account2: function () {
       return {
         accountName: 'Company PLC',
         legalEntityType: 'company',
@@ -72,7 +72,7 @@ module.exports = {
       shortReference: 'string'
     })
   },
-  
+
   balances: {
     schema: new JSONschema({
       id: 'UUID',
@@ -85,11 +85,11 @@ module.exports = {
   },
 
   beneficiaries: {
-    beneficiary1: function() {
+    beneficiary1: function () {
       return {
         bankAccountHolderName: 'John Doe',
         bankCountry: 'DE',
-        currency:	'EUR',
+        currency: 'EUR',
         name: 'Employee Funds',
         email: 'john.doe@acme.com',
         beneficiaryAddress: '23 Acacia Road',
@@ -98,7 +98,7 @@ module.exports = {
         routingCodeType1: 'sort_code',
         routingCodeValue1: '200605',
         routingCodeType2: 'aba',
-        routingCodeValue2: '789',  
+        routingCodeValue2: '789',
         bicSwift: 'COBADEFF',
         iban: 'DE89370400440532013000',
         defaultBeneficiary: true,
@@ -116,11 +116,11 @@ module.exports = {
         beneficiaryIdentificationType: 'none'
       };
     },
-    beneficiary2: function() {
+    beneficiary2: function () {
       return {
         bankAccountHolderName: 'Martin McFly',
         bankCountry: 'US',
-        currency:	'USD',
+        currency: 'USD',
         name: 'Employee Funds',
         email: 'martin@mcfly.com',
         beneficiaryAddress: '9303 Roslyndale Ave.',
@@ -129,7 +129,7 @@ module.exports = {
         routingCodeType1: 'sort_code',
         routingCodeValue1: '200606',
         routingCodeType2: 'aba',
-        routingCodeValue2: '780',  
+        routingCodeValue2: '780',
         bicSwift: 'COBADEFF',
         iban: 'US89370400440532013000',
         defaultBeneficiary: true,
@@ -151,7 +151,7 @@ module.exports = {
       id: 'UUID',
       bankAccountHolderName: 'string',
       bankCountry: 'string',
-      currency:	'string',
+      currency: 'string',
       name: 'string',
       email: 'string',
       paymentTypes: 'array',
@@ -161,7 +161,7 @@ module.exports = {
       routingCodeType1: 'string',
       routingCodeValue1: 'string',
       routingCodeType2: 'string',
-      routingCodeValue2: 'string',  
+      routingCodeValue2: 'string',
       bicSwift: 'string',
       iban: 'string',
       defaultBeneficiary: 'boolean',
@@ -183,15 +183,15 @@ module.exports = {
     })
   },
 
-  contacts: function() {
+  contacts: function () {
     var suffix = 0;
-    
+
     return {
-      contact1: function() {
+      contact1: function () {
         return {
           firstName: 'John',
           lastName: 'Smith',
-          emailAddress: 'john.smith@company.com',  
+          emailAddress: 'john.smith@company.com',
           phoneNumber: '06554 87845',
           yourReference: 'ACME12345',
           mobilePhoneNumber: '07564 534 54',
@@ -199,14 +199,14 @@ module.exports = {
           status: 'enabled',
           locale: 'en-US',
           timezone: 'Europe/London',
-          dateOfBirth: '1980-01-22' 
+          dateOfBirth: '1980-01-22'
         };
       },
-      contact2: function() {
+      contact2: function () {
         return {
           firstName: 'Emmet',
           lastName: 'Brown',
-          emailAddress: 'dr.emmet.brown@company.com',  
+          emailAddress: 'dr.emmet.brown@company.com',
           phoneNumber: '073 789 1661',
           yourReference: 'doc',
           mobilePhoneNumber: '073 789 1661',
@@ -214,7 +214,7 @@ module.exports = {
           status: 'enabled',
           locale: 'en-US',
           timezone: 'Europe/London',
-          dateOfBirth: '1960-01-29' 
+          dateOfBirth: '1960-01-29'
         };
       },
       schema: new JSONschema({
@@ -239,7 +239,7 @@ module.exports = {
   },
 
   conversions: {
-    conversion1: function() {
+    conversion1: function () {
       return {
         buyCurrency: 'EUR',
         sellCurrency: 'GBP',
@@ -277,7 +277,28 @@ module.exports = {
       depositRequiredAt: 'date',
       paymentIds: 'array',
       createdAt: 'date',
-      updatedAt: 'date'  
+      updatedAt: 'date'
+    })
+  },
+
+  ibans: {
+    iban1: function () {
+      return {
+        currency: 'EUR',
+      };
+    },
+    schema: new JSONschema({
+      uuid: 'UUID',
+      accountId: 'UUID',
+      ibanCode: 'string',
+      currency: 'string',
+      accountHolderName: 'string',
+      bankInstitutionName: 'string',
+      bankInstitutionAddress: 'string',
+      bankInstitutionCountry: 'string',
+      bicSwift: 'string',
+      createdAt: 'date',
+      updatedAt: 'date'
     })
   },
 
@@ -302,7 +323,7 @@ module.exports = {
   },
 
   payments: {
-    payment1: function() {
+    payment1: function () {
       return {
         currency: 'EUR',
         amount: 10000,
@@ -321,8 +342,8 @@ module.exports = {
         payerDateOfBirth: '1980-10-10',
         payerIdentificationType: 'none'
       };
-    },  
-    payment2: function() {
+    },
+    payment2: function () {
       return {
         currency: 'EUR',
         amount: 0.23,
@@ -341,7 +362,7 @@ module.exports = {
         payerDateOfBirth: '1981-12-10',
         payerIdentificationType: 'none'
       };
-    },  
+    },
     schema: new JSONschema({
       id: 'UUID',
       shortReference: 'string',
@@ -361,10 +382,10 @@ module.exports = {
       failureReason: 'string',
       payerId: 'UUID',
       createdAt: 'date',
-      updatedAt: 'date'  
-    })  
+      updatedAt: 'date'
+    })
   },
-  
+
   rates: {
     schema: new JSONschema({
       settlementCutOffTime: 'date',
@@ -385,7 +406,7 @@ module.exports = {
   },
 
   settlements: {
-    settlement1: function() {
+    settlement1: function () {
       return {
         type: 'net'
       };
@@ -401,7 +422,7 @@ module.exports = {
       releasedAt: 'date'
     })
   },
-  
+
   transactions: {
     schema: new JSONschema({
       id: 'UUID',
@@ -423,7 +444,34 @@ module.exports = {
       completedAt: 'date'
     })
   },
-  
+
+  transfers: {
+    transfer1: function () {
+      return {
+        sourceAccountId: 'a7117404-e150-11e6-a5af-080027a79e8f',
+        destinationAccountId: '946f2d58-e150-11e6-a5af-080027a79e8f',
+        currency: 'GBP',
+        amount: 12.5,
+        reason: 'Transfer test'
+      };
+    },
+    schema: new JSONschema({
+      id: 'UUID',
+      shortReference: 'string',
+      sourceAccountId: 'UUID',
+      destinationAccountId: 'UUID',
+      currency: 'string',
+      amount: 'number',
+      status: 'string',
+      createdAt: 'date',
+      updatedAt: 'date',
+      completedAt: 'date',
+      creatorAccountId: 'UUID',
+      creatorContactId: 'UUID',
+      reason: 'string'
+    })
+  },
+
   pagination: {
     schema: new JSONschema({
       totalEntries: 'number',
@@ -433,7 +481,7 @@ module.exports = {
       nextPage: 'number',
       perPage: 'number',
       order: 'string',
-      orderAscDesc: 'string'    
+      orderAscDesc: 'string'
     })
   }
 };
