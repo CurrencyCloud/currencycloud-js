@@ -18,7 +18,7 @@ is maintained indefinitely and may be redistributed consistent with this project
 ## Steps
 **1. Fork, then clone the repo:**
 ```Shell
-	git clone git@github.com:your-username/currencycloud-java.git
+	git clone git@github.com:your-username/currencycloud-js.git
 ```
 
 **2. Work on your changes:**
@@ -50,6 +50,6 @@ Some things that will increase the chance that your pull request is accepted, in
 Our sincere thanks for helping us create the best API for moving money anywhere around the world!
 
 [MIT]: LICENSE.md
-[iss]: https://github.com/CurrencyCloud/currencycloud-java/issues
-[pr]: https://github.com/CurrencyCloud/currencycloud-java/compare
+[iss]: https://github.com/CurrencyCloud/currencycloud-js/issues
+[pr]: https://github.com/CurrencyCloud/currencycloud-js/compare
 [hof]: HALL_OF_FAME.md
