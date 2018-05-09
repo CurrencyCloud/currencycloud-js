@@ -1,25 +1,19 @@
 [![npm](https://img.shields.io/npm/v/currency-cloud.svg)](https://www.npmjs.com/package/currency-cloud) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/CurrencyCloud/currencycloud-js) [![David](https://img.shields.io/david/strongloop/express.svg)](https://david-dm.org/CurrencyCloud/currencycloud-js.svg)
 
 # Currencycloud
-
 This is the official Javascript SDK for v2 of Currencycloud's API. Additional documentation for each API endpoint can be found at [Currencycloud API documentation][introduction]. If you have any queries or you require support, please contact our development team at development@currencycloud.com
 
 ## Installation
-
 This library is distributed on `npm`. In order to add it as a dependency, run the following command:
-
 ``` sh
 $ npm install currency-cloud --save
 ```
 
 ## Supported Node versions
-
 The least supported Node version is 4.0.0.
 
 # Usage
-
 The following example retrieves all tradeable currencies list:
-
 ``` js
 var currencyCloud = require('currency-cloud');
 
@@ -42,9 +36,7 @@ currencyCloud.authentication.login({
 More extensive examples can be found in the [examples] folder.
 
 ## Service client
-
 To interact with the various Currencycloud's APIs a service client object must be created; then a particular API can be accessed via the corresponding property of this object:
-
 ``` js
 // create service client object
 var currencyCloud = require('currency-cloud');
@@ -68,9 +60,7 @@ currencyCloud.authentication.login({
 Supported APIs are listed in the [Currencycloud API overview][overview].
 
 ## Authentication
-
 Prior to calling API functions authentication is required. It is performed as follows:
-
 ``` js
 var currencyCloud = require('currency-cloud');
 
@@ -88,9 +78,7 @@ The above code retrieves authentication token, which is passed with all subseque
 When working with API is finished, it is recommended to close the session by calling `currencyCloud.authentication.logout()`.
 
 ## Passing parameters
-
 SDK functions accept arguments as a single object, which holds both required and optional parameters: 
-
 ``` js
 var currencyCloud = require('currency-cloud');
 
@@ -113,13 +101,10 @@ currencyCloud.accounts.create({
 Function arguments as well as return objects and errors are camelCased.
 
 ## Promises
-
 Each API call is an asynchronous operation, so Promises/A+ pattern is used heavily throughout the SDK. Every function, if not synchronously throwing an Error, returns a thenable promise.
 
 ## On Behalf Of
-
 Some API calls can be executed on behalf of another user (e.g. someone who has a sub-account with the logged in user). For this sake, `onBehalfOf` field with a value of corresponding contact id should be added to a parameters object of a SDK function:
-
 ``` js
 var currencyCloud = require('currency-cloud');
 
@@ -133,7 +118,6 @@ currencyCloud.rates.get({
 .then(console.log);
 ```
 Another option is to run a bunch of API calls using `onBehalfOf(id, promise)` method; it expects contact id and a promise as parameters and returns the given promise resolved:
-
 ``` js
 var currencyCloud = require('currency-cloud');
 
@@ -165,9 +149,7 @@ currencyCloud.onBehalfOf('8f639ab2-2b85-4327-9eb1-01ee4f0c77bc', function() {
 .then(console.log);
 ```
 ## Errors
-
 If an API call fails, the SDK function returns rejected promise with the error wrapped into `APIerror` class object. More specifically, it's an object of one of the classes, inheriting from `APIerror` and representing different types of errors. Apart from standard serialization methods they expose `toYAML()` method, which converts error object to human-readable YAML string:
-
 ``` js
 var currencyCloud = require('currency-cloud');
 
@@ -204,24 +186,46 @@ errors:
     type: currency
 */
 ```
+
 # Development
 
 ## Dependencies
-
+* [combined-stream][combined-stream]
+* [request][request]
 * [request-promise][request-promise]
 
-## Versioning
+## Contributing
+**We welcome pull requests from everyone!** Please see [CONTRIBUTING][contr]
 
+Our sincere thanks for [helping us][hof] create the best API for moving money anywhere around the world!
+
+## Versioning
 This project uses [semantic versioning][semver]. You can safely express a dependency on a major version and expect all minor and patch versions to be backwards compatible.
 
+## Deprecation Policy
+Technology evolves quickly and we are always looking for better ways to serve our customers. From time to time we need to make room for innovation by removing sections of code that are no longer necessary. We understand this can be disruptive and consequently we have designed a Deprecation Policy that protects our customers' investment and that allows us to take advantage of modern tools, frameworks and practices in developing software.
+
+Deprecation means that we discourage the use of a feature, design or practice because it has been superseded or is no longer considered efficient or safe but instead of removing it immediately, we mark it as **@deprecated** to provide backwards compatibility and time for you to update your projects. While the deprecated feature remains in the SDK for a period of time, we advise that you replace it with the recommended alternative which is explained in the relevant section of the code.
+
+We remove deprecated features after **six months** from the time of announcement.
+
+The security of our customers' assets is of paramount importance to us and sometimes we have to deprecate features because they may pose a security threat or because new, more secure, ways are available. On such occasions we reserve the right to set a different deprecation period which may range from **immediate removal** to the standard **six months**. 
+
+Once a feature has been marked as deprecated, we no longer develop the code or implement bug fixes. We only do security fixes.
+
+### List of features being deprecated
+```
+(No features are currently being deprecated)
+```
+
+# Support
+We actively support the latest version of the SDK. We support the immediate previous version on best-efforts basis. All other versions are no longer supported nor maintained.
+
 # Testing
-
 Testing of the SDK relies on the [Mocha][mocha] test framework, [Chai][chai] assertions library and [Nock][nock] HTTP mocking and expectations library. To run all test cases simply execute:
-
 ``` sh
 $ npm run test
 ```
-
 The SDK includes valid mocked HTTP responses in `./test/api/fixtures`. If you would like to test against the live API, please ensure there are no `js` files in that folder. The Nock library will regenerate them by recording the responses from the live run and use those next time the tests are executed.
 
 IMPORTANT: Remember to change the `loginId` and `apiKey` properties in `./test/mocks.js` to use your login ID and API key.
@@ -229,16 +233,19 @@ IMPORTANT: Remember to change the `loginId` and `apiKey` properties in `./test/m
 If you don't have a valid login or key, you can get them [here][registration]
 
 # Copyright
-
 Copyright (c) 2015-2018 Currencycloud. See [LICENSE][license] for details.
 
 [introduction]:    https://developer.currencycloud.com/documentation/getting-started/introduction
 [overview]:        https://developer.currencycloud.com/documentation/api-docs/overview/
 [examples]:        examples
 [request-promise]: https://www.npmjs.com/package/request-promise
+[combined-stream]: https://www.npmjs.com/package/combined-stream
+[request]: https://www.npmjs.com/package/request
 [semver]:          http://semver.org/
 [mocha]:           https://mochajs.org/
 [chai]:            http://chaijs.com/
 [nock]:            https://github.com/node-nock/nock
 [registration]:    https://developer.currencycloud.com/api-register/
 [license]:         LICENSE.md
+[contr]:           CONTRIBUTING.md
+[hof]:             HALL_OF_FAME.md
