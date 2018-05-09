@@ -32,7 +32,7 @@ is maintained indefinitely and may be redistributed consistent with this project
 
 **3. Make sure ALL the tests pass:**
 ```Shell
-	npm test
+	npm run test
 ```
 
 **4. Push to your fork and [submit a pull request][pr] across forks.**
