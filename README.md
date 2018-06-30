@@ -5,7 +5,7 @@ This is the official Javascript SDK for v2 of Currencycloud's API. Additional do
 
 ## Installation
 This library is distributed on `npm`. In order to add it as a dependency, run the following command:
-``` sh
+```sh
 $ npm install currency-cloud --save
 ```
 
@@ -14,13 +14,13 @@ The least supported Node version is 4.0.0.
 
 # Usage
 The following example retrieves all tradeable currencies list:
-``` js
+```js
 var currencyCloud = require('currency-cloud');
 
 currencyCloud.authentication.login({
   environment: 'demo', 
-  loginId: 'login_id', 
-  apiKey: 'api_key'
+  loginId: 'valid_login_id', 
+  apiKey: 'valid_api_key'
 })
 .then(currencyCloud.reference.getAvailableCurrencies)
 .then(function(res) {
@@ -37,15 +37,15 @@ More extensive examples can be found in the [examples] folder.
 
 ## Service client
 To interact with the various Currencycloud's APIs a service client object must be created; then a particular API can be accessed via the corresponding property of this object:
-``` js
+```js
 // create service client object
 var currencyCloud = require('currency-cloud');
 
 // access authentication API
 currencyCloud.authentication.login({
   environment: 'demo', 
-  loginId: 'login_id', 
-  apiKey: 'api_key'
+  loginId: 'valid_login_id', 
+  apiKey: 'valid_api_key'
 })
 .then(function() {
   // access reference API
@@ -61,7 +61,7 @@ Supported APIs are listed in the [Currencycloud API overview][overview].
 
 ## Authentication
 Prior to calling API functions authentication is required. It is performed as follows:
-``` js
+```js
 var currencyCloud = require('currency-cloud');
 
 currencyCloud.authentication.login({
@@ -79,7 +79,7 @@ When working with API is finished, it is recommended to close the session by cal
 
 ## Passing parameters
 SDK functions accept arguments as a single object, which holds both required and optional parameters: 
-``` js
+```js
 var currencyCloud = require('currency-cloud');
 
 currencyCloud.accounts.create({
@@ -101,11 +101,57 @@ currencyCloud.accounts.create({
 Function arguments as well as return objects and errors are camelCased.
 
 ## Promises
-Each API call is an asynchronous operation, so Promises/A+ pattern is used heavily throughout the SDK. Every function, if not synchronously throwing an Error, returns a thenable promise.
+Each API call is an asynchronous operation, so Promises/A+ pattern is used heavily throughout the SDK. Every function, if not synchronously throwing an Error, returns a then-able promise.
+
+## Exponential Backoff & Retry Strategy
+Requests over the internet will fail on occasion for seemingly no apparent reason, and the SDK includes a comprehensive set of error handling capabilities to help troubleshoot those situations. Sometimes however, the best strategy is simply to retry. This is the case particularly with transient errors like **HTTP 429 - Too Many Requests**, but wrapping calls in for/while loops is discouraged as in some extreme cases this may trigger our anti-DoS defences.
+
+As of version 1.14.1 we have introduced an Exponential Backoff with Jitter retry feature which we recommend you use to safely handle retries.
+
+### retry(fn, [options])
+Calls **_fn_** until the returned promise ends up fulfilled or rejected with an error different than `TooManyRequestsError`. The optional **_options_** argument is an object which maps to the following values:
+
+* _retries_: The maximum amount of times to retry the operation. Default is `7`.
+* _factor_: The exponential factor to use. Default is `2`.
+* _minTimeout_: The number of milliseconds before starting the first retry. Default is a random value between `0` and `750` ms.
+* _maxTimeout_: The maximum number of milliseconds between two retries. Default is a random value between `30` and `60` sec.
+* _randomize_: Randomizes the timeouts by multiplying with a factor between `1` and `2`. Default is `true`.
+* _log_: Logs retries to console if `true`. Default is `false`
+* _name_: The name of **_fn_**. Helpful for logging and troubleshooting.
+
+The **_fn_** function will receive a retry function as an argument that should be called with an error whenever you want to retry **_fn_**. The retry function will always throw an error.
+If there're retries left, it will throw a special retry error that will be handled internally to call fn again. If there're no retries left, it will throw the actual error passed to it.
+
+A typical use case is presented below. For more information see the [Cookbook examples][examples].
+
+```js
+var currencyCloud = require('currency-cloud');
+const opts = {
+  retries: 5, //Retry up to five times before giving up
+  factor: 2, // Use an exponential wait
+  minTimeout: Math.random() * 750, // Initial wait in ms
+  maxTimeout: Math.random() * 30000 + 30000, // Maximum wait period in ms
+  randomize: true // Apply a random jitter on each iteration
+  log: true // Log retries to the console 
+};
+
+let findBalances = () => {
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.balances.find()
+        .then(function (res) {
+          console.log('findBalance: ' + JSON.stringify(res, null, 2));
+        })
+    },
+    opts,
+    "currencyCloud.balances.find"
+  );
+};
+```
 
 ## On Behalf Of
 Some API calls can be executed on behalf of another user (e.g. someone who has a sub-account with the logged in user). For this sake, `onBehalfOf` field with a value of corresponding contact id should be added to a parameters object of a SDK function:
-``` js
+```js
 var currencyCloud = require('currency-cloud');
 
 currencyCloud.rates.get({
@@ -118,7 +164,7 @@ currencyCloud.rates.get({
 .then(console.log);
 ```
 Another option is to run a bunch of API calls using `onBehalfOf(id, promise)` method; it expects contact id and a promise as parameters and returns the given promise resolved:
-``` js
+```js
 var currencyCloud = require('currency-cloud');
 
 currencyCloud.onBehalfOf('8f639ab2-2b85-4327-9eb1-01ee4f0c77bc', function() {
@@ -150,7 +196,7 @@ currencyCloud.onBehalfOf('8f639ab2-2b85-4327-9eb1-01ee4f0c77bc', function() {
 ```
 ## Errors
 If an API call fails, the SDK function returns rejected promise with the error wrapped into `APIerror` class object. More specifically, it's an object of one of the classes, inheriting from `APIerror` and representing different types of errors. Apart from standard serialization methods they expose `toYAML()` method, which converts error object to human-readable YAML string:
-``` js
+```js
 var currencyCloud = require('currency-cloud');
 
 currencyCloud.balances.get({
@@ -193,6 +239,8 @@ errors:
 * [combined-stream][combined-stream]
 * [request][request]
 * [request-promise][request-promise]
+* [retry][retry]
+* [uuid][uuid]
 
 ## Contributing
 **We welcome pull requests from everyone!** Please see [CONTRIBUTING][contr]
@@ -240,7 +288,7 @@ Copyright (c) 2015-2018 Currencycloud. See [LICENSE][license] for details.
 [examples]:        examples
 [request-promise]: https://www.npmjs.com/package/request-promise
 [combined-stream]: https://www.npmjs.com/package/combined-stream
-[request]: https://www.npmjs.com/package/request
+[request]:         https://www.npmjs.com/package/request
 [semver]:          http://semver.org/
 [mocha]:           https://mochajs.org/
 [chai]:            http://chaijs.com/
@@ -249,3 +297,5 @@ Copyright (c) 2015-2018 Currencycloud. See [LICENSE][license] for details.
 [license]:         LICENSE.md
 [contr]:           CONTRIBUTING.md
 [hof]:             HALL_OF_FAME.md
+[retry]:          https://www.npmjs.com/package/retry
+[uuid]:           https://www.npmjs.com/package/uuid
