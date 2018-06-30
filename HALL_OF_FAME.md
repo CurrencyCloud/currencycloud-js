@@ -8,6 +8,7 @@ Many people have helped us along the way and we are sincerely grateful to all of
 
 |Name|Link/e-mail|
 |--|--|
+|André Cruz (satazor)|amdfcruz@gmail.com|
 |Thomas Stig Jacobsen|tsj@lunarway.com|
 |||
 
