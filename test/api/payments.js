@@ -271,4 +271,68 @@ describe('payments', function () {
         .catch(done);
     });
   });
+
+  describe('authorise', function () {
+    it('fails if required parameters are missing', function () {
+      expect(function () {
+        currencyCloud.payments.authorise(/*no params*/);
+      }).to.throw();
+    });
+
+    it('returns an error "You cannot authorise this Payment as it was created by you" if payment creator attempts to authorise their own payment', function (done) {
+      getPrerequisites()
+        .then(function (res) {
+          var payment = new mock.payments.payment1();
+          payment.conversionId = res.conversionId;
+          payment.beneficiaryId = res.beneficiaryId;
+
+          return currencyCloud.payments.create(payment)
+            .then(function (created) {
+              return currencyCloud.payments.authorise({
+                payment_ids: [created.id]
+              })
+                .then(function (gotten) {
+                  expect(gotten.authorisations[0]).to.have.property('error').that.is.not.null;
+                  expect(gotten.authorisations[0].error).to.be.a('string', 'You cannot authorise this Payment as it was created by you.');
+                  done();
+                });
+            });
+        })
+        .catch(done);
+    });
+
+    it('successfully authorises a payment', function (done) {
+      var data = {};
+      getPrerequisites()
+        .then(function (res) {
+          var payment = new mock.payments.payment1();
+          payment.conversionId = res.conversionId;
+          payment.beneficiaryId = res.beneficiaryId;
+
+          return currencyCloud.payments.create(payment)
+            .then(function (created) {
+              data.created = created;
+              return created;
+            })
+            .then(function () {
+              return currencyCloud.authentication.login(mock.authentication.paymentAuthorisationCredentials);
+            })
+              .then(function (authorised) {
+                return currencyCloud.payments.authorise({
+                  payment_ids: [data.created.id]
+                })
+                  .then(function (gotten) {
+                  expect(gotten.authorisations[0].error).not.to.equal('You cannot authorise this Payment as it was created by you.');
+                  expect(gotten.authorisations[0]).to.have.property('paymentId').that.is.not.null;
+                  expect(gotten.authorisations[0]).to.have.property('error').that.is.null;
+                  expect(gotten.authorisations[0].paymentStatus).to.be.a('string', 'authorised');
+                  expect(gotten.authorisations[0].paymentId).to.equal(data.created.id);
+                  done();
+                });
+            });
+        })
+        .catch(done);
+    });
+  });
+
 });
