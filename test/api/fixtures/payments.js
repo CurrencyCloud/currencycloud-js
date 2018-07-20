@@ -1134,8 +1134,8 @@ nock('https://devapi.currencycloud.com:443')
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
-  .reply(200, {"id":"024f4bbc-6d20-486d-b3f3-844e689dbd82","settlement_date":"2018-07-18T13:00:00+00:00","conversion_date":"2018-07-18T00:00:00+00:00","short_reference":"20180716-GBWQSG","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","account_id":"9ada9453-a104-478a-b4d4-47aaa52b8710","currency_pair":"EURGBP","status":"awaiting_funds","buy_currency":"EUR","sell_currency":"GBP","client_buy_amount":"10000.23","client_sell_amount":"8057.19","fixed_side":"buy","core_rate":"0.8057","partner_rate":"","partner_status":"funds_arrived","partner_buy_amount":"0.00","partner_sell_amount":"0.00","client_rate":"0.8057","deposit_required":false,"deposit_amount":"0.00","deposit_currency":"","deposit_status":"not_required","deposit_required_at":"","payment_ids":[],"unallocated_funds":"0.00","unique_request_id":null,"created_at":"2018-07-16T09:33:06+00:00","updated_at":"2018-07-16T09:33:06+00:00","mid_market_rate":"0.8056"}, [ 'Date',
-  'Mon, 16 Jul 2018 09:33:06 GMT',
+  .reply(200, {"id":"7dc88e47-a536-455c-99d3-8e9d5767ae90","settlement_date":"2018-07-24T13:00:00+00:00","conversion_date":"2018-07-24T00:00:00+00:00","short_reference":"20180720-MNLQTG","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","account_id":"9ada9453-a104-478a-b4d4-47aaa52b8710","currency_pair":"EURGBP","status":"awaiting_funds","buy_currency":"EUR","sell_currency":"GBP","client_buy_amount":"10000.23","client_sell_amount":"8037.18","fixed_side":"buy","core_rate":"0.8037","partner_rate":"","partner_status":"funds_arrived","partner_buy_amount":"0.00","partner_sell_amount":"0.00","client_rate":"0.8037","deposit_required":false,"deposit_amount":"0.00","deposit_currency":"","deposit_status":"not_required","deposit_required_at":"","payment_ids":[],"unallocated_funds":"0.00","unique_request_id":null,"created_at":"2018-07-20T10:25:56+00:00","updated_at":"2018-07-20T10:25:56+00:00","mid_market_rate":"0.8036"}, [ 'Date',
+  'Fri, 20 Jul 2018 10:25:57 GMT',
   'Content-Type',
   'application/json;charset=utf-8',
   'Transfer-Encoding',
@@ -1143,13 +1143,13 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Connection',
   'close',
   'Set-Cookie',
-  '__cfduid=d981d2df1371162c3728fbc179b20cba31531733586; expires=Tue, 16-Jul-19 09:33:06 GMT; path=/; domain=.currencycloud.com; HttpOnly',
+  '__cfduid=d14d7aff5fda84c0ba728485717b04f1e1532082356; expires=Sat, 20-Jul-19 10:25:56 GMT; path=/; domain=.currencycloud.com; HttpOnly',
   'Set-Cookie',
-  'AWSALB=x1newRD1dkp/7z78vDbz6ufr22l8zzKuKPaZ5umbqhXC0/MliBafjO2rUSIdyWzyKsKjjIYw+gdQa2j7Ti7Ewjv528u0FKhSwZlQf4VzO/uBldSJSBcert0I7Cn6; Expires=Mon, 23 Jul 2018 09:33:06 GMT; Path=/',
+  'AWSALB=ui1n8yTM4x+mBQC+/jq/CAl7zoCOZAyyXB0qi0SX+nALDRAvIJUTkm3MCRCQYW7W7YJaRblg3Ykk8+o/dfvbMQ4w1SW/i5YRPjD1CP41raP6Ej4jdvBY/0GmYQlj; Expires=Fri, 27 Jul 2018 10:25:56 GMT; Path=/',
   'Access-Control-Allow-Origin',
   '*',
   'X-Request-Id',
-  '7f27e38d-35d1-4c5c-b66a-ecf351b5ec25',
+  '2aa8f85c-c081-4656-bbca-625359b93f6c',
   'Access-Control-Allow-Methods',
   'POST',
   'X-Content-Type-Options',
@@ -1163,12 +1163,12 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Server',
   'cloudflare',
   'CF-RAY',
-  '43b377212e970a72-LHR' ]);
+  '43d4ba066b513683-MAN' ]);
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   .post('/v2/beneficiaries/create', "bank_account_holder_name=John%20Doe&bank_country=DE&currency=EUR&name=Employee%20Funds&email=john.doe%40acme.com&beneficiary_address=23%20Acacia%20Road&beneficiary_country=GB&account_number=13071472&routing_code_type_1=sort_code&routing_code_value_1=200605&routing_code_type_2=aba&routing_code_value_2=789&bic_swift=COBADEFF&iban=DE89370400440532013000&default_beneficiary=true&bank_address=4356%20Wisteria%20Lane&bank_name=HSBC%20Bank&bank_account_type=checking&beneficiary_entity_type=company&beneficiary_company_name=Some%20Company%20LLC&beneficiary_first_name=John&beneficiary_last_name=Doe&beneficiary_city=London&beneficiary_postcode=W11%202BQ&beneficiary_state_or_province=TX&beneficiary_date_of_birth=1990-07-20&beneficiary_identification_type=none")
-  .reply(200, {"id":"8d9bcd86-7483-41f6-a2fe-9bc7043a0a16","bank_account_holder_name":"John Doe","name":"Employee Funds","email":null,"payment_types":["priority","regular"],"beneficiary_address":["23 Acacia Road"],"beneficiary_country":"GB","beneficiary_entity_type":"company","beneficiary_company_name":"Some Company LLC","beneficiary_first_name":"John","beneficiary_last_name":"Doe","beneficiary_city":"London","beneficiary_postcode":"W11 2BQ","beneficiary_state_or_province":"TX","beneficiary_date_of_birth":"1990-07-20","beneficiary_identification_type":"none","beneficiary_identification_value":null,"bank_country":"DE","bank_name":"HSBC Bank","bank_account_type":"checking","currency":"EUR","account_number":null,"routing_code_type_1":null,"routing_code_value_1":null,"routing_code_type_2":null,"routing_code_value_2":null,"bic_swift":"COBADEFF","iban":"DE89370400440532013000","default_beneficiary":"true","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","bank_address":["4356 Wisteria Lane"],"created_at":"2018-07-16T09:33:07+00:00","updated_at":"2018-07-16T09:33:07+00:00","beneficiary_external_reference":null}, [ 'Date',
-  'Mon, 16 Jul 2018 09:33:07 GMT',
+  .reply(200, {"id":"2eacd8f9-4b53-4e2b-995b-1ccf2136c6ab","bank_account_holder_name":"John Doe","name":"Employee Funds","email":null,"payment_types":["priority","regular"],"beneficiary_address":["23 Acacia Road"],"beneficiary_country":"GB","beneficiary_entity_type":"company","beneficiary_company_name":"Some Company LLC","beneficiary_first_name":"John","beneficiary_last_name":"Doe","beneficiary_city":"London","beneficiary_postcode":"W11 2BQ","beneficiary_state_or_province":"TX","beneficiary_date_of_birth":"1990-07-20","beneficiary_identification_type":"none","beneficiary_identification_value":null,"bank_country":"DE","bank_name":"HSBC Bank","bank_account_type":"checking","currency":"EUR","account_number":null,"routing_code_type_1":null,"routing_code_value_1":null,"routing_code_type_2":null,"routing_code_value_2":null,"bic_swift":"COBADEFF","iban":"DE89370400440532013000","default_beneficiary":"true","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","bank_address":["4356 Wisteria Lane"],"created_at":"2018-07-20T10:25:57+00:00","updated_at":"2018-07-20T10:25:57+00:00","beneficiary_external_reference":null}, [ 'Date',
+  'Fri, 20 Jul 2018 10:25:57 GMT',
   'Content-Type',
   'application/json;charset=utf-8',
   'Transfer-Encoding',
@@ -1176,13 +1176,13 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Connection',
   'close',
   'Set-Cookie',
-  '__cfduid=d5101c5141f31435a8111cf838d9ac18a1531733586; expires=Tue, 16-Jul-19 09:33:06 GMT; path=/; domain=.currencycloud.com; HttpOnly',
+  '__cfduid=d75eee728b175742fce6c1870fc4874531532082357; expires=Sat, 20-Jul-19 10:25:57 GMT; path=/; domain=.currencycloud.com; HttpOnly',
   'Set-Cookie',
-  'AWSALB=prwdlBN1s1N1L0tdLrdlXTL7nAmLhRsHbgC6MmrqFt26G1zamhPgvSEcGF9bI4CdVwNSfVUb8wTc1DK4b9bI8uFb/mw58f0zMGMRPVD7GSYrPCODGj9wNsvVk1x4; Expires=Mon, 23 Jul 2018 09:33:06 GMT; Path=/',
+  'AWSALB=ygXRh6d2q4aj52/sYAzzBx+MTmQjyen/b0By5S/dKmx2FHI+E10rT3IgsRoN8/uTM1J1D67vveNz4wl/6BtYBl+ADVZnanvOxdhgBp9D9/U9nbIR0O4+M6M+cHum; Expires=Fri, 27 Jul 2018 10:25:57 GMT; Path=/',
   'Access-Control-Allow-Origin',
   '*',
   'X-Request-Id',
-  '4bb0d89f-640d-4289-962a-67a38bd3ecdc',
+  '5d26c35b-8e39-415b-b522-91f286563ff2',
   'Access-Control-Allow-Methods',
   'POST',
   'X-Content-Type-Options',
@@ -1196,12 +1196,12 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Server',
   'cloudflare',
   'CF-RAY',
-  '43b377263f4a0a66-LHR' ]);
+  '43d4ba0bd83d3683-MAN' ]);
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
-  .post('/v2/payments/create', "currency=EUR&amount=10000&reason=Salary%20for%20March&reference=INVOICE%209876&payment_type=regular&payer_entity_type=individual&payer_company_name=Some%20Company%20LLC&payer_first_name=John&payer_last_name=Doe&payer_city=London&payer_address=27%20Colmore%20Row&payer_postcode=W11%202BQ&payer_state_or_province=TX&payer_country=GB&payer_date_of_birth=1980-10-10&payer_identification_type=none&conversion_id=024f4bbc-6d20-486d-b3f3-844e689dbd82&beneficiary_id=8d9bcd86-7483-41f6-a2fe-9bc7043a0a16")
-  .reply(200, {"id":"4d1f76f7-0d7f-435d-8d80-b333e8a661f3","amount":"10000.00","beneficiary_id":"8d9bcd86-7483-41f6-a2fe-9bc7043a0a16","currency":"EUR","reference":"INVOICE 9876","reason":"Salary for March","status":"awaiting_authorisation","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","payment_type":"regular","payment_date":"2018-07-18","transferred_at":"","authorisation_steps_required":"1","last_updater_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","short_reference":"180716-GBWQSG001","conversion_id":"024f4bbc-6d20-486d-b3f3-844e689dbd82","failure_reason":"","payer_id":"be3a2a8f-9094-4f32-9692-72dfee61491f","payer_details_source":"payer","created_at":"2018-07-16T09:33:08+00:00","updated_at":"2018-07-16T09:33:08+00:00","payment_group_id":null,"unique_request_id":null,"failure_returned_amount":"0.00","ultimate_beneficiary_name":null}, [ 'Date',
-  'Mon, 16 Jul 2018 09:33:08 GMT',
+  .post('/v2/payments/create', "currency=EUR&amount=10000&reason=Salary%20for%20March&reference=INVOICE%209876&payment_type=regular&payer_entity_type=individual&payer_company_name=Some%20Company%20LLC&payer_first_name=John&payer_last_name=Doe&payer_city=London&payer_address=27%20Colmore%20Row&payer_postcode=W11%202BQ&payer_state_or_province=TX&payer_country=GB&payer_date_of_birth=1980-10-10&payer_identification_type=none&conversion_id=7dc88e47-a536-455c-99d3-8e9d5767ae90&beneficiary_id=2eacd8f9-4b53-4e2b-995b-1ccf2136c6ab")
+  .reply(200, {"id":"6aa4cc8d-7c8c-4776-b19d-3d3bd660459f","amount":"10000.00","beneficiary_id":"2eacd8f9-4b53-4e2b-995b-1ccf2136c6ab","currency":"EUR","reference":"INVOICE 9876","reason":"Salary for March","status":"awaiting_authorisation","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","payment_type":"regular","payment_date":"2018-07-24","transferred_at":"","authorisation_steps_required":"1","last_updater_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","short_reference":"180720-MNLQTG001","conversion_id":"7dc88e47-a536-455c-99d3-8e9d5767ae90","failure_reason":"","payer_id":"be3a2a8f-9094-4f32-9692-72dfee61491f","payer_details_source":"payer","created_at":"2018-07-20T10:25:58+00:00","updated_at":"2018-07-20T10:25:58+00:00","payment_group_id":null,"unique_request_id":null,"failure_returned_amount":"0.00","ultimate_beneficiary_name":null}, [ 'Date',
+  'Fri, 20 Jul 2018 10:25:58 GMT',
   'Content-Type',
   'application/json;charset=utf-8',
   'Transfer-Encoding',
@@ -1209,13 +1209,13 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Connection',
   'close',
   'Set-Cookie',
-  '__cfduid=dbc0f58d83c5099e44986dec446833de01531733587; expires=Tue, 16-Jul-19 09:33:07 GMT; path=/; domain=.currencycloud.com; HttpOnly',
+  '__cfduid=d9b74d4c82f9383f7c878e791a15f83381532082357; expires=Sat, 20-Jul-19 10:25:57 GMT; path=/; domain=.currencycloud.com; HttpOnly',
   'Set-Cookie',
-  'AWSALB=dUCB86gJupnZw3pM1q2CyOsE5i/k4sKV61MK0Y5qaa6hyJbsAi7YFD0CHzkId0Txn/rOpgu7i5Agvs1p+b1JDw9OLUGfUjQ0szmrvvRGeVnmpUSauNQkR2nQ4sm0; Expires=Mon, 23 Jul 2018 09:33:07 GMT; Path=/',
+  'AWSALB=8oEcB+lMemHhoNINwcLZkZbZ+Q4ue+vlf5PB4HSuJJU3FQ4x+jXqhISdpPBLy+Tdp5XJeSdMUKEoCpsF9g41PWL36kQUXCfm1+cv2PF+JyRKLPM2Sm5gpZx6lJTK; Expires=Fri, 27 Jul 2018 10:25:57 GMT; Path=/',
   'Access-Control-Allow-Origin',
   '*',
   'X-Request-Id',
-  '82252bc7-9047-4054-8033-b7e03f05a3d6',
+  '7d756fae-0b8f-4834-938d-39f516e5c258',
   'Access-Control-Allow-Methods',
   'POST',
   'X-Content-Type-Options',
@@ -1229,12 +1229,12 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Server',
   'cloudflare',
   'CF-RAY',
-  '43b37728ba1a0a6c-LHR' ]);
+  '43d4ba0f0ff0362f-MAN' ]);
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
-  .post('/v2/payments/authorise', "payment_ids%5B%5D=4d1f76f7-0d7f-435d-8d80-b333e8a661f3")
-  .reply(200, {"authorisations":[{"payment_id":"4d1f76f7-0d7f-435d-8d80-b333e8a661f3","payment_status":"awaiting_authorisation","updated":false,"error":"You cannot authorise this Payment as it was created by you.","auth_steps_taken":0,"auth_steps_required":1,"short_reference":"180716-GBWQSG001"}]}, [ 'Date',
-  'Mon, 16 Jul 2018 09:33:08 GMT',
+  .post('/v2/payments/authorise', "payment_ids%5B%5D=6aa4cc8d-7c8c-4776-b19d-3d3bd660459f")
+  .reply(200, {"authorisations":[{"payment_id":"6aa4cc8d-7c8c-4776-b19d-3d3bd660459f","payment_status":"awaiting_authorisation","updated":false,"error":"You cannot authorise this Payment as it was created by you.","auth_steps_taken":0,"auth_steps_required":1,"short_reference":"180720-MNLQTG001"}]}, [ 'Date',
+  'Fri, 20 Jul 2018 10:25:58 GMT',
   'Content-Type',
   'application/json;charset=utf-8',
   'Transfer-Encoding',
@@ -1242,13 +1242,13 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Connection',
   'close',
   'Set-Cookie',
-  '__cfduid=d64e2c3f31dcf6e59372568945c355a301531733588; expires=Tue, 16-Jul-19 09:33:08 GMT; path=/; domain=.currencycloud.com; HttpOnly',
+  '__cfduid=da5e3928d2b1c08311dda690d0370d2c41532082358; expires=Sat, 20-Jul-19 10:25:58 GMT; path=/; domain=.currencycloud.com; HttpOnly',
   'Set-Cookie',
-  'AWSALB=cFy55iKvmnUu4SRSnS1tTNj7aG6aZI7SMHD0BocIMWfOtnBxQDPJqrctav0uZ6UfGEGt3O100RSTn18M11dDPkRsCwZrQbKUXy5s5VzmN12QKeILr6o6qqnS6w5i; Expires=Mon, 23 Jul 2018 09:33:08 GMT; Path=/',
+  'AWSALB=htvHh/OhKiLToXsCWPlPYNOk6Rcogdrytm+esD+8iHWzAxgEAcd93A4aFIjnRjOY1LW0FU8aZKLuIfCfambmNy24mw/YF0E9Zm5RylVi3jMplM877G9udacRTYLC; Expires=Fri, 27 Jul 2018 10:25:58 GMT; Path=/',
   'Access-Control-Allow-Origin',
   '*',
   'X-Request-Id',
-  '5f475b76-5731-4c98-9464-f18663b1a916',
+  'f513fe98-7710-4b7f-92f8-bf5ea0290239',
   'Access-Control-Allow-Methods',
   'POST',
   'X-Content-Type-Options',
@@ -1262,12 +1262,12 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Server',
   'cloudflare',
   'CF-RAY',
-  '43b3772f1a180a66-LHR' ]);
+  '43d4ba1528c83683-MAN' ]);
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
-  .reply(200, {"id":"5c351336-65d7-4722-a07c-6916deb35341","settlement_date":"2018-07-18T13:00:00+00:00","conversion_date":"2018-07-18T00:00:00+00:00","short_reference":"20180716-QJGBKJ","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","account_id":"9ada9453-a104-478a-b4d4-47aaa52b8710","currency_pair":"EURGBP","status":"awaiting_funds","buy_currency":"EUR","sell_currency":"GBP","client_buy_amount":"10000.23","client_sell_amount":"8057.19","fixed_side":"buy","core_rate":"0.8057","partner_rate":"","partner_status":"funds_arrived","partner_buy_amount":"0.00","partner_sell_amount":"0.00","client_rate":"0.8057","deposit_required":false,"deposit_amount":"0.00","deposit_currency":"","deposit_status":"not_required","deposit_required_at":"","payment_ids":[],"unallocated_funds":"0.00","unique_request_id":null,"created_at":"2018-07-16T09:33:08+00:00","updated_at":"2018-07-16T09:33:08+00:00","mid_market_rate":"0.8056"}, [ 'Date',
-  'Mon, 16 Jul 2018 09:33:09 GMT',
+  .reply(200, {"id":"b29d6ba8-52d2-4329-b46d-145f8fb37008","settlement_date":"2018-07-24T13:00:00+00:00","conversion_date":"2018-07-24T00:00:00+00:00","short_reference":"20180720-MBLHLN","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","account_id":"9ada9453-a104-478a-b4d4-47aaa52b8710","currency_pair":"EURGBP","status":"awaiting_funds","buy_currency":"EUR","sell_currency":"GBP","client_buy_amount":"10000.23","client_sell_amount":"8037.18","fixed_side":"buy","core_rate":"0.8037","partner_rate":"","partner_status":"funds_arrived","partner_buy_amount":"0.00","partner_sell_amount":"0.00","client_rate":"0.8037","deposit_required":false,"deposit_amount":"0.00","deposit_currency":"","deposit_status":"not_required","deposit_required_at":"","payment_ids":[],"unallocated_funds":"0.00","unique_request_id":null,"created_at":"2018-07-20T10:25:59+00:00","updated_at":"2018-07-20T10:25:59+00:00","mid_market_rate":"0.8036"}, [ 'Date',
+  'Fri, 20 Jul 2018 10:25:59 GMT',
   'Content-Type',
   'application/json;charset=utf-8',
   'Transfer-Encoding',
@@ -1275,13 +1275,13 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Connection',
   'close',
   'Set-Cookie',
-  '__cfduid=d35ed2e3ddd5781c77f255da21cf727601531733588; expires=Tue, 16-Jul-19 09:33:08 GMT; path=/; domain=.currencycloud.com; HttpOnly',
+  '__cfduid=de83b4429a1caccba6669b4fdecd1c55d1532082358; expires=Sat, 20-Jul-19 10:25:58 GMT; path=/; domain=.currencycloud.com; HttpOnly',
   'Set-Cookie',
-  'AWSALB=U5w3iQdQcvIoNEhmJua2lySyCf6byUBSsmO7oKNfGNy/Pw8/bZne+PHGuL70ylPobzp3niD5/e4doalZdFv3QkVJFznMRi2ZlrkOgkPjmYp0fp8KGLBMwTWNN81Q; Expires=Mon, 23 Jul 2018 09:33:08 GMT; Path=/',
+  'AWSALB=M74w6EZin9dJhtOQ2coskLIIPxkCRiU9lww1abwhAePM1b+3nwODk87SvflqCkrxdSRooOYKAZnLhIOy2/HNIiUjLI77F/BZ/HG2rQ6vxqWpSlci6e5C2oPm69zV; Expires=Fri, 27 Jul 2018 10:25:58 GMT; Path=/',
   'Access-Control-Allow-Origin',
   '*',
   'X-Request-Id',
-  '946c22a0-5663-4265-9310-420bb713dcfb',
+  '6961f301-85f2-4f7c-9198-334001ecdd9c',
   'Access-Control-Allow-Methods',
   'POST',
   'X-Content-Type-Options',
@@ -1295,12 +1295,12 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Server',
   'cloudflare',
   'CF-RAY',
-  '43b377303c661383-LHR' ]);
+  '43d4ba16cfba3629-MAN' ]);
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   .post('/v2/beneficiaries/create', "bank_account_holder_name=John%20Doe&bank_country=DE&currency=EUR&name=Employee%20Funds&email=john.doe%40acme.com&beneficiary_address=23%20Acacia%20Road&beneficiary_country=GB&account_number=13071472&routing_code_type_1=sort_code&routing_code_value_1=200605&routing_code_type_2=aba&routing_code_value_2=789&bic_swift=COBADEFF&iban=DE89370400440532013000&default_beneficiary=true&bank_address=4356%20Wisteria%20Lane&bank_name=HSBC%20Bank&bank_account_type=checking&beneficiary_entity_type=company&beneficiary_company_name=Some%20Company%20LLC&beneficiary_first_name=John&beneficiary_last_name=Doe&beneficiary_city=London&beneficiary_postcode=W11%202BQ&beneficiary_state_or_province=TX&beneficiary_date_of_birth=1990-07-20&beneficiary_identification_type=none")
-  .reply(200, {"id":"3342e304-1e82-4870-925f-8b8fb2df5d78","bank_account_holder_name":"John Doe","name":"Employee Funds","email":null,"payment_types":["priority","regular"],"beneficiary_address":["23 Acacia Road"],"beneficiary_country":"GB","beneficiary_entity_type":"company","beneficiary_company_name":"Some Company LLC","beneficiary_first_name":"John","beneficiary_last_name":"Doe","beneficiary_city":"London","beneficiary_postcode":"W11 2BQ","beneficiary_state_or_province":"TX","beneficiary_date_of_birth":"1990-07-20","beneficiary_identification_type":"none","beneficiary_identification_value":null,"bank_country":"DE","bank_name":"HSBC Bank","bank_account_type":"checking","currency":"EUR","account_number":null,"routing_code_type_1":null,"routing_code_value_1":null,"routing_code_type_2":null,"routing_code_value_2":null,"bic_swift":"COBADEFF","iban":"DE89370400440532013000","default_beneficiary":"true","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","bank_address":["4356 Wisteria Lane"],"created_at":"2018-07-16T09:33:09+00:00","updated_at":"2018-07-16T09:33:09+00:00","beneficiary_external_reference":null}, [ 'Date',
-  'Mon, 16 Jul 2018 09:33:09 GMT',
+  .reply(200, {"id":"2753e95a-068b-47ea-afde-55995697ee75","bank_account_holder_name":"John Doe","name":"Employee Funds","email":null,"payment_types":["priority","regular"],"beneficiary_address":["23 Acacia Road"],"beneficiary_country":"GB","beneficiary_entity_type":"company","beneficiary_company_name":"Some Company LLC","beneficiary_first_name":"John","beneficiary_last_name":"Doe","beneficiary_city":"London","beneficiary_postcode":"W11 2BQ","beneficiary_state_or_province":"TX","beneficiary_date_of_birth":"1990-07-20","beneficiary_identification_type":"none","beneficiary_identification_value":null,"bank_country":"DE","bank_name":"HSBC Bank","bank_account_type":"checking","currency":"EUR","account_number":null,"routing_code_type_1":null,"routing_code_value_1":null,"routing_code_type_2":null,"routing_code_value_2":null,"bic_swift":"COBADEFF","iban":"DE89370400440532013000","default_beneficiary":"true","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","bank_address":["4356 Wisteria Lane"],"created_at":"2018-07-20T10:25:59+00:00","updated_at":"2018-07-20T10:25:59+00:00","beneficiary_external_reference":null}, [ 'Date',
+  'Fri, 20 Jul 2018 10:25:59 GMT',
   'Content-Type',
   'application/json;charset=utf-8',
   'Transfer-Encoding',
@@ -1308,13 +1308,13 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Connection',
   'close',
   'Set-Cookie',
-  '__cfduid=df6943bd145281a125596ce1d92ce51161531733589; expires=Tue, 16-Jul-19 09:33:09 GMT; path=/; domain=.currencycloud.com; HttpOnly',
+  '__cfduid=df0677970e03fd7c17414ef6fed6eccd01532082359; expires=Sat, 20-Jul-19 10:25:59 GMT; path=/; domain=.currencycloud.com; HttpOnly',
   'Set-Cookie',
-  'AWSALB=zoTmYDnj4kYE/W+BJJlDvV4+Nx8ykwRh2U141/K/zyUoZKJEOxEOYb/jMRC8OtMBE5Hlz4niQR9yXdCV/zTxwn1amQDXvGPb7pWaVgKIVMhw8Lu0Xp1jijvC4aPi; Expires=Mon, 23 Jul 2018 09:33:09 GMT; Path=/',
+  'AWSALB=IoUbjuGdrPTWM9WnCZODZzY6ohXb37bNbFj97Cjqoj1ZeJq4iYdWqMHIDINghEwlFw2ObeGLFclGG5G1QTRFaXuZE1jPIrp9GNEfdsxgBpgBc5/s9S5FwLXdzFi4; Expires=Fri, 27 Jul 2018 10:25:59 GMT; Path=/',
   'Access-Control-Allow-Origin',
   '*',
   'X-Request-Id',
-  'd94531a2-6141-4977-bb2c-95856352065d',
+  '732f224c-dd66-46b2-bdcd-17ca4c58c862',
   'Access-Control-Allow-Methods',
   'POST',
   'X-Content-Type-Options',
@@ -1328,12 +1328,12 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Server',
   'cloudflare',
   'CF-RAY',
-  '43b37734ea3e06c4-LHR' ]);
+  '43d4ba1b6ecc3683-MAN' ]);
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
-  .post('/v2/payments/create', "currency=EUR&amount=10000&reason=Salary%20for%20March&reference=INVOICE%209876&payment_type=regular&payer_entity_type=individual&payer_company_name=Some%20Company%20LLC&payer_first_name=John&payer_last_name=Doe&payer_city=London&payer_address=27%20Colmore%20Row&payer_postcode=W11%202BQ&payer_state_or_province=TX&payer_country=GB&payer_date_of_birth=1980-10-10&payer_identification_type=none&conversion_id=5c351336-65d7-4722-a07c-6916deb35341&beneficiary_id=3342e304-1e82-4870-925f-8b8fb2df5d78")
-  .reply(200, {"id":"24cc52b6-939e-456c-a078-6c6f47e5aec1","amount":"10000.00","beneficiary_id":"3342e304-1e82-4870-925f-8b8fb2df5d78","currency":"EUR","reference":"INVOICE 9876","reason":"Salary for March","status":"awaiting_authorisation","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","payment_type":"regular","payment_date":"2018-07-18","transferred_at":"","authorisation_steps_required":"1","last_updater_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","short_reference":"180716-QJGBKJ001","conversion_id":"5c351336-65d7-4722-a07c-6916deb35341","failure_reason":"","payer_id":"be3a2a8f-9094-4f32-9692-72dfee61491f","payer_details_source":"payer","created_at":"2018-07-16T09:33:10+00:00","updated_at":"2018-07-16T09:33:10+00:00","payment_group_id":null,"unique_request_id":null,"failure_returned_amount":"0.00","ultimate_beneficiary_name":null}, [ 'Date',
-  'Mon, 16 Jul 2018 09:33:10 GMT',
+  .post('/v2/payments/create', "currency=EUR&amount=10000&reason=Salary%20for%20March&reference=INVOICE%209876&payment_type=regular&payer_entity_type=individual&payer_company_name=Some%20Company%20LLC&payer_first_name=John&payer_last_name=Doe&payer_city=London&payer_address=27%20Colmore%20Row&payer_postcode=W11%202BQ&payer_state_or_province=TX&payer_country=GB&payer_date_of_birth=1980-10-10&payer_identification_type=none&conversion_id=b29d6ba8-52d2-4329-b46d-145f8fb37008&beneficiary_id=2753e95a-068b-47ea-afde-55995697ee75")
+  .reply(200, {"id":"91b1443d-8271-44ba-a902-f2ada263e0aa","amount":"10000.00","beneficiary_id":"2753e95a-068b-47ea-afde-55995697ee75","currency":"EUR","reference":"INVOICE 9876","reason":"Salary for March","status":"awaiting_authorisation","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","payment_type":"regular","payment_date":"2018-07-24","transferred_at":"","authorisation_steps_required":"1","last_updater_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","short_reference":"180720-MBLHLN001","conversion_id":"b29d6ba8-52d2-4329-b46d-145f8fb37008","failure_reason":"","payer_id":"be3a2a8f-9094-4f32-9692-72dfee61491f","payer_details_source":"payer","created_at":"2018-07-20T10:26:00+00:00","updated_at":"2018-07-20T10:26:00+00:00","payment_group_id":null,"unique_request_id":null,"failure_returned_amount":"0.00","ultimate_beneficiary_name":null}, [ 'Date',
+  'Fri, 20 Jul 2018 10:26:00 GMT',
   'Content-Type',
   'application/json;charset=utf-8',
   'Transfer-Encoding',
@@ -1341,13 +1341,13 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Connection',
   'close',
   'Set-Cookie',
-  '__cfduid=d83292eda96deedd76ca1e01ecf7378e41531733589; expires=Tue, 16-Jul-19 09:33:09 GMT; path=/; domain=.currencycloud.com; HttpOnly',
+  '__cfduid=df0677970e03fd7c17414ef6fed6eccd01532082359; expires=Sat, 20-Jul-19 10:25:59 GMT; path=/; domain=.currencycloud.com; HttpOnly',
   'Set-Cookie',
-  'AWSALB=1Im7dBKzhzFmz7D5BXZKZF2gribsaFsP9n06uDUxUGXdRQHDVB94LhFjRQEUSMJuzxIXUYqXx8Y7Rqz5O/hP8aWyZVW62C8vC6gGEDYRN7v7cWxt5fvGg6fAc0C1; Expires=Mon, 23 Jul 2018 09:33:09 GMT; Path=/',
+  'AWSALB=n8TPWfqHY1QrHiAP9+6UEiOblLFxhbdrwtj3PX8MpIp7G+MF7iOxW29T6UA8avatfQCxKlbw0UQt/fD2LDIy/mqck97X2P08zuGDqSNP6XUdGO4NRWr19CHQ/RLM; Expires=Fri, 27 Jul 2018 10:25:59 GMT; Path=/',
   'Access-Control-Allow-Origin',
   '*',
   'X-Request-Id',
-  '71ec991c-501c-4562-9cce-9e0dc324e21b',
+  '06d7999e-f1dd-4150-be15-247405546ee4',
   'Access-Control-Allow-Methods',
   'POST',
   'X-Content-Type-Options',
@@ -1361,12 +1361,45 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Server',
   'cloudflare',
   'CF-RAY',
-  '43b377376e4f137d-LHR' ]);
+  '43d4ba1d48b83683-MAN' ]);
+
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
+  .post('/v2/payments/create', "currency=EUR&amount=0.23&reason=Prepayment%20of%20salary%20for%20April&reference=INVOICE%20122%2F1&payment_type=regular&payer_entity_type=individual&payer_company_name=Jens%20enskild%20firma&payer_first_name=Jennifer&payer_last_name=Waylon&payer_city=Stockholm&payer_address=22%20Garvargatan&payer_postcode=12332&payer_state_or_province=Stockholm&payer_country=SE&payer_date_of_birth=1981-12-10&payer_identification_type=none&conversion_id=b29d6ba8-52d2-4329-b46d-145f8fb37008&beneficiary_id=2753e95a-068b-47ea-afde-55995697ee75")
+  .reply(200, {"id":"9a4cb8ac-f9e0-4fab-9fe6-88e2fb5b5a69","amount":"0.23","beneficiary_id":"2753e95a-068b-47ea-afde-55995697ee75","currency":"EUR","reference":"INVOICE 122/1","reason":"Prepayment of salary for April","status":"awaiting_authorisation","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","payment_type":"regular","payment_date":"2018-07-24","transferred_at":"","authorisation_steps_required":"1","last_updater_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","short_reference":"180720-MBLHLN002","conversion_id":"b29d6ba8-52d2-4329-b46d-145f8fb37008","failure_reason":"","payer_id":"6f225be4-682c-41f1-9b0d-3957794d704e","payer_details_source":"payer","created_at":"2018-07-20T10:26:01+00:00","updated_at":"2018-07-20T10:26:01+00:00","payment_group_id":null,"unique_request_id":null,"failure_returned_amount":"0.00","ultimate_beneficiary_name":null}, [ 'Date',
+  'Fri, 20 Jul 2018 10:26:02 GMT',
+  'Content-Type',
+  'application/json;charset=utf-8',
+  'Transfer-Encoding',
+  'chunked',
+  'Connection',
+  'close',
+  'Set-Cookie',
+  '__cfduid=d9b2551cdddb069c28363751d837e73671532082361; expires=Sat, 20-Jul-19 10:26:01 GMT; path=/; domain=.currencycloud.com; HttpOnly',
+  'Set-Cookie',
+  'AWSALB=OPT/rUr9RbtSQuQrN06g8JKG5ugKOPa9SvHwuaIEMrm6eiX1oRPEYAR2K8Faa0S8VMgvJNZQEB94Xki6s2F7El/vamTWDCbzVN3JQwSc2c9Y4pHsYeqWhlvNWKej; Expires=Fri, 27 Jul 2018 10:26:01 GMT; Path=/',
+  'Access-Control-Allow-Origin',
+  '*',
+  'X-Request-Id',
+  '98f2740d-9cde-4c71-8031-8056465e4e53',
+  'Access-Control-Allow-Methods',
+  'POST',
+  'X-Content-Type-Options',
+  'nosniff',
+  'Vary',
+  'Origin',
+  'Access-Control-Allow-Headers',
+  'authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction,X-Auth-Token,Origin,Authority',
+  'Expect-CT',
+  'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+  'Server',
+  'cloudflare',
+  'CF-RAY',
+  '43d4ba24aab73659-MAN' ]);
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   .post('/v2/authenticate/api', "login_id=development%2Bauthorisation2%40currencycloud.com&api_key=deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef")
-  .reply(200, {"auth_token":"9ffb158951b3ef0d9e9bb84388f0e9fe"}, [ 'Date',
-  'Mon, 16 Jul 2018 09:33:12 GMT',
+  .reply(200, {"auth_token":"ce43b83eb01c42259b9861cda8586493"}, [ 'Date',
+  'Fri, 20 Jul 2018 10:26:03 GMT',
   'Content-Type',
   'application/json;charset=utf-8',
   'Transfer-Encoding',
@@ -1374,13 +1407,13 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Connection',
   'close',
   'Set-Cookie',
-  '__cfduid=dcb60b87b15515d3190cf9c3e4e5edbf51531733590; expires=Tue, 16-Jul-19 09:33:10 GMT; path=/; domain=.currencycloud.com; HttpOnly',
+  '__cfduid=d1315e24d7fe3aa46e22954b23873d76e1532082362; expires=Sat, 20-Jul-19 10:26:02 GMT; path=/; domain=.currencycloud.com; HttpOnly',
   'Set-Cookie',
-  'AWSALB=cxz0L4ihgnYAkjrdSoGSKuri24nDCNvKuTKqVLivi7KUlSiEkyg+QTxNcYmvs3HXKB9E6YGYeEoosSxiNri5sdfLNp08Z5JNtMF/9uKRwjD82pDI+Ix5n8V3QfEZ; Expires=Mon, 23 Jul 2018 09:33:10 GMT; Path=/',
+  'AWSALB=YUUB9DG7O9Ju4i+vrfON7by/OlgSpxtdJwkg7aY0oTQk9/btPc7QCixJzbZ398fVZyBzZBBFSaxC9+sB2i0KkRQ9+2eOi2Nvr+WCRTP/NqYCOXXxsBXKbP2D9LbP; Expires=Fri, 27 Jul 2018 10:26:02 GMT; Path=/',
   'Access-Control-Allow-Origin',
   '*',
   'X-Request-Id',
-  '43ee4131-369c-4a50-b707-29b084b16697',
+  '2410a405-ee6e-4e19-a9a1-700b68c778d3',
   'Access-Control-Allow-Methods',
   'POST',
   'X-Content-Type-Options',
@@ -1394,12 +1427,12 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Server',
   'cloudflare',
   'CF-RAY',
-  '43b3773d7f6d0a8a-LHR' ]);
+  '43d4ba2c19f33629-MAN' ]);
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
-  .post('/v2/payments/authorise', "payment_ids%5B%5D=24cc52b6-939e-456c-a078-6c6f47e5aec1")
-  .reply(200, {"authorisations":[{"payment_id":"24cc52b6-939e-456c-a078-6c6f47e5aec1","payment_status":"authorised","updated":true,"error":null,"auth_steps_taken":1,"auth_steps_required":1,"short_reference":"180716-QJGBKJ001"}]}, [ 'Date',
-  'Mon, 16 Jul 2018 09:33:12 GMT',
+  .post('/v2/payments/authorise', "payment_ids%5B%5D=91b1443d-8271-44ba-a902-f2ada263e0aa&payment_ids%5B%5D=9a4cb8ac-f9e0-4fab-9fe6-88e2fb5b5a69")
+  .reply(200, {"authorisations":[{"payment_id":"91b1443d-8271-44ba-a902-f2ada263e0aa","payment_status":"authorised","updated":true,"error":null,"auth_steps_taken":1,"auth_steps_required":1,"short_reference":"180720-MBLHLN001"},{"payment_id":"9a4cb8ac-f9e0-4fab-9fe6-88e2fb5b5a69","payment_status":"authorised","updated":true,"error":null,"auth_steps_taken":1,"auth_steps_required":1,"short_reference":"180720-MBLHLN002"}]}, [ 'Date',
+  'Fri, 20 Jul 2018 10:26:04 GMT',
   'Content-Type',
   'application/json;charset=utf-8',
   'Transfer-Encoding',
@@ -1407,13 +1440,13 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Connection',
   'close',
   'Set-Cookie',
-  '__cfduid=df5527d5af10083f73a4352f4302fcb381531733592; expires=Tue, 16-Jul-19 09:33:12 GMT; path=/; domain=.currencycloud.com; HttpOnly',
+  '__cfduid=d1b66edf65d48c8cecf75b789e632b87c1532082363; expires=Sat, 20-Jul-19 10:26:03 GMT; path=/; domain=.currencycloud.com; HttpOnly',
   'Set-Cookie',
-  'AWSALB=n4zD8NTy2FG/6dAWStJgbaYTMrmaoqsusnVojkpuCqkPISpRMsXPoKPubKx+uT5/wP0xcDMl1xb6UtnXKKjdcmvcPuW0R/4qf8xJh4tOsfAs7hLyDfw4YZOk1Lgi; Expires=Mon, 23 Jul 2018 09:33:12 GMT; Path=/',
+  'AWSALB=cVEgwhiyL2RpzeMsKRk6L8Qoimj2jTCoGbfuMwgAIgkrWSMz6YBcA8wPtEct+l+TY1FBRZGPnmwtlpkUm9hEypHTzpFdXCCbmJn1y0GNxMfxljP9xyx73XHlpaOS; Expires=Fri, 27 Jul 2018 10:26:04 GMT; Path=/',
   'Access-Control-Allow-Origin',
   '*',
   'X-Request-Id',
-  '0a3e7bf6-a069-4f21-b835-579fcd9de8f1',
+  '7120d5fc-d9c0-4dd9-ba82-219a140fa55f',
   'Access-Control-Allow-Methods',
   'POST',
   'X-Content-Type-Options',
@@ -1427,7 +1460,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Server',
   'cloudflare',
   'CF-RAY',
-  '43b377481b730a8a-LHR' ]);
+  '43d4ba36fd39366b-MAN' ]);
 
 nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/close_session')

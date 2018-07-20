@@ -301,32 +301,51 @@ describe('payments', function () {
         .catch(done);
     });
 
-    it('successfully authorises a payment', function (done) {
+    it('successfully authorises payments', function (done) {
       var data = {};
       getPrerequisites()
         .then(function (res) {
-          var payment = new mock.payments.payment1();
-          payment.conversionId = res.conversionId;
-          payment.beneficiaryId = res.beneficiaryId;
+          var payment1 = new mock.payments.payment1();
+          payment1.conversionId = res.conversionId;
+          payment1.beneficiaryId = res.beneficiaryId;
 
-          return currencyCloud.payments.create(payment)
-            .then(function (created) {
-              data.created = created;
-              return created;
+          var payment2 = new mock.payments.payment2();
+          payment2.conversionId = res.conversionId;
+          payment2.beneficiaryId = res.beneficiaryId;
+
+          return currencyCloud.payments.create(payment1)
+            .then(function (created1) {
+              data.created = [];
+              data.created[0] = created1;
+              return created1;
+            })
+            .then(function () {
+              return currencyCloud.payments.create(payment2);
+            })
+            .then(function (created2) {
+              data.created[1] = created2;
+              return created2;
             })
             .then(function () {
               return currencyCloud.authentication.login(mock.authentication.paymentAuthorisationCredentials);
             })
               .then(function (authorised) {
                 return currencyCloud.payments.authorise({
-                  payment_ids: [data.created.id]
+                  payment_ids: [data.created[0].id, data.created[1].id]
                 })
                   .then(function (gotten) {
                   expect(gotten.authorisations[0].error).not.to.equal('You cannot authorise this Payment as it was created by you.');
                   expect(gotten.authorisations[0]).to.have.property('paymentId').that.is.not.null;
                   expect(gotten.authorisations[0]).to.have.property('error').that.is.null;
                   expect(gotten.authorisations[0].paymentStatus).to.be.a('string', 'authorised');
-                  expect(gotten.authorisations[0].paymentId).to.equal(data.created.id);
+                  expect(gotten.authorisations[0].paymentId).to.equal(data.created[0].id);
+
+                  expect(gotten.authorisations[1].error).not.to.equal('You cannot authorise this Payment as it was created by you.');
+                  expect(gotten.authorisations[1]).to.have.property('paymentId').that.is.not.null;
+                  expect(gotten.authorisations[1]).to.have.property('error').that.is.null;
+                  expect(gotten.authorisations[1].paymentStatus).to.be.a('string', 'authorised');
+                  expect(gotten.authorisations[1].paymentId).to.equal(data.created[1].id);
+
                   done();
                 });
             });
