@@ -329,7 +329,7 @@ describe('payments', function () {
             .then(function () {
               return currencyCloud.authentication.login(mock.authentication.paymentAuthorisationCredentials);
             })
-              .then(function (authorised) {
+              .then(function () {
                 return currencyCloud.payments.authorise({
                   payment_ids: [data.created[0].id, data.created[1].id]
                 })

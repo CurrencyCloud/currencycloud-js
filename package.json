@@ -48,8 +48,7 @@
   "scripts": {
     "lint": "jshint examples lib test",
     "test": "mocha test/api/ --timeout 15000",
-    "pretest": "npm run lint",
-    "payments": "mocha test/api/payments --timeout 15000"
+    "pretest": "npm run lint"
   },
   "settings": {
     "environment": {
