@@ -113,4 +113,18 @@ describe('reference', function () {
         .catch(done);
     });
   });
+
+  describe('getPaymentPurposeCodes', function () {
+    it('successfully gets payment purpose codes', function (done) {
+      currencyCloud.reference.getPaymentPurposeCodes({
+        currency: 'CNY'
+      })
+        .then(function (res) {
+          expect(res).is.not.empty;
+          expect(res).to.have.property('purposeCodes').that.is.not.null;
+          done();
+        })
+        .catch(done);
+    });
+  });
 });
