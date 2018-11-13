@@ -65,7 +65,7 @@ nock('https://devapi.currencycloud.com:443')
                 "search_params": {
                     "buy_currency": "EUR",
                     "sell_currency": "GBP",
-                    "unique_request_id": "q1w2e3r4",
+                    "unique_request_id": "a2730264-5bc1-2313-fea6-461243f3ea5a",
                     "scope": "own"
                 },
                 "report_type": "conversion",
