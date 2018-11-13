@@ -15,7 +15,7 @@ let generate_report = {
         description: "Testing JS API",
         buyCurrency: "EUR",
         sellCurrency: "GBP",
-        uniqueRequestId: "q1w2e3r4"
+        uniqueRequestId: "a2730264-5bc1-2313-fea6-461243f3ea5a"
     },
     payment_report_params:{
         description: "Testing JS payment report API",
