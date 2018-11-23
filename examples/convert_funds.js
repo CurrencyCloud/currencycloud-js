@@ -9,29 +9,29 @@
 
 let currencyCloud = require('../lib/currency-cloud');
 const opts = {
-  retries: 3,
-  factor: 2,
-  minTimeout: Math.random() * 750,
-  maxTimeout: Math.random() * 30000 + 30000,
-  randomize: true,
-  log: true
+    retries: 3,
+    factor: 2,
+    minTimeout: Math.random() * 750,
+    maxTimeout: Math.random() * 30000 + 30000,
+    randomize: true,
+    log: true
 };
 
 let convertFunds = {
-  getQuote: {
-    buyCurrency: "EUR",
-    sellCurrency: "GBP",
-    amount: 10000,
-    fixedSide: "buy"
-  },
-  conversion: {
-    buyCurrency: "EUR",
-    sellCurrency: "GBP",
-    amount: 10000,
-    fixedSide: "buy",
-    reason: "Top up Euros balance",
-    termAgreement: true
-  }
+    getQuote: {
+        buyCurrency: "EUR",
+        sellCurrency: "GBP",
+        amount: 10000,
+        fixedSide: "buy"
+    },
+    conversion: {
+        buyCurrency: "EUR",
+        sellCurrency: "GBP",
+        amount: 10000,
+        fixedSide: "buy",
+        reason: "Top up Euros balance",
+        termAgreement: true
+    },
 };
 
 /**
@@ -52,17 +52,17 @@ let convertFunds = {
  */
 
 let login = () => {
-  return currencyCloud.retry(
-    () => {
-      return currencyCloud.authentication.login({
-        environment: 'demo',
-        loginId: 'development@currencycloud.com',
-        apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
-      });
-    },
-    opts,
-    "currencyCloud.authentication.login"
-  );
+    return currencyCloud.retry(
+        () => {
+            return currencyCloud.authentication.login({
+                environment: 'demo',
+                loginId: 'development@currencycloud.com',
+                apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
+            });
+        },
+        opts,
+        "currencyCloud.authentication.login"
+    );
 };
 
 /**
@@ -72,14 +72,14 @@ let login = () => {
  */
 
 let getQuote = () => {
-  return currencyCloud.retry(
-    () => {
-      return currencyCloud.rates.get(convertFunds.getQuote)
-        .then((res) => {
-          console.log('getQuote: ' + JSON.stringify(res, null, 2) + '\n');
-        });
-    },
-    opts);
+    return currencyCloud.retry(
+        () => {
+            return currencyCloud.rates.get(convertFunds.getQuote)
+                .then((res) => {
+                    console.log('getQuote: ' + JSON.stringify(res, null, 2) + '\n');
+                });
+        },
+        opts);
 };
 
 /**
@@ -91,14 +91,14 @@ let getQuote = () => {
  */
 
 let createConversion = () => {
-  return currencyCloud.retry(
-    () => {
-      return currencyCloud.conversions.create(convertFunds.conversion)
-        .then((res) => {
-          console.log('createConversion: ' + JSON.stringify(res, null, 2) + '\n');
+    return currencyCloud.retry(
+        () => {
+            return currencyCloud.conversions.create(convertFunds.conversion)
+                .then((res) => {
+                    console.log('createConversion: ' + JSON.stringify(res, null, 2) + '\n');
+                });
         });
-    });
- };
+};
 
 /**
  * On success, the payload of the response message will contain full details of the conversion as recorded against your
@@ -114,22 +114,95 @@ let createConversion = () => {
  * expire. Send a request to the Logout endpoint to terminate an authentication token immediately.
  */
 
+let retrieve_profit_and_loss = () => {
+    return currencyCloud.retry(
+        () => {
+            return currencyCloud.conversions.profit_and_loss()
+                .then((res) => {
+                    console.log('Your data about profit and/or loss: ' + JSON.stringify(res, null, 2) + '\n');
+                });
+        },
+        opts);
+};
+
+let quote_conversion_date_change = () => {
+    return currencyCloud.retry(
+        () => {
+            return currencyCloud.conversions.create(convertFunds.conversion)
+                .then((res) => {
+                    var newDate = new Date(res.settlementDate);
+                    newDate.setDate(newDate.getDate() + 1);
+                    return currencyCloud.conversions.date_change_quote({
+                        id: res.id,
+                        new_settlement_date: newDate.toDateString()
+                    }).then((result) => {
+                        console.log('Your date change quote made successfully: ' + JSON.stringify(result, null, 2) + '\n');
+                    });
+                });
+        },
+        opts);
+};
+
+let split_preview = () => {
+    return currencyCloud.retry(
+        () => {
+            return currencyCloud.conversions.split_preview({
+                id: "b9a4ea57-42a7-476d-95d6-6edceec5c5a0",
+                amount: 2
+            })
+                .then((result) => {
+                    console.log('Split preview: ' + JSON.stringify(result, null, 2) + '\n');
+                });
+        });
+};
+
+let split_history = () => {
+    return currencyCloud.retry(
+        () => {
+            return currencyCloud.conversions.split_history({
+                id: 'c805aa35-9bd3-4afe-ade2-d341e551aa16'
+            })
+                .then((result) => {
+                    console.log('Split history: ' + JSON.stringify(result, null, 2) + '\n');
+                });
+        });
+};
+
+let cancellation_quote = () => {
+    return currencyCloud.retry(
+        () => {
+            return currencyCloud.conversions.create(convertFunds.conversion)
+                .then((res) => {
+                    return currencyCloud.conversions.cancellation_quote({
+                        id: res.id
+                    })
+                        .then((result) => {
+                            console.log('Successful cancellation quote: ' + JSON.stringify(result, null, 2) + '\n');
+                        });
+                });
+        });
+};
 let logout = () => {
-  return currencyCloud.authentication.logout()
-    .then(() => {
-      console.log('logout\n');
-    });
+    return currencyCloud.authentication.logout()
+        .then(() => {
+            console.log('logout\n');
+        });
 };
 
 login()
-  .then(getQuote)
-  .then(createConversion)
-  .then(logout)
-  .catch((err) => {
-    if (err instanceof currencyCloud.APIerror) {
-      console.log(err.toYAML());
-    }
-    else {
-      console.log(err);
-    }
-  });
+    .then(getQuote)
+    .then(createConversion)
+    .then(retrieve_profit_and_loss)
+    .then(quote_conversion_date_change)
+    .then(split_preview)
+    .then(split_history)
+    .then(cancellation_quote)
+    .then(logout)
+    .catch((err) => {
+        if (err instanceof currencyCloud.APIerror) {
+            console.log(err.toYAML());
+        }
+        else {
+            console.log(err);
+        }
+    });
