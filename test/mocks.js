@@ -504,5 +504,38 @@ module.exports = {
             order: 'string',
             orderAscDesc: 'string'
         })
+    },
+
+    reports: {
+        report1: function () {
+            return {
+                buyCurrency: 'EUR',
+                sellCurrency: 'GBP',
+            };
+        },
+        report2: function () {
+          return {
+              description: 'TESTING REPORT FOR PAYMENTS',
+              currency: 'GBP',
+              amountFrom: '1000',
+              amountTo: '10000'
+          };
+        },
+        schema: new JSONschema({
+            id: 'UUID',
+            shortReference: 'string',
+            searchParams: {
+                buyCurrency: 'string',
+                sellCurrency: 'string',
+                scope: 'string'
+            },
+            reportType: 'string',
+            status: 'string',
+            reportUrl: '',
+            accountId: 'UUID',
+            contactId: 'UUID',
+            createdAt: 'date',
+            updatedAt: 'date'
+        })
     }
 };

@@ -1462,6 +1462,21 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'CF-RAY',
   '43d4ba36fd39366b-MAN' ]);
 
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
+    .get('/v2/payments/ffbe0bcb-1cc0-43b8-b931-c40691cf09d9/confirmation')
+    .query({"id": "ffbe0bcb-1cc0-43b8-b931-c40691cf09d9"})
+    .reply(200, {
+        "id": "c4b36894-c9e9-4679-abb2-eb5ee82ea155",
+        "payment_id": "ffbe0bcb-1cc0-43b8-b931-c40691cf09d9",
+        "account_id": "c0ea266f-b969-4d61-9ca0-e790c79072e5",
+        "short_reference": "PC-3674681-TFWLCJ",
+        "status": "failed",
+        "confirmation_url": "",
+        "created_at": "2018-10-24T14:03:39+00:00",
+        "updated_at": "2018-10-24T14:03:40+00:00",
+        "expires_at": null
+    });
+
 nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/close_session')
   .reply(200, {});
