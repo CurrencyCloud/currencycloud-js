@@ -27,23 +27,6 @@ module.exports = {
     }
   },
 
-  accounts: {
-    account1: function () {
-      return {
-        accountName: 'Acme Ltd.',
-        legalEntityType: 'company',
-        yourReference: 'POS-UID-23523',
-        status: 'enabled',
-        street: '164 Bishops Gate',
-        city: 'London',
-        stateOrProvince: 'Ontario',
-        postalCode: 'CR4 3RZ',
-        country: 'GB',
-        spreadTable: 'no_markup',
-        identificationType: 'none'
-      };
-    },
-
     accounts: {
         account1: function () {
             return {
