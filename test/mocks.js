@@ -12,13 +12,36 @@ var JSONschema = function (schema) {
 };
 
 module.exports = {
-    authentication: {
-        credentials: {
-            environment: 'demo',
-            loginId: 'development@currencycloud.com',
-            apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef',
-            authUrl: '/v2/authenticate/api'
-        }
+  authentication: {
+    credentials: {
+      environment: 'demo',
+      loginId: 'development@currencycloud.com',
+      apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef',
+      authUrl: '/v2/authenticate/api'
+    },
+    paymentAuthorisationCredentials: {
+      environment: 'demo',
+      loginId: 'development+authorisation2@currencycloud.com',
+      apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef',
+      authUrl: '/v2/authenticate/api'
+    }
+  },
+
+  accounts: {
+    account1: function () {
+      return {
+        accountName: 'Acme Ltd.',
+        legalEntityType: 'company',
+        yourReference: 'POS-UID-23523',
+        status: 'enabled',
+        street: '164 Bishops Gate',
+        city: 'London',
+        stateOrProvince: 'Ontario',
+        postalCode: 'CR4 3RZ',
+        country: 'GB',
+        spreadTable: 'no_markup',
+        identificationType: 'none'
+      };
     },
 
     accounts: {
