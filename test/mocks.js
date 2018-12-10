@@ -475,6 +475,21 @@ module.exports = {
             creatorAccountId: 'UUID',
             creatorContactId: 'UUID',
             reason: 'string'
+        }),
+    },
+
+    vans: {
+        schema: new JSONschema({
+            id: 'UUID',
+            accountId: 'UUID',
+            virtualAccountNumber: 'string',
+            accountHolderName : 'string',
+            bankInstitutionName: 'string',
+            bankInstitutionAddress: 'string',
+            bankInstitutionCountry: 'string',
+            routingCode: 'string',
+            createdAt: 'date',
+            updatedAt: 'date',
         })
     },
 
