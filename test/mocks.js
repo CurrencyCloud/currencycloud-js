@@ -18,6 +18,12 @@ module.exports = {
       loginId: 'development@currencycloud.com',
       apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef',
       authUrl: '/v2/authenticate/api'
+    },
+    paymentAuthorisationCredentials: {
+      environment: 'demo',
+      loginId: 'development+authorisation2@currencycloud.com',
+      apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef',
+      authUrl: '/v2/authenticate/api'
     }
   },
 
