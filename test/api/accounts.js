@@ -10,25 +10,25 @@ var teardown = prepost.teardown;
 
 describe('accounts', function() {
   before(function(done) {
-    recorder.read();    
+    recorder.read();
     setup.login()
     .then(function() {
       done();
     });
   });
-  
+
   after(function(done) {
     teardown.logout()
     .then(function() {
       recorder.write(done);
     });
   });
-  
+
   describe('create', function() {
     it('fails if required parameters are missing', function() {
       expect(function() {
         currencyCloud.accounts.create({
-          accountName: 'present'  
+          accountName: 'present'
         });
       }).to.throw();
       expect(function() {
@@ -42,12 +42,14 @@ describe('accounts', function() {
       currencyCloud.accounts.create(new mock.accounts.account1())
       .then(function(created) {
         expect(mock.accounts.schema.validate(created)).is.true;
+        expect(created).to.deep.include(mock.accounts.account1);
+
         done();
       })
       .catch(done);
     });
   });
-  
+
   describe('get', function() {
     it('fails if required parameters are missing', function() {
       expect(function() {
@@ -66,7 +68,7 @@ describe('accounts', function() {
           done();
         });
       })
-      .catch(done);      
+      .catch(done);
     });
   });
 
@@ -82,7 +84,7 @@ describe('accounts', function() {
       .then(function(created) {
         var account = new mock.accounts.account2();
         account.id = created.id;
-        
+
         return currencyCloud.accounts.update(account)
         .then(function(updated) {
           return currencyCloud.accounts.get({
@@ -94,10 +96,10 @@ describe('accounts', function() {
           });
         });
       })
-      .catch(done);      
+      .catch(done);
     });
   });
-  
+
   describe('find', function() {
     it('successfully finds an account', function(done) {
       currencyCloud.accounts.getCurrent()
@@ -117,7 +119,7 @@ describe('accounts', function() {
       .catch(done);
     });
   });
-  
+
   describe('getCurrent', function() {
     it('successfully gets current account', function(done) {
       currencyCloud.accounts.getCurrent()
