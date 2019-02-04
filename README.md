@@ -255,9 +255,9 @@ Technology evolves quickly and we are always looking for better ways to serve ou
 
 Deprecation means that we discourage the use of a feature, design or practice because it has been superseded or is no longer considered efficient or safe but instead of removing it immediately, we mark it as **@deprecated** to provide backwards compatibility and time for you to update your projects. While the deprecated feature remains in the SDK for a period of time, we advise that you replace it with the recommended alternative which is explained in the relevant section of the code.
 
-We remove deprecated features after **six months** from the time of announcement.
+We remove deprecated features after **three months** from the time of announcement.
 
-The security of our customers' assets is of paramount importance to us and sometimes we have to deprecate features because they may pose a security threat or because new, more secure, ways are available. On such occasions we reserve the right to set a different deprecation period which may range from **immediate removal** to the standard **six months**. 
+The security of our customers' assets is of paramount importance to us and sometimes we have to deprecate features because they may pose a security threat or because new, more secure, ways are available. On such occasions we reserve the right to set a different deprecation period which may range from **immediate removal** to the standard **three months**. 
 
 Once a feature has been marked as deprecated, we no longer develop the code or implement bug fixes. We only do security fixes.
 
@@ -281,7 +281,7 @@ IMPORTANT: Remember to change the `loginId` and `apiKey` properties in `./test/m
 If you don't have a valid login or key, you can get them [here][registration]
 
 # Copyright
-Copyright (c) 2015-2018 Currencycloud. See [LICENSE][license] for details.
+Copyright (c) 2015-2019 Currencycloud. See [LICENSE][license] for details.
 
 [introduction]:    https://developer.currencycloud.com/documentation/getting-started/introduction
 [overview]:        https://developer.currencycloud.com/documentation/api-docs/overview/
