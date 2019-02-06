@@ -24,7 +24,6 @@ describe('vans', function () {
             });
     });
 
-
     describe('get', function () {
         it('successfully gets virtual accounts', function (done) {
             currencyCloud.vans.get()

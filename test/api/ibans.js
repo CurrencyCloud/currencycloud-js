@@ -24,50 +24,14 @@ describe('ibans', function () {
       });
   });
 
-  describe('create', function () {
-    it('fails if required parameters are missing', function () {
-      expect(function () {
-        currencyCloud.ibans.create(/*no params*/);
-      }).to.throw();
-    });
-
-    it('successfully creates an IBAN', function (done) {
-      currencyCloud.ibans.create(new mock.ibans.iban1())
-        .then(function (created) {
-          expect(mock.ibans.schema.validate(created)).is.true;
-          done();
-        })
-        .catch(done);
-    });
-  });
-
   describe('find', function () {
     it('successfully finds an IBAN', function (done) {
       currencyCloud.ibans.find()
         .then(function (found) {
-          expect(found).to.have.property('ibans');
+          expect(found.ibans[0]).that.satisfy(mock.ibans.schema.validate);
           done();
         })
         .catch(done);
-    });
-  });
-
-  describe('findInSubAccount', function () {
-    it('successfully finds an IBAN in sub-account', function (done) {
-      currencyCloud.ibans.findInSubAccount()
-        .then(function (found) {
-          expect(found).to.have.property('ibans');
-          done();
-        })
-        .catch(done);
-    });
-  });
-
-  describe('getInSubAccount', function () {
-    it('fails if required parameters are missing', function () {
-      expect(function () {
-        currencyCloud.ibans.get(/*no params*/);
-      }).to.throw();
     });
   });
 });

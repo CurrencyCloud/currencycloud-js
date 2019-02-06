@@ -288,13 +288,8 @@ module.exports = {
     },
 
     ibans: {
-        iban1: function () {
-            return {
-                currency: 'EUR',
-            };
-        },
         schema: new JSONschema({
-            uuid: 'UUID',
+            id: 'UUID',
             accountId: 'UUID',
             ibanCode: 'string',
             currency: 'string',

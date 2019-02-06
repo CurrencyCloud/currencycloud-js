@@ -10,20 +10,20 @@ var teardown = prepost.teardown;
 
 describe('beneficiaries', function() {
   before(function(done) {
-    recorder.read();    
+    recorder.read();
     setup.login()
     .then(function() {
       done();
     });
   });
-  
+
   after(function(done) {
     teardown.logout()
     .then(function() {
       recorder.write(done);
     });
   });
-  
+
   describe('validate', function() {
     it('fails if required parameters are missing', function() {
       expect(function() {
@@ -62,7 +62,7 @@ describe('beneficiaries', function() {
       .catch(done);
     });
   });
-  
+
   describe('create', function() {
     it('fails if required parameters are missing', function() {
       expect(function() {
@@ -104,7 +104,7 @@ describe('beneficiaries', function() {
       .catch(done);
     });
   });
-  
+
   describe('get', function() {
     it('fails if required parameters are missing', function() {
       expect(function() {
@@ -123,10 +123,10 @@ describe('beneficiaries', function() {
           done();
         });
       })
-      .catch(done);      
+      .catch(done);
     });
   });
-  
+
   describe('update', function() {
     it('fails if required parameters are missing', function() {
       expect(function() {
@@ -139,7 +139,7 @@ describe('beneficiaries', function() {
       .then(function(created) {
         var beneficiary = new mock.beneficiaries.beneficiary2();
         beneficiary.id = created.id;
-        
+
         return currencyCloud.beneficiaries.update(beneficiary)
         .then(function(updated) {
           return currencyCloud.beneficiaries.get({
@@ -151,10 +151,10 @@ describe('beneficiaries', function() {
           });
         });
       })
-      .catch(done);      
+      .catch(done);
     });
   });
-  
+
   describe('find', function() {
     it('successfully finds a beneficiary', function(done) {
       currencyCloud.beneficiaries.create(new mock.beneficiaries.beneficiary1())
@@ -174,7 +174,7 @@ describe('beneficiaries', function() {
       .catch(done);
     });
   });
-  
+
   describe('delete', function() {
     it('fails if required parameters are missing', function() {
       expect(function() {
@@ -203,7 +203,7 @@ describe('beneficiaries', function() {
           });
         });
       })
-      .catch(done);      
+      .catch(done);
     });
   });
 });

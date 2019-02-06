@@ -163,7 +163,7 @@ describe('conversions', function () {
         });
     });
 
-    describe('date_change', function () {
+    describe('date change', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
                 currencyCloud.conversions.date_change(/*no params*/);
