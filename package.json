@@ -35,14 +35,14 @@
   "dependencies": {
     "combined-stream": "^1.0.7",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2",
+    "request-promise": "^4.2.4",
     "retry": "^0.12.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "jshint": "^2.9.7",
-    "mocha": "^5.2.0",
+    "jshint": "^2.10.2",
+    "mocha": "^6.1.4",
     "nock": "^10.0.6"
   },
   "scripts": {
