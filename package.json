@@ -1,7 +1,7 @@
 {
   "name": "currency-cloud",
   "description": "Currencycloud API v2 JavaScript client",
-  "version": "2.0.1",
+  "version": "3.0.4",
   "author": "Currencycloud",
   "contributors": [
     {
@@ -21,9 +21,10 @@
   "bugs": {
     "url": "https://github.com/CurrencyCloud/currencycloud-js/issues"
   },
-  "homepage": "https://connect.currencycloud.com",
+  "homepage": "https://www.currencycloud.com",
   "keywords": [
     "currency cloud",
+    "currencycloud",
     "api",
     "client",
     "client library"
