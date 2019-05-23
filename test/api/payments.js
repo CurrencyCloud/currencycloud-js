@@ -289,7 +289,7 @@ describe('payments', function () {
                     return currencyCloud.payments.create(payment)
                         .then(function (created) {
                             return currencyCloud.payments.authorise({
-                                payment_ids: [created.id]
+                                paymentIds: [created.id]
                             })
                                 .then(function (gotten) {
                                     expect(gotten.authorisations[0]).to.have.property('error').that.is.not.null;
@@ -331,7 +331,7 @@ describe('payments', function () {
                         })
                         .then(function () {
                             return currencyCloud.payments.authorise({
-                                payment_ids: [data.created[0].id, data.created[1].id]
+                                paymentIds: [data.created[0].id, data.created[1].id]
                             })
                                 .then(function (gotten) {
                                     expect(gotten.authorisations[0].error).not.to.equal('You cannot authorise this Payment as it was created by you.');
@@ -376,4 +376,26 @@ describe('payments', function () {
                 .catch(done);
         });
     });
+
+    describe('getPaymentDeliveryDate', function () {
+    it('fails if required parameters are missing', function () {
+      expect(function () {
+        currencyCloud.payments.getPaymentDeliveryDate(/*no params*/);
+      }).to.throw();
+    });
+
+    it('successfully gets a payment delivery date', function (done) {
+      currencyCloud.payments.getPaymentDeliveryDate({
+        paymentDate: mock.payments.delivery1().paymentDate,
+        paymentType: mock.payments.delivery1().paymentType,
+        currency: mock.payments.delivery1().currency,
+        bankCountry: mock.payments.delivery1().bankCountry
+      })
+        .then(function (gotten) {
+          expect(gotten).to.eql(mock.payments.delivery1());
+          done();
+        })
+        .catch(done);
+    });
+  });
 });

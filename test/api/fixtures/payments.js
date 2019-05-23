@@ -1477,6 +1477,18 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
         "expires_at": null
     });
 
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
+  .get('/v2/payments/payment_delivery_date')
+  .query({"payment_date": "2018-01-01", "payment_type": "regular", "currency": "EUR", "bank_country": "IT" })
+  .reply(200, {
+    "payment_date": "2018-01-01",
+    "payment_delivery_date": "2018-01-01T00:00:00+00:00",
+    "payment_cutoff_time": "2018-01-02T14:30:00+00:00",
+    "payment_type": "regular",
+    "currency": "EUR",
+    "bank_country": "IT"
+  });
+
 nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/close_session')
   .reply(200, {});

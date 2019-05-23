@@ -382,6 +382,16 @@ module.exports = {
                 payerIdentificationType: 'none'
             };
         },
+        delivery1: function() {
+            return {
+                paymentDate: '2018-01-01',
+                paymentDeliveryDate: '2018-01-01T00:00:00+00:00',
+                paymentCutoffTime: '2018-01-02T14:30:00+00:00',
+                paymentType: 'regular',
+                currency: 'EUR',
+                bankCountry: 'IT'
+            };
+        },
         schema: new JSONschema({
             id: 'UUID',
             shortReference: 'string',
