@@ -267,5 +267,40 @@ nock('https://devapi.currencycloud.com:443')
   });
 
 nock('https://devapi.currencycloud.com:443')
+  .get('/v2/accounts/cf28b2d8-5afa-4d7f-9a26-7b45bf616a11/payment_charges_settings')
+  .reply(200, {
+    "payment_charges_settings": [
+      {
+        "charge_settings_id": "37b48141-1b0b-4c76-bcbc-8ffb4c5a98e4",
+        "account_id": "cf28b2d8-5afa-4d7f-9a26-7b45bf616a11",
+        "charge_type": "ours",
+        "enabled": false,
+        "default": false
+      },
+      {
+        "charge_settings_id": "e43db1d1-2d48-4ed1-90ca-542ec45bcbe8",
+        "account_id": "cf28b2d8-5afa-4d7f-9a26-7b45bf616a11",
+        "charge_type": "shared",
+        "enabled": true,
+        "default": true
+      }
+    ]
+  });
+
+nock('https://devapi.currencycloud.com:443')
+  .post('/v2/accounts/cf28b2d8-5afa-4d7f-9a26-7b45bf616a11/payment_charges_settings/e43db1d1-2d48-4ed1-90ca-542ec45bcbe8', {
+    "charge_type": "shared",
+    "enabled": true,
+    "default": true
+  })
+  .reply(200, {
+    "charge_settings_id": "e43db1d1-2d48-4ed1-90ca-542ec45bcbe8",
+    "account_id": "cf28b2d8-5afa-4d7f-9a26-7b45bf616a11",
+    "charge_type": "shared",
+    "enabled": true,
+    "default": true
+  });
+
+nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/close_session')
   .reply(200, {});
