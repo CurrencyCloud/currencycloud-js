@@ -24,18 +24,6 @@ describe('vans', function () {
             });
     });
 
-    describe('get', function () {
-        it('successfully gets virtual accounts', function (done) {
-            currencyCloud.vans.get()
-                .then(function (gotten) {
-                    expect(gotten).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
-                    expect(gotten.virtualAccounts[0]).that.satisfy(mock.vans.schema.validate);
-                    done();
-                })
-                .catch(done);
-        });
-    });
-
     describe('find', function () {
         it('successfully finds virtual accounts', function (done) {
             currencyCloud.vans.find()
