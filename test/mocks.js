@@ -58,6 +58,24 @@ module.exports = {
                 identificationType: 'none'
             };
         },
+        settings1: function() {
+          return {
+              chargeSettingsId: '37b48141-1b0b-4c76-bcbc-8ffb4c5a98e4',
+              accountId: 'cf28b2d8-5afa-4d7f-9a26-7b45bf616a11',
+              chargeType: 'ours',
+              enabled: false,
+              default: false
+          };
+        },
+        settings2: function() {
+            return {
+                chargeSettingsId: 'e43db1d1-2d48-4ed1-90ca-542ec45bcbe8',
+                accountId: 'cf28b2d8-5afa-4d7f-9a26-7b45bf616a11',
+                chargeType: 'shared',
+                enabled: true,
+                default: true
+            };
+        },
         schema: new JSONschema({
             id: 'UUID',
             legalEntityType: 'string',
@@ -362,6 +380,16 @@ module.exports = {
                 payerCountry: 'SE',
                 payerDateOfBirth: '1981-12-10',
                 payerIdentificationType: 'none'
+            };
+        },
+        delivery1: function() {
+            return {
+                paymentDate: '2018-01-01',
+                paymentDeliveryDate: '2018-01-01T00:00:00+00:00',
+                paymentCutoffTime: '2018-01-02T14:30:00+00:00',
+                paymentType: 'regular',
+                currency: 'EUR',
+                bankCountry: 'IT'
             };
         },
         schema: new JSONschema({

@@ -130,4 +130,42 @@ describe('accounts', function() {
       .catch(done);
     });
   });
+
+  describe('getPaymentChargesSettings', function() {
+    it('fails if required parameters are missing', function() {
+      expect(function() {
+        currencyCloud.accounts.getPaymentChargesSettings(/*no params*/);
+      }).to.throw();
+    });
+
+    it('successfully gets payment charges settings for the account', function(done) {
+      currencyCloud.accounts.getPaymentChargesSettings({
+        accountId: mock.accounts.settings1().accountId
+      })
+        .then(function(gotten) {
+          expect(gotten.paymentChargesSettings).to.deep.include(mock.accounts.settings1());
+          done();
+        })
+        .catch(done);
+    });
+
+    });
+
+  describe('updatePaymentChargesSettings', function() {
+    it('fails if required parameters are missing', function() {
+      expect(function() {
+        currencyCloud.accounts.updatePaymentChargesSettings(/*no params*/);
+      }).to.throw();
+    });
+
+    it('successfully updates payment charges settings for the account', function(done) {
+      currencyCloud.accounts.updatePaymentChargesSettings(new mock.accounts.settings2())
+        .then(function(updated) {
+          expect(updated).to.eql(mock.accounts.settings2());
+          done();
+        })
+        .catch(done);
+    });
+
+  });
 });
