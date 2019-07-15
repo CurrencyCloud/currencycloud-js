@@ -159,7 +159,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'Origin' ]);
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
-    .get('/v2/reference/bankDetails')
+    .get('/v2/reference/bank_details')
     .query({"identifier_type":"iban","identifier_value":"GB19TCCL00997901654515"})
     .reply(200, {"identifier_value":"GB19TCCL00997901654515","identifier_type":"iban","account_number":"GB19TCCL00997901654515","bic_swift":"TCCLGB22XXX","bank_name":"THE CURRENCY CLOUD LIMITED","bank_branch":"","bank_address":"12 STEWARD STREET  THE STEWARD BUILDING FLOOR 0","bank_city":"LONDON","bank_state":"LONDON","bank_post_code":"E1 6FQ","bank_country":"UNITED KINGDOM","bank_country_ISO":"GB","currency":null}, [ 'Date',
       'Mon, 16 Jul 2018 16:24:27 GMT',

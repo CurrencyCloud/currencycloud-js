@@ -134,11 +134,23 @@ describe('reference', function () {
         identifierType: 'iban',
         identifierValue: 'GB19TCCL00997901654515'
       })
-          .then(function (res) {
-            expect(res).is.not.empty;
-            expect(res).to.have.property('purposeCodes').that.is.not.null;
-            done();
-          })
+        .then(function (res) {
+          expect(res).is.not.empty;
+          expect(res).to.have.property('accountNumber').that.eql("GB19TCCL00997901654515");
+          expect(res).to.have.property('bankAddress').that.eql("12 STEWARD STREET  THE STEWARD BUILDING FLOOR 0");
+          expect(res).to.have.property('bankBranch').that.eql("");
+          expect(res).to.have.property('bankCity').that.eql("LONDON");
+          expect(res).to.have.property('bankCountry').that.eql("UNITED KINGDOM");
+          expect(res).to.have.property('bankCountry_ISO').that.eql("GB");
+          expect(res).to.have.property('bankName').that.eql("THE CURRENCY CLOUD LIMITED");
+          expect(res).to.have.property('bankPostCode').that.eql("E1 6FQ");
+          expect(res).to.have.property('bankState').that.eql("LONDON");
+          expect(res).to.have.property('bicSwift').that.eql("TCCLGB22XXX");
+          expect(res).to.have.property('currency').that.is.null;
+          expect(res).to.have.property('identifierType').that.eql("iban");
+          expect(res).to.have.property('identifierValue').that.eql("GB19TCCL00997901654515");
+          done();
+        })
           .catch(done);
     });
   });
