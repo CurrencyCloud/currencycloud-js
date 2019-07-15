@@ -127,4 +127,19 @@ describe('reference', function () {
         .catch(done);
     });
   });
+
+  describe('getBankDetails', function () {
+    it('successfully getsbank details', function (done) {
+      currencyCloud.reference.getBankDetails({
+        identifierType: 'iban',
+        identifierValue: 'GB19TCCL00997901654515'
+      })
+          .then(function (res) {
+            expect(res).is.not.empty;
+            expect(res).to.have.property('purposeCodes').that.is.not.null;
+            done();
+          })
+          .catch(done);
+    });
+  });
 });
