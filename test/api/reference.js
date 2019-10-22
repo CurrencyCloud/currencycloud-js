@@ -154,4 +154,29 @@ describe('reference', function () {
           .catch(done);
     });
   });
+
+    describe('getPaymentFeeRules', function () {
+        it('successfully gets payment fee rules', function (done) {
+            currencyCloud.reference.getPaymentFeeRules({})
+                .then(function (res) {
+                    expect(res).is.not.empty;
+                    expect(res).to.have.property('paymentFeeRules').that.is.not.null;
+                    expect(res.paymentFeeRules[0]).to.have.property('chargeType').that.eql("shared");
+                    expect(res.paymentFeeRules[0]).to.have.property('feeAmount').that.eql("2.00");
+                    expect(res.paymentFeeRules[0]).to.have.property('feeCurrency').that.eql("AED");
+                    expect(res.paymentFeeRules[0]).to.have.property('paymentType').that.eql("priority");
+                    expect(res.paymentFeeRules[1]).to.have.property('chargeType').that.eql("shared");
+                    expect(res.paymentFeeRules[1]).to.have.property('feeAmount').that.eql("12.00");
+                    expect(res.paymentFeeRules[1]).to.have.property('feeCurrency').that.eql("USD");
+                    expect(res.paymentFeeRules[1]).to.have.property('paymentType').that.eql("regular");
+                    expect(res.paymentFeeRules[2]).to.have.property('chargeType').that.eql("ours");
+                    expect(res.paymentFeeRules[2]).to.have.property('feeAmount').that.eql("5.25");
+                    expect(res.paymentFeeRules[2]).to.have.property('feeCurrency').that.eql("GBP");
+                    expect(res.paymentFeeRules[2]).to.have.property('paymentType').that.eql("priority");
+                    done();
+                })
+                .catch(done);
+        });
+    });
+
 });
