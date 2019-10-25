@@ -1489,6 +1489,17 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
     "bank_country": "IT"
   });
 
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
+    .get('/v2/payments/quote_payment_fee')
+    .query({"payment_currency":"USD","payment_destination_country":"US","payment_type":"regular" })
+    .reply(200, {"account_id": "0534aaf2-2egg-0134-2f36-10b11cd33cfb",
+        "payment_currency": "USD",
+        "payment_destination_country": "US",
+        "payment_type": "regular",
+        "charge_type": null,
+        "fee_amount": "10.00",
+        "fee_currency": "EUR" });
+
 nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/close_session')
   .reply(200, {});

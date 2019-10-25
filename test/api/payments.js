@@ -398,4 +398,26 @@ describe('payments', function () {
         .catch(done);
     });
   });
+
+    describe('getQuotePaymentFee', function () {
+        it('successfully gets Quote for payment fee', function (done) {
+            currencyCloud.payments.getQuotePaymentFee({
+                paymentCurrency:"USD",
+                paymentDestinationCountry:"US",
+                paymentType:"regular"
+            })
+                .then(function (res) {
+                    expect(res).is.not.empty;
+                    expect(res).to.have.property('accountId').that.eql("0534aaf2-2egg-0134-2f36-10b11cd33cfb");
+                    expect(res).to.have.property('feeAmount').that.eql("10.00");
+                    expect(res).to.have.property('feeCurrency').that.eql("EUR");
+                    expect(res).to.have.property('paymentCurrency').that.eql("USD");
+                    expect(res).to.have.property('paymentDestinationCountry').that.eql("US");
+                    expect(res).to.have.property('paymentType').that.eql("regular");
+                    expect(res).to.have.property('chargeType').that.is.null;
+                    done();
+                })
+                .catch(done);
+        });
+    });
 });
