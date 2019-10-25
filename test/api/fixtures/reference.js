@@ -179,6 +179,25 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
       'Origin' ]);
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
+    .get('/v2/reference/payment_fee_rules')
+    .reply(200, {"payment_fee_rules": [{"payment_type": "priority","charge_type": "shared","fee_amount": "2.00","fee_currency": "AED"},{"payment_type": "regular","charge_type": "shared","fee_amount": "12.00","fee_currency": "USD"},{"payment_type": "priority","charge_type": "ours","fee_amount": "5.25","fee_currency": "GBP"}]}, [ 'Date',
+      'Mon, 16 Jul 2018 16:24:27 GMT',
+      'Content-Type',
+      'application/json;charset=utf-8',
+      'Content-Length',
+      '640',
+      'Connection',
+      'close',
+      'Server',
+      'nginx',
+      'X-Request-Id',
+      '669f74a9-f731-4d32-b7d6-3013d9365d7a',
+      'X-Content-Type-Options',
+      'nosniff',
+      'Vary',
+      'Origin' ]);
+
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   .post('/v2/authenticate/close_session')
   .reply(200, {}, [ 'Date',
   'Mon, 16 Jul 2018 16:24:27 GMT',
