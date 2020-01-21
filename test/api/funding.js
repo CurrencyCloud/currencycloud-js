@@ -43,10 +43,8 @@ describe('funding', function() {
                     expect(res.fundingAccounts[0]).to.have.property('bankCountry').that.eql("UK");
                     expect(res.fundingAccounts[0]).to.have.property('currency').that.eql("GBP");
                     expect(res.fundingAccounts[0]).to.have.property('paymentType').that.eql("regular");
-                    expect(res.fundingAccounts[0]).to.have.property('regularRoutingCode').that.eql("010203");
-                    expect(res.fundingAccounts[0]).to.have.property('regularRoutingCodeType').that.eql("sort_code");
-                    expect(res.fundingAccounts[0]).to.have.property('priorityRoutingCode').that.eql("");
-                    expect(res.fundingAccounts[0]).to.have.property('priorityRoutingCodeType').that.eql("");
+                    expect(res.fundingAccounts[0]).to.have.property('routingCode').that.eql("010203");
+                    expect(res.fundingAccounts[0]).to.have.property('routingCodeType').that.eql("sort_code");
                     expect(res.fundingAccounts[0]).to.have.property('createdAt').that.eql("2018-05-14T14:18:30+00:00");
                     expect(res.fundingAccounts[0]).to.have.property('updatedAt').that.eql("2018-05-14T14:19:30+00:00");
 
