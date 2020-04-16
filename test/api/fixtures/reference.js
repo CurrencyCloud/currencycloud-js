@@ -180,7 +180,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
     .get('/v2/reference/payment_fee_rules')
-    .reply(200, {"payment_fee_rules": [{"payment_type": "priority","charge_type": "shared","fee_amount": "2.00","fee_currency": "AED", "payment_fee_id": "00000000-0000-0000-1111-000000000000", "payment_fee_name": "mocked_payment_fee_name_1"},{"payment_type": "regular","charge_type": "shared","fee_amount": "12.00","fee_currency": "USD", "payment_fee_id": "00000000-0000-0000-2222-000000000000", "payment_fee_name": "mocked_payment_fee_name_2"},{"payment_type": "priority","charge_type": "ours","fee_amount": "5.25","fee_currency": "GBP", "payment_fee_id": "00000000-0000-0000-3333-000000000000", "payment_fee_name": "mocked_payment_fee_name_3"}]}, [ 'Date',
+    .reply(200, {"payment_fee_rules": [{"payment_type": "priority","charge_type": "shared","fee_amount": "2.00","fee_currency": "AED", "payment_fee_id": "00000000-0000-0000-1111-000000000000", "payment_fee_name": "payment_fee_name_aed"},{"payment_type": "regular","charge_type": "shared","fee_amount": "12.00","fee_currency": "USD", "payment_fee_id": "00000000-0000-0000-2222-000000000000", "payment_fee_name": "payment_fee_name_usd"},{"payment_type": "priority","charge_type": "ours","fee_amount": "5.25","fee_currency": "GBP", "payment_fee_id": "00000000-0000-0000-3333-000000000000", "payment_fee_name": "payment_fee_name_gbp"}]}, [ 'Date',
       'Mon, 16 Jul 2018 16:24:27 GMT',
       'Content-Type',
       'application/json;charset=utf-8',

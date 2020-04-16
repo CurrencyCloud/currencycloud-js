@@ -165,18 +165,24 @@ describe('reference', function () {
                     expect(res.paymentFeeRules[0]).to.have.property('feeAmount').that.eql("2.00");
                     expect(res.paymentFeeRules[0]).to.have.property('feeCurrency').that.eql("AED");
                     expect(res.paymentFeeRules[0]).to.have.property('paymentType').that.eql("priority");
+                    expect(res.paymentFeeRules[0]).to.have.property('paymentFeeId').that.eql("00000000-0000-0000-1111-000000000000");
+                    expect(res.paymentFeeRules[0]).to.have.property('paymentFeeName').that.eql("payment_fee_name_aed");
                     expect(res.paymentFeeRules[1]).to.have.property('chargeType').that.eql("shared");
                     expect(res.paymentFeeRules[1]).to.have.property('feeAmount').that.eql("12.00");
                     expect(res.paymentFeeRules[1]).to.have.property('feeCurrency').that.eql("USD");
                     expect(res.paymentFeeRules[1]).to.have.property('paymentType').that.eql("regular");
+                    expect(res.paymentFeeRules[1]).to.have.property('paymentFeeId').that.eql("00000000-0000-0000-2222-000000000000");
+                    expect(res.paymentFeeRules[1]).to.have.property('paymentFeeName').that.eql("payment_fee_name_usd");
                     expect(res.paymentFeeRules[2]).to.have.property('chargeType').that.eql("ours");
                     expect(res.paymentFeeRules[2]).to.have.property('feeAmount').that.eql("5.25");
                     expect(res.paymentFeeRules[2]).to.have.property('feeCurrency').that.eql("GBP");
                     expect(res.paymentFeeRules[2]).to.have.property('paymentType').that.eql("priority");
+                    expect(res.paymentFeeRules[2]).to.have.property('paymentFeeId').that.eql("00000000-0000-0000-3333-000000000000");
+                    expect(res.paymentFeeRules[2]).to.have.property('paymentFeeName').that.eql("payment_fee_name_gbp");
                     done();
                 })
                 .catch(done);
         });
     });
-
+// "payment_fee_id": "00000000-0000-0000-1111-000000000000", "payment_fee_name": "mocked_payment_fee_name_1"
 });
