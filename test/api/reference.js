@@ -184,5 +184,5 @@ describe('reference', function () {
                 .catch(done);
         });
     });
-// "payment_fee_id": "00000000-0000-0000-1111-000000000000", "payment_fee_name": "mocked_payment_fee_name_1"
+
 });
