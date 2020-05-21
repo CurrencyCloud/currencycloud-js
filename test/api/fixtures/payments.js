@@ -1500,6 +1500,69 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
         "fee_amount": "10.00",
         "fee_currency": "EUR" });
 
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
+  .get('/v2/payments/payment_fees')
+  .reply(200, {
+    "payment_fees": [
+      {
+        "id": "e7e1b6e5-c596-4ad1-b8d4-a7035185143a",
+        "name": "Fee Table CAD  5 - 10 - 15",
+        "currency": "CAD",
+        "regular_amount": "5.00",
+        "priority_shared_amount": "10.00",
+        "priority_ours_amount": "15.00",
+        "owner_account_id": ""
+      }, 
+      {
+        "id": "029e1771-8de7-4ab0-9c19-c14b325c0c9e",
+        "name": "Fee Table USD  2 - 4 - 12",
+        "currency": "USD",
+        "regular_amount": "2.00",
+        "priority_shared_amount": "4.00",
+        "priority_ours_amount": "12.00",
+        "owner_account_id": ""
+      }
+    ],
+    "pagination": {
+      "total_entries": 2,
+      "total_pages": 1,
+      "current_page": 1,
+      "per_page": 25,
+      "previous_page": -1,
+      "next_page": -1,
+      "order": "created_at",
+      "order_asc_desc": "asc"
+    }
+});
+
+nock("https://devapi.currencycloud.com:443", {
+  encodedQueryParams: true
+}).post("/v2/payments/unassign_payment_fee").reply(200, {
+  account_id: "245a1ebd-d8a6-416d-bcc1-9de381d22f90"
+});
+
+nock("https://devapi.currencycloud.com:443", {
+  encodedQueryParams: true
+}).post("/v2/payments/assign_payment_fee").reply(200, {
+  id: "7c17b546-0435-45f0-9c17-3a4e0f2d3e84",
+  account_id: "245a1ebd-d8a6-416d-bcc1-9de381d22f90"
+});
+
+nock("https://devapi.currencycloud.com:443", {
+  encodedQueryParams: true
+})
+.get("/v2/payments/assigned_payment_fee")
+.query({account_id: "4e8ca601-80c0-0133-26ca-0022194273c7"})
+.reply(200, {
+  id: "2bd34951-becc-4b52-b7d1-3f954609d173",
+  name: "Fee table name",
+  currency: "EUR",
+  regular_amount: "4.00",
+  priority_shared_amount: "5.00",
+  priority_ours_amount: "6.00",
+  owner_account_id: "4e8ca601-80c0-0133-26ca-0022194273c7"
+});
+
 nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/close_session')
   .reply(200, {});
