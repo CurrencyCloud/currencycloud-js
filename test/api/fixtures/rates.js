@@ -28,6 +28,25 @@ nock('https://devapi.currencycloud.com:443')
   });
 
 nock('https://devapi.currencycloud.com:443')
+    .get('/v2/rates/detailed')
+    .query({"buy_currency": "GBP", "sell_currency": "USD", "fixed_side": "buy", "amount": "10000", "conversion_date_preference":"optimize_liquidity"})
+    .reply(200, {
+    "settlement_cut_off_time": "2020-05-21T14:00:00Z",
+    "currency_pair": "GBPUSD",
+    "client_buy_currency": "GBP",
+    "client_sell_currency": "USD",
+    "client_buy_amount": "10000.00",
+    "client_sell_amount": "14081.00",
+    "fixed_side": "buy",
+    "client_rate": "1.4081",
+    "partner_rate": null,
+    "core_rate": "1.4081",
+    "deposit_required": false,
+    "deposit_amount": "0.0",
+    "deposit_currency": "USD",
+    "mid_market_rate": "1.4080"
+    });
+nock('https://devapi.currencycloud.com:443')
   .get('/v2/rates/find')
   .query({"currency_pair": "USDGBP"})
   .reply(200, {"rates": {"USDGBP": ["0.648353", "0.648672"]}, "unavailable": []});

@@ -273,6 +273,17 @@ module.exports = {
                 termAgreement: true
             };
         },
+        conversion2: function () {
+            return {
+                buyCurrency: 'EUR',
+                sellCurrency: 'GBP',
+                fixedSide: 'buy',
+                amount: 10000,
+                conversionDatePreference: 'earliest',
+                reason: 'Testing',
+                termAgreement: true
+            };
+        },
         schema: new JSONschema({
             id: 'UUID',
             accountId: 'UUID',
