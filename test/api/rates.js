@@ -71,6 +71,25 @@ describe('rates', function () {
     });
   });
 
+  describe('getWithConversionDatePreference', function () {
+    it('successfully gets a rate with conversion date preference', function (done) {
+      currencyCloud.rates.get({
+        buyCurrency: 'GBP',
+        sellCurrency: 'USD',
+        fixedSide: 'buy',
+        amount: 10000,
+        conversionDatePreference: 'optimize_liquidity'
+      })
+          .then(function (gotten) {
+            expect(mock.schema.validate(gotten)).is.true;
+            expect(gotten).to.have.property('settlementCutOffTime').that.eql("2020-05-21T14:00:00Z");
+            expect(gotten).to.have.property('clientSellAmount').that.eql("14081.00");
+            done();
+          })
+          .catch(done);
+    });
+  });
+
   describe('find', function () {
     it('fails if required parameters are missing', function () {
       expect(function () {

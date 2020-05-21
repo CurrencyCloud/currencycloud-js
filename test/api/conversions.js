@@ -92,6 +92,20 @@ describe('conversions', function () {
         });
     });
 
+    describe('createWithConversionDatePreference', function () {
+
+        it('successfully creates a conversion with conversion date preference', function (done) {
+            currencyCloud.conversions.create(new mock.conversions.conversion2())
+                .then(function (created) {
+                    expect(mock.conversions.schema.validate(created)).is.true;
+                    expect(created).to.have.property('conversionDate').that.eql("2020-05-19T00:00:00+00:00");
+                    expect(created).to.have.property('clientSellAmount').that.eql("805.90");
+                    done();
+                })
+                .catch(done);
+        });
+    });
+
     describe('get', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
