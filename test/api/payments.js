@@ -420,4 +420,23 @@ describe('payments', function () {
                 .catch(done);
         });
     });
+
+    describe('getPaymentTrackingInfo', function () {
+        it('successfully gets Tracking Info for payment', function (done) {
+            currencyCloud.payments.getPaymentTrackingInfo({
+                id:"46ed4827-7b6f-4491-a06f-b548d5a7512d"
+            })
+                .then(function (res) {
+                    expect(res).is.not.empty;
+                    expect(res).to.have.property('uetr').that.eql("46ed4827-7b6f-4491-a06f-b548d5a7512d");
+                    expect(res).to.have.property('transactionStatus').to.have.property('status').that.eql("processing");
+                    expect(res).to.have.property('transactionStatus').to.have.property('reason').that.eql("transferred_and_tracked");
+                    expect(res).to.have.property('initiationTime').that.eql("2019-07-09T13:20:30+00:00");
+                    expect(res).to.have.property('lastUpdateTime').that.eql("2019-07-10T15:39:08+00:00");
+                    expect(res).to.have.property('paymentEvents').that.has.length(7);
+                    done();
+                })
+                .catch(done);
+        });
+    });
 });
