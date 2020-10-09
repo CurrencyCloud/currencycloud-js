@@ -527,6 +527,19 @@ module.exports = {
         })
     },
 
+    withdrawalAccounts: {
+        schema: new JSONschema({
+            id: 'UUID',
+            accountId: 'UUID',
+            accountName: 'string',
+            accountHolderName : 'string',
+            accountHolderDob: 'date',
+            routingCode: 'string',
+            accountNumber: 'string',
+            currency: 'string',
+        })
+    },
+
     pagination: {
         schema: new JSONschema({
             totalEntries: 'number',
