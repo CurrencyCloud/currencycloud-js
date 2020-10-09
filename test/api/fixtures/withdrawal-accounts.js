@@ -73,6 +73,17 @@ nock('https://devapi.currencycloud.com:443')
         }
     });
 
+
+nock('https://devapi.currencycloud.com:443')
+    .post('/v2/withdrawal_accounts/0886ac00-6ab6-41a6-b0e1-8d3faf2e0de2/pull_funds','amount=100.00&reference=PullFunds1')
+    .reply(200, {
+        "id": "e2e6b7aa-c9e8-4625-96a6-b97d4baab758",
+        "withdrawal_account_id": "0886ac00-6ab6-41a6-b0e1-8d3faf2e0de2",
+        "reference": "PullFunds1",
+        "amount": "100.00",
+        "created_at": "2020-06-29T08:02:31+00:00"
+    });
+
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
     .post('/v2/authenticate/close_session')
     .reply(200, {});
