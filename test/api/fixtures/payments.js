@@ -1500,6 +1500,181 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
         "fee_amount": "10.00",
         "fee_currency": "EUR" });
 
+
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
+    .get('/v2/payments/46ed4827-7b6f-4491-a06f-b548d5a7512d/tracking_info')
+    .reply(200, {
+        "uetr": "46ed4827-7b6f-4491-a06f-b548d5a7512d",
+        "transaction_status": {
+            "status": "processing",
+            "reason": "transferred_and_tracked"
+        },
+        "initiation_time": "2019-07-09T13:20:30+00:00",
+        "completion_time": null,
+        "last_update_time": "2019-07-10T15:39:08+00:00",
+        "payment_events": [
+            {
+                "tracker_event_type": "customer_credit_transfer_payment_cancellation_request",
+                "valid": true,
+                "transaction_status": null,
+                "funds_available": null,
+                "forwarded_to_agent": null,
+                "from": "BANABEBBXXX",
+                "to": "BANAUS33XXX",
+                "originator": null,
+                "serial_parties": null,
+                "sender_acknowledgement_receipt": "2019-07-10T15:39:08+00:00",
+                "instructed_amount": null,
+                "confirmed_amount": null,
+                "interbank_settlement_amount": null,
+                "interbank_settlement_date": null,
+                "charge_amount": null,
+                "charge_type": null,
+                "foreign_exchange_details": null,
+                "last_update_time": "2019-07-10T15:39:08+00:00"
+            },
+            {
+                "tracker_event_type": "customer_credit_transfer_payment_cancellation_request",
+                "valid": true,
+                "transaction_status": null,
+                "funds_available": null,
+                "forwarded_to_agent": null,
+                "from": "BANABEBBXXX",
+                "to": "BANAUS33XXX",
+                "originator": null,
+                "serial_parties": null,
+                "sender_acknowledgement_receipt": "2019-07-10T14:22:41+00:00",
+                "instructed_amount": null,
+                "confirmed_amount": null,
+                "interbank_settlement_amount": null,
+                "interbank_settlement_date": null,
+                "charge_amount": null,
+                "charge_type": null,
+                "foreign_exchange_details": null,
+                "last_update_time": "2019-07-10T14:22:41+00:00"
+            },
+            {
+                "tracker_event_type": "credit_transfer_payment_cancellation_request",
+                "valid": true,
+                "transaction_status": null,
+                "funds_available": null,
+                "forwarded_to_agent": null,
+                "from": "BANABEBBXXX",
+                "to": "BANAUS33XXX",
+                "originator": "BANABEBBXXX",
+                "serial_parties": null,
+                "sender_acknowledgement_receipt": "2019-07-10T14:22:41+00:00",
+                "instructed_amount": null,
+                "confirmed_amount": null,
+                "interbank_settlement_amount": {
+                    "currency": "USD",
+                    "amount": "745437.57"
+                },
+                "interbank_settlement_date": "2019-07-09T00:00:00+00:00",
+                "charge_amount": null,
+                "charge_type": null,
+                "foreign_exchange_details": null,
+                "last_update_time": "2019-07-10T14:22:41+00:00"
+            },
+            {
+                "tracker_event_type": "customer_credit_transfer_payment_cancellation_request",
+                "valid": true,
+                "transaction_status": null,
+                "funds_available": null,
+                "forwarded_to_agent": null,
+                "from": "BANABEBBXXX",
+                "to": "BANAUS33XXX",
+                "originator": null,
+                "serial_parties": null,
+                "sender_acknowledgement_receipt": "2019-07-10T14:22:41+00:00",
+                "instructed_amount": null,
+                "confirmed_amount": null,
+                "interbank_settlement_amount": null,
+                "interbank_settlement_date": null,
+                "charge_amount": null,
+                "charge_type": null,
+                "foreign_exchange_details": null,
+                "last_update_time": "2019-07-10T14:22:41+00:00"
+            },
+            {
+                "tracker_event_type": "customer_credit_transfer_payment_cancellation_request",
+                "valid": true,
+                "transaction_status": null,
+                "funds_available": null,
+                "forwarded_to_agent": null,
+                "from": "BANABEBBXXX",
+                "to": "BANAUS33XXX",
+                "originator": null,
+                "serial_parties": null,
+                "sender_acknowledgement_receipt": "2019-07-10T14:22:41+00:00",
+                "instructed_amount": null,
+                "confirmed_amount": null,
+                "interbank_settlement_amount": null,
+                "interbank_settlement_date": null,
+                "charge_amount": null,
+                "charge_type": null,
+                "foreign_exchange_details": null,
+                "last_update_time": "2019-07-10T14:22:41+00:00"
+            },
+            {
+                "tracker_event_type": "credit_transfer_payment_cancellation_request",
+                "valid": true,
+                "transaction_status": null,
+                "funds_available": null,
+                "forwarded_to_agent": null,
+                "from": "BANABEBBXXX",
+                "to": "BANAUS33XXX",
+                "originator": null,
+                "serial_parties": null,
+                "sender_acknowledgement_receipt": "2019-07-10T14:17:39+00:00",
+                "instructed_amount": null,
+                "confirmed_amount": null,
+                "interbank_settlement_amount": null,
+                "interbank_settlement_date": null,
+                "charge_amount": null,
+                "charge_type": null,
+                "foreign_exchange_details": null,
+                "last_update_time": "2019-07-10T14:22:41+00:00"
+            },
+            {
+                "tracker_event_type": "customer_credit_transfer_payment",
+                "valid": true,
+                "transaction_status": {
+                    "status": "processing",
+                    "reason": "transferred_and_tracked"
+                },
+                "funds_available": null,
+                "forwarded_to_agent": null,
+                "from": "BANABEBBXXX",
+                "to": "BANAUS33XXX",
+                "originator": "BANABEBBXXX",
+                "serial_parties": {
+                    "debtor": null,
+                    "debtor_agent": "GPMRCH30",
+                    "intermediary_agent1": null,
+                    "instructing_reimbursement_agent": null,
+                    "creditor_agent": "GPMRQAJ0",
+                    "creditor": null
+                },
+                "sender_acknowledgement_receipt": "2019-07-09T13:20:30+00:00",
+                "instructed_amount": {
+                    "currency": "USD",
+                    "amount": "745437.57"
+                },
+                "confirmed_amount": null,
+                "interbank_settlement_amount": {
+                    "currency": "USD",
+                    "amount": "745437.57"
+                },
+                "interbank_settlement_date": "2019-07-09T00:00:00+00:00",
+                "charge_amount": null,
+                "charge_type": "shared",
+                "foreign_exchange_details": null,
+                "last_update_time": "2019-07-09T13:20:50+00:00"
+            }
+        ]
+    });
+
 nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/close_session')
   .reply(200, {});
