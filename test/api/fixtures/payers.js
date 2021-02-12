@@ -33,7 +33,6 @@ nock('https://devapi.currencycloud.com:443')
     "mid_market_rate": "0.7354",
     "core_rate": "0.7353",
     "partner_rate": "",
-    "partner_status": "funds_arrived",
     "partner_buy_amount": "0.00",
     "partner_sell_amount": "0.00",
     "client_rate": "0.7353",
