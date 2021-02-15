@@ -33,7 +33,6 @@ nock('https://devapi.currencycloud.com:443')
     "mid_market_rate": "0.7216",
     "core_rate": "0.7215",
     "partner_rate": "",
-    "partner_status": "funds_arrived",
     "partner_buy_amount": "0.00",
     "partner_sell_amount": "0.00",
     "client_rate": "0.7215",
@@ -183,7 +182,6 @@ nock('https://devapi.currencycloud.com:443')
     "mid_market_rate": "0.7216",
     "core_rate": "0.7215",
     "partner_rate": "",
-    "partner_status": "funds_arrived",
     "partner_buy_amount": "0.00",
     "partner_sell_amount": "0.00",
     "client_rate": "0.7215",
@@ -358,7 +356,6 @@ nock('https://devapi.currencycloud.com:443')
     "mid_market_rate": "0.7216",
     "core_rate": "0.7215",
     "partner_rate": "",
-    "partner_status": "funds_arrived",
     "partner_buy_amount": "0.00",
     "partner_sell_amount": "0.00",
     "client_rate": "0.7215",
@@ -577,7 +574,6 @@ nock('https://devapi.currencycloud.com:443')
     "mid_market_rate": "0.7216",
     "core_rate": "0.7215",
     "partner_rate": "",
-    "partner_status": "funds_arrived",
     "partner_buy_amount": "0.00",
     "partner_sell_amount": "0.00",
     "client_rate": "0.7215",
@@ -768,7 +764,6 @@ nock('https://devapi.currencycloud.com:443')
     "mid_market_rate": "0.7216",
     "core_rate": "0.7215",
     "partner_rate": "",
-    "partner_status": "funds_arrived",
     "partner_buy_amount": "0.00",
     "partner_sell_amount": "0.00",
     "client_rate": "0.7215",
@@ -1000,7 +995,6 @@ nock('https://devapi.currencycloud.com:443')
     "mid_market_rate": "0.7216",
     "core_rate": "0.7215",
     "partner_rate": "",
-    "partner_status": "funds_arrived",
     "partner_buy_amount": "0.00",
     "partner_sell_amount": "0.00",
     "client_rate": "0.7215",
@@ -1134,7 +1128,7 @@ nock('https://devapi.currencycloud.com:443')
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
-  .reply(200, {"id":"7dc88e47-a536-455c-99d3-8e9d5767ae90","settlement_date":"2018-07-24T13:00:00+00:00","conversion_date":"2018-07-24T00:00:00+00:00","short_reference":"20180720-MNLQTG","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","account_id":"9ada9453-a104-478a-b4d4-47aaa52b8710","currency_pair":"EURGBP","status":"awaiting_funds","buy_currency":"EUR","sell_currency":"GBP","client_buy_amount":"10000.23","client_sell_amount":"8037.18","fixed_side":"buy","core_rate":"0.8037","partner_rate":"","partner_status":"funds_arrived","partner_buy_amount":"0.00","partner_sell_amount":"0.00","client_rate":"0.8037","deposit_required":false,"deposit_amount":"0.00","deposit_currency":"","deposit_status":"not_required","deposit_required_at":"","payment_ids":[],"unallocated_funds":"0.00","unique_request_id":null,"created_at":"2018-07-20T10:25:56+00:00","updated_at":"2018-07-20T10:25:56+00:00","mid_market_rate":"0.8036"}, [ 'Date',
+  .reply(200, {"id":"7dc88e47-a536-455c-99d3-8e9d5767ae90","settlement_date":"2018-07-24T13:00:00+00:00","conversion_date":"2018-07-24T00:00:00+00:00","short_reference":"20180720-MNLQTG","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","account_id":"9ada9453-a104-478a-b4d4-47aaa52b8710","currency_pair":"EURGBP","status":"awaiting_funds","buy_currency":"EUR","sell_currency":"GBP","client_buy_amount":"10000.23","client_sell_amount":"8037.18","fixed_side":"buy","core_rate":"0.8037","partner_rate":"","partner_buy_amount":"0.00","partner_sell_amount":"0.00","client_rate":"0.8037","deposit_required":false,"deposit_amount":"0.00","deposit_currency":"","deposit_status":"not_required","deposit_required_at":"","payment_ids":[],"unallocated_funds":"0.00","unique_request_id":null,"created_at":"2018-07-20T10:25:56+00:00","updated_at":"2018-07-20T10:25:56+00:00","mid_market_rate":"0.8036"}, [ 'Date',
   'Fri, 20 Jul 2018 10:25:57 GMT',
   'Content-Type',
   'application/json;charset=utf-8',
@@ -1266,7 +1260,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
-  .reply(200, {"id":"b29d6ba8-52d2-4329-b46d-145f8fb37008","settlement_date":"2018-07-24T13:00:00+00:00","conversion_date":"2018-07-24T00:00:00+00:00","short_reference":"20180720-MBLHLN","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","account_id":"9ada9453-a104-478a-b4d4-47aaa52b8710","currency_pair":"EURGBP","status":"awaiting_funds","buy_currency":"EUR","sell_currency":"GBP","client_buy_amount":"10000.23","client_sell_amount":"8037.18","fixed_side":"buy","core_rate":"0.8037","partner_rate":"","partner_status":"funds_arrived","partner_buy_amount":"0.00","partner_sell_amount":"0.00","client_rate":"0.8037","deposit_required":false,"deposit_amount":"0.00","deposit_currency":"","deposit_status":"not_required","deposit_required_at":"","payment_ids":[],"unallocated_funds":"0.00","unique_request_id":null,"created_at":"2018-07-20T10:25:59+00:00","updated_at":"2018-07-20T10:25:59+00:00","mid_market_rate":"0.8036"}, [ 'Date',
+  .reply(200, {"id":"b29d6ba8-52d2-4329-b46d-145f8fb37008","settlement_date":"2018-07-24T13:00:00+00:00","conversion_date":"2018-07-24T00:00:00+00:00","short_reference":"20180720-MBLHLN","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","account_id":"9ada9453-a104-478a-b4d4-47aaa52b8710","currency_pair":"EURGBP","status":"awaiting_funds","buy_currency":"EUR","sell_currency":"GBP","client_buy_amount":"10000.23","client_sell_amount":"8037.18","fixed_side":"buy","core_rate":"0.8037","partner_rate":"","partner_buy_amount":"0.00","partner_sell_amount":"0.00","client_rate":"0.8037","deposit_required":false,"deposit_amount":"0.00","deposit_currency":"","deposit_status":"not_required","deposit_required_at":"","payment_ids":[],"unallocated_funds":"0.00","unique_request_id":null,"created_at":"2018-07-20T10:25:59+00:00","updated_at":"2018-07-20T10:25:59+00:00","mid_market_rate":"0.8036"}, [ 'Date',
   'Fri, 20 Jul 2018 10:25:59 GMT',
   'Content-Type',
   'application/json;charset=utf-8',

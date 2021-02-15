@@ -295,7 +295,6 @@ module.exports = {
             fixedSide: 'string',
             shortReference: 'string',
             status: 'string',
-            partnerStatus: 'string',
             currencyPair: 'string',
             partnerBuyAmount: 'number',
             partnerSellAmount: 'number',
