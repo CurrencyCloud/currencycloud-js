@@ -1670,5 +1670,17 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
     });
 
 nock('https://devapi.currencycloud.com:443')
+    .post('/v2/payments/validate', {
+        "currency": "GBP",
+        "amount": "100",
+        "reason": "validate_unit_test",
+        "reference": "validate123",
+        "beneficiary_id": "46ed4827-7b6f-4491-a06f-b548d5a7512d"
+    })
+    .reply(200, {
+        "validation_result": "success"
+    });
+
+nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/close_session')
   .reply(200, {});

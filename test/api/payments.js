@@ -439,4 +439,21 @@ describe('payments', function () {
                 .catch(done);
         });
     });
+
+    describe('validate', function () {
+        it('successfully validate a payment', function (done) {
+            currencyCloud.payments.validate({
+                currency:"GBP",
+                amount:100,
+                beneficiaryId:"46ed4827-7b6f-4491-a06f-b548d5a7512d",
+                reason:"validate_unit_test",
+            reference:'validate123'})
+                .then(function (res) {
+                    expect(res).is.not.empty;
+                    expect(res).to.have.property('validationResult').that.eql("success");
+                    done();
+                })
+                .catch(done);
+        });
+    });
 });
