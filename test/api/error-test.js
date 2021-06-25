@@ -144,9 +144,6 @@ describe('apierror', function () {
                 })
                 .catch(function (res) {
                         expect(res).is.not.empty;
-                        console.log("================ JON =============");
-                        console.log(res);
-                        console.log("================ JON =============");
                         expect(res).is.instanceOf(currencyCloud.InternalApplicationError);
                         expect(res.errors[0]).to.have.property('field').that.eql('base');
                         expect(res.errors[0]).to.have.property('code').that.eql('badly_formatted_error_response');
