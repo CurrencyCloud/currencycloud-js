@@ -79,4 +79,78 @@ describe('apierror', function () {
         });
     });
 
+    describe('handle well formatted 500 error response', function () {
+        it('successfully respond with InternalApplicationError', function (done) {
+            currencyCloud.payments.create({
+                onBehalfOf: '4224b460-f6c3-4d4d-842f-67c5fbe5461b',
+                beneficiaryId: '0ebad221-e846-420a-8abc-9a4136b7a500',
+                currency: 'EUR',
+                amount: '1.00',
+                reason: 'Test Good Error Response',
+                paymentType: 'priority',
+                reference: '3a4bca96-8f59-4eef-bbfc-6592744609c3'
+            })
+                .then(function (res) {
+                    expect(res).is.empty;
+                    done();
+                })
+                .catch(function (res) {
+                        expect(res).is.not.empty;
+                    expect(res).is.instanceOf(currencyCloud.InternalApplicationError);
+                        done();
+                    }
+                );
+        });
+    });
+
+    describe('handle badly formatted 500 error response', function () {
+        it('successfully respond with InternalApplicationError again', function (done) {
+            currencyCloud.payments.create({
+                onBehalfOf: '4224b460-f6c3-4d4d-842f-67c5fbe5461b',
+                beneficiaryId: '0ebad221-e846-420a-8abc-9a4136b7a500',
+                currency: 'EUR',
+                amount: '1.00',
+                reason: 'Test Bad Error Response',
+                paymentType: 'priority',
+                reference: '53db7778-75a9-447d-baf0-d09deb9a4ba6'
+            })
+                .then(function (res) {
+                    expect(res).is.empty;
+                    done();
+                })
+                .catch(function (res) {
+                        expect(res).is.not.empty;
+                        expect(res).is.instanceOf(currencyCloud.InternalApplicationError);
+                        done();
+                    }
+                );
+        });
+    });
+
+    describe('handle really badly formatted 500 error response', function () {
+        it('successfully respond with InternalApplicationError one more time', function (done) {
+            currencyCloud.payments.create({
+                onBehalfOf: '4224b460-f6c3-4d4d-842f-67c5fbe5461b',
+                beneficiaryId: '0ebad221-e846-420a-8abc-9a4136b7a500',
+                currency: 'EUR',
+                amount: '1.00',
+                reason: 'Test Really Bad Error Response',
+                paymentType: 'priority',
+                reference: '99d5d977-0c6a-4d31-a328-e9e51384db45'
+            })
+                .then(function (res) {
+                    expect(res).is.empty;
+                    done();
+                })
+                .catch(function (res) {
+                        expect(res).is.not.empty;
+                        expect(res).is.instanceOf(currencyCloud.InternalApplicationError);
+                        expect(res.errors[0]).to.have.property('field').that.eql('base');
+                        expect(res.errors[0]).to.have.property('code').that.eql('badly_formatted_error_response');
+                        done();
+                    }
+                );
+        });
+    });
+
 });
