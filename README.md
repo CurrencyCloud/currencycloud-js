@@ -283,8 +283,8 @@ If you don't have a valid login or key, you can get them [here][registration]
 # Copyright
 Copyright (c) 2015-2019 Currencycloud. See [LICENSE][license] for details.
 
-[introduction]:    https://developer.currencycloud.com/documentation/getting-started/introduction
-[overview]:        https://developer.currencycloud.com/documentation/api-docs/overview/
+[introduction]:    https://developer.currencycloud.com/overview/
+[overview]:        https://developer.currencycloud.com/overview/
 [examples]:        examples
 [request-promise]: https://www.npmjs.com/package/request-promise
 [combined-stream]: https://www.npmjs.com/package/combined-stream
@@ -293,7 +293,7 @@ Copyright (c) 2015-2019 Currencycloud. See [LICENSE][license] for details.
 [mocha]:           https://mochajs.org/
 [chai]:            http://chaijs.com/
 [nock]:            https://github.com/node-nock/nock
-[registration]:    https://developer.currencycloud.com/api-register/
+[registration]:    https://developer.currencycloud.com/register-for-an-api-key/
 [license]:         LICENSE.md
 [contr]:           CONTRIBUTING.md
 [hof]:             HALL_OF_FAME.md
