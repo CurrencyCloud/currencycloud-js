@@ -283,7 +283,7 @@ If you don't have a valid login or key, you can get them [here][registration]
 # Copyright
 Copyright (c) 2015-2019 Currencycloud. See [LICENSE][license] for details.
 
-[introduction]:    https://developer.currencycloud.com/cookbooks/getting-started-with-the-api/
+[introduction]:    https://developer.currencycloud.com/overview/
 [overview]:        https://developer.currencycloud.com/overview/
 [examples]:        examples
 [request-promise]: https://www.npmjs.com/package/request-promise
