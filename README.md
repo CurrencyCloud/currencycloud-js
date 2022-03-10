@@ -281,7 +281,7 @@ IMPORTANT: Remember to change the `loginId` and `apiKey` properties in `./test/m
 If you don't have a valid login or key, you can get them [here][registration]
 
 # Copyright
-Copyright (c) 2015-2019 Currencycloud. See [LICENSE][license] for details.
+Copyright (c) 2015-2022 Currencycloud. See [LICENSE][license] for details.
 
 [introduction]:    https://developer.currencycloud.com/overview/
 [overview]:        https://developer.currencycloud.com/overview/
