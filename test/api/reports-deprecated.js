@@ -4,7 +4,7 @@ var currencyCloud = require('../../lib/currency-cloud');
 var expect = require('chai').expect;
 var mock = require('../mocks');
 var prepost = require('../prepost');
-var recorder = prepost.recorder('reports');
+var recorder = prepost.recorder('reports-deprecated');
 var setup = prepost.setup;
 var teardown = prepost.teardown;
 
@@ -24,9 +24,9 @@ describe('reports', function () {
             });
     });
 
-    describe('createConversionReport', function () {
+    describe('create_conversion_report @deprecated', function () {
         it('successfully creates conversion report', function (done) {
-            currencyCloud.reports.createConversionReport(new mock.reports.report1())
+            currencyCloud.reports.create_conversion_report(new mock.reports.report1())
                 .then(function (created) {
                     expect(mock.reports.schema.validate(created)).is.true;
                     done();
@@ -35,9 +35,9 @@ describe('reports', function () {
         });
     });
 
-    describe('createPaymentReport', function () {
+    describe('create_payment_report @deprecated', function () {
         it('successfully create payment report', function (done) {
-            currencyCloud.reports.createPaymentReport(new mock.reports.report2())
+            currencyCloud.reports.create_payment_report(new mock.reports.report2())
                 .then(function (created) {
                     expect(mock.reports.schema.validate(created)).is.true;
                     done();
@@ -46,9 +46,9 @@ describe('reports', function () {
         });
     });
 
-    describe('findReportRequests', function () {
+    describe('find_report_requests @deprecated', function () {
         it('successfully finds a report', function (done) {
-            currencyCloud.reports.findReportRequest({
+            currencyCloud.reports.find_report_request({
                 perPage: '1'
             })
                 .then(function (found) {
@@ -60,17 +60,17 @@ describe('reports', function () {
         });
     });
 
-    describe('findReportViaId', function () {
+    describe('find_via_id @deprecated', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
-                currencyCloud.reports.findReportViaId(/*no params*/);
+                currencyCloud.reports.find_report_via_id(/*no params*/);
             }).to.throw();
         });
 
         it('successfully finds a report_request', function (done) {
-            currencyCloud.reports.createConversionReport(new mock.reports.report1())
+            currencyCloud.reports.create_conversion_report(new mock.reports.report1())
                 .then(function (created) {
-                    return currencyCloud.reports.findReportViaId({
+                    return currencyCloud.reports.find_report_via_id({
                         id: created.id
                     })
                         .then(function (gotten) {

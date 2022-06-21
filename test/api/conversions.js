@@ -180,14 +180,14 @@ describe('conversions', function () {
     describe('date change', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
-                currencyCloud.conversions.date_change(/*no params*/);
+                currencyCloud.conversions.dateChange(/*no params*/);
             }).to.throw();
             expect(function () {
-                currencyCloud.conversions.date_change({
+                currencyCloud.conversions.dateChange({
                     id: 'present'
                 });
                 expect(function () {
-                    currencyCloud.conversions.date_change({
+                    currencyCloud.conversions.dateChange({
                         new_settlement_date: 'present'
                     });
                 }).to.throw();
@@ -199,7 +199,7 @@ describe('conversions', function () {
                 .then(function (created) {
                     var newDate = new Date(created.settlementDate);
                     newDate.setDate(newDate.getDate() + 3);
-                    return currencyCloud.conversions.date_change({
+                    return currencyCloud.conversions.dateChange({
                         id: created.id,
                         new_settlement_date: newDate.toISOString()
                     })
@@ -248,7 +248,7 @@ describe('conversions', function () {
 
     describe('profit and loss', function () {
         it('successfully retrieve profit and/or loss of conversions', function (done) {
-            currencyCloud.conversions.profit_and_loss({
+            currencyCloud.conversions.profitAndLoss({
                 perPage: '1'
             })
                 .then(function (found) {
@@ -263,14 +263,14 @@ describe('conversions', function () {
     describe('date change quote', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
-                currencyCloud.conversions.date_change_quote(/*no params*/);
+                currencyCloud.conversions.dateChangeQuote(/*no params*/);
             }).to.throw();
             expect(function () {
-                currencyCloud.conversions.date_change_quote({
+                currencyCloud.conversions.dateChangeQuote({
                     id: 'present'
                 });
                 expect(function () {
-                    currencyCloud.conversions.date_change_quote({
+                    currencyCloud.conversions.dateChangeQuote({
                         newSettlementDate: 'present'
                     });
                 }).to.throw();
@@ -282,7 +282,7 @@ describe('conversions', function () {
                 .then(function (created) {
                     var newDate = new Date(created.settlementDate);
                     newDate.setDate(newDate.getDate() + 3);
-                    return currencyCloud.conversions.date_change_quote({
+                    return currencyCloud.conversions.dateChangeQuote({
                         id: created.id,
                         new_settlement_date: newDate.toISOString()
                     })
@@ -299,14 +299,14 @@ describe('conversions', function () {
     describe('split preview', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
-                currencyCloud.conversions.split_preview(/*no params*/);
+                currencyCloud.conversions.splitPreview(/*no params*/);
             }).to.throw();
             expect(function () {
-                currencyCloud.conversions.split_preview({
+                currencyCloud.conversions.splitPreview({
                     id: 'present'
                 });
                 expect(function () {
-                    currencyCloud.conversions.split_preview({
+                    currencyCloud.conversions.splitPreview({
                         amount: 'present'
                     });
                 }).to.throw();
@@ -317,7 +317,7 @@ describe('conversions', function () {
         it('successfully split preview', function (done) {
             currencyCloud.conversions.create(new mock.conversions.conversion1())
                 .then(function (created) {
-                    return currencyCloud.conversions.split_preview({
+                    return currencyCloud.conversions.splitPreview({
                         id: created.id,
                         amount: '2'
                     })
@@ -335,12 +335,12 @@ describe('conversions', function () {
     describe('split history', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
-                currencyCloud.conversions.split_history(/*no params*/);
+                currencyCloud.conversions.splitHistory(/*no params*/);
             }).to.throw();
         });
 
         it('successfully creates split history', function (done) {
-            currencyCloud.conversions.split_history({
+            currencyCloud.conversions.splitHistory({
                 id: 'c805aa35-9bd3-4afe-ade2-d341e551aa16',
             })
                 .then(function (gotten) {
@@ -354,12 +354,12 @@ describe('conversions', function () {
     describe('cancellation quote', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
-                currencyCloud.conversions.cancellation_quote(/*no params*/);
+                currencyCloud.conversions.cancellationQuote(/*no params*/);
             }).to.throw();
         });
 
         it('successfully quote conversion cancellation', function (done) {
-            currencyCloud.conversions.cancellation_quote({
+            currencyCloud.conversions.cancellationQuote({
                 id: 'c006ed4c-d33c-43f8-98cb-f9c34cb87b3a',
             })
                 .then(function (gotten) {
@@ -370,5 +370,4 @@ describe('conversions', function () {
                 .catch(done);
         });
     });
-
 });
