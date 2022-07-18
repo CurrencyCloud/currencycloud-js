@@ -128,5 +128,23 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
   });
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
+    .post('/v2/transfers/993d63bd-e151-11e6-a5af-080027a79e8f/cancel', {})
+    .reply(200, {
+        "id": "993d63bd-e151-11e6-a5af-080027a79e8f",
+        "short_reference": "BT-20180101-KVFRWA",
+        "source_account_id": "a7117404-e150-11e6-a5af-080027a79e8f",
+        "destination_account_id": "946f2d58-e150-11e6-a5af-080027a79e8f",
+        "currency": "GBP",
+        "amount": "12.5",
+        "status": "cancelled",
+        "created_at": "2018-01-01T12:34:56+00:00",
+        "updated_at": "2018-01-01T12:34:56+00:00",
+        "completed_at": "2018-01-01T12:34:56+00:00",
+        "creator_account_id": "262e3d2a-e152-11e6-a5af-080027a79e8f",
+        "creator_contact_id": "30cb8632-e152-11e6-a5af-080027a79e8f",
+        "reason": "Transfer test"
+    });
+
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
   .post('/v2/authenticate/close_session')
   .reply(200, {});

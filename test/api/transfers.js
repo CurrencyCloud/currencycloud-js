@@ -85,4 +85,17 @@ describe('transfers', function () {
         });
     });
   });
+
+    describe('cancel', function () {
+        it('successfully cancel transfer', function (done) {
+            currencyCloud.transfers.cancel({id: "993d63bd-e151-11e6-a5af-080027a79e8f"})
+                .then(function (found) {
+                    expect(found).to.have.property('status');
+                    expect(found.status).equals('cancelled');
+                    done();
+                })
+                .catch(done);
+        });
+    });
+
 });
