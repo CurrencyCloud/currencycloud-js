@@ -83,6 +83,24 @@ describe('authentication', function() {
       .then(done)
       .catch(done);
     });
+
+    it('successfully saves config with lazy login', function(done) {
+      currencyCloud.authentication.login(mock.credentials, true)
+      .then(function(token) {
+        expect(token).is.undefined;
+      })
+      .then(done)
+      .catch(done);
+    });
+
+    it('persists authentication config and so can make a subsequent API call', function(done) {
+      currencyCloud.authentication.login(mock.credentials, true)
+      .then(currencyCloud.accounts.getCurrent)
+      .then(currencyCloud.authentication.logout)      
+      .then(done)
+      .catch(done);
+    });
+    
   });
 
   describe('logout', function() {
