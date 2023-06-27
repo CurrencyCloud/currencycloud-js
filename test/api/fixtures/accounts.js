@@ -210,8 +210,7 @@ nock('https://devapi.currencycloud.com:443')
   });
 
 nock('https://devapi.currencycloud.com:443')
-  .post('/v2/accounts/find')
-  .query({"account_name": "Currencycloud", "order": "created_at", "order_asc_desc": "desc", "per_page": "5"})
+  .post('/v2/accounts/find', {"account_name": "Currencycloud", "order": "created_at", "order_asc_desc": "desc", "per_page": "5"})
   .reply(200, {
     "accounts": [{
       "id": "78618e58-da3c-447f-ad59-1796accfeff9",
