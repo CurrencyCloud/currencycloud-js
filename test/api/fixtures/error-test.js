@@ -27,18 +27,17 @@ nock('https://devapi.currencycloud.com:443')
     },[ 'Date','Thu, 18 Jun 2020 08:46:55 GMT','X-Request-Id', 'df217539-1ccc-467c-ba3c-675fef035885']);
 
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
-    .get('/v2/reference/bank_details')
-    .query({"identifier_type":"iban","identifier_value":"123"})
-    .reply(400, {
-        "error_code": "invalid_iban",
-        "error_messages": {
-            "base": {
-                "code": "invalid_iban",
-                "message": "IBAN is invalid.",
-                "params": {}
-            }
+.post('/v2/reference/bank_details/find', {"identifier_type":"iban","identifier_value":"123"})
+.reply(400, {
+    "error_code": "invalid_iban",
+    "error_messages": {
+        "base": {
+            "code": "invalid_iban",
+            "message": "IBAN is invalid.",
+            "params": {}
         }
-    }, [ 'Date','Thu, 18 Jun 2020 10:10:18 GMT','X-Request-Id', '887d4999-d021-4333-8593-34a3f27587dc']);
+    }
+}, [ 'Date','Thu, 18 Jun 2020 10:10:18 GMT','X-Request-Id', '887d4999-d021-4333-8593-34a3f27587dc']);
 
 nock('https://devapi.currencycloud.com:443')
     .post('/v2/payments/create', {
