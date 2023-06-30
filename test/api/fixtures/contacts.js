@@ -47,8 +47,7 @@ nock('https://devapi.currencycloud.com:443')
   .reply(200, {"login_id":"development@currencycloud.com","id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","first_name":"Development","last_name":"Currencycloud","account_id":"78618e58-da3c-447f-ad59-1796accfeff9","account_name":"Currencycloud","status":"enabled","locale":"en","timezone":"Europe/London","email_address":"development@currencycloud.com","mobile_phone_number":null,"phone_number":null,"your_reference":null,"date_of_birth":null,"created_at":"2017-10-13T11:47:30+00:00","updated_at":"2017-10-13T11:47:30+00:00"});
 
 nock('https://devapi.currencycloud.com:443')
-  .get('/v2/contacts/find')
-  .query({"login_id":"development@currencycloud.com","order":"created_at","order_asc_desc":"desc","per_page":"5"})
+  .post('/v2/contacts/find', {"login_id":"development@currencycloud.com","order":"created_at","order_asc_desc":"desc","per_page":"5"})
   .reply(200, {"contacts":[{"login_id":"development@currencycloud.com","id":"8f639ab2-2b85-4327-9eb1-01ee4f0c77bc","first_name":"Development","last_name":"Currencycloud","account_id":"78618e58-da3c-447f-ad59-1796accfeff9","account_name":"Currencycloud","status":"enabled","locale":"en","timezone":"Europe/London","email_address":"development@currencycloud.com","mobile_phone_number":null,"phone_number":null,"your_reference":null,"date_of_birth":null,"created_at":"2017-10-13T11:47:30+00:00","updated_at":"2017-10-13T11:47:30+00:00"}],"pagination":{"total_entries":1,"total_pages":1,"current_page":1,"per_page":5,"previous_page":-1,"next_page":-1,"order":"created_at","order_asc_desc":"desc"}});
 
 nock('https://devapi.currencycloud.com:443')
