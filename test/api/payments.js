@@ -101,6 +101,28 @@ describe('payments', function () {
                 })
                 .catch(done);
         });
+
+        it('successfully creates a payment with new INR fields', function (done) {
+            getPrerequisites()
+                .then(function (res) {
+                    var payment = new mock.payments.payment1();
+                    payment.conversionId = res.conversionId;
+                    payment.beneficiaryId = res.beneficiaryId;
+
+                    payment.invoiceDate = '2023-07-27';
+                    payment.invoiceNumber = '123';
+
+                    return currencyCloud.payments.create(payment)
+                        .then(function (created) {
+                            expect(mock.payments.schema.validate(created)).is.true;
+                            expect(created.invoiceDate).to.eql(payment.invoiceDate);
+                            expect(created.invoiceNumber).to.eql(payment.invoiceNumber);
+
+                            done();
+                        });
+                })
+                .catch(done);
+        });
     });
 
     describe('get', function () {
