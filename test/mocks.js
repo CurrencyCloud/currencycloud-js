@@ -392,6 +392,27 @@ module.exports = {
                 payerIdentificationType: 'none'
             };
         },
+        payment3: function () {
+            return {
+                amount: '10000.00',
+                beneficiaryId: '16d351fb-94ba-4c75-b554-49c793d69459',
+                currency: 'EUR',
+                reference: 'INVOICE 9876',
+                reason: 'Salary for March',
+                status: 'ready_to_send',
+                creatorContactId: '8f639ab2-2b85-4327-9eb1-01ee4f0c77bc',
+                paymentType: 'regular',
+                paymentDate: '2017-10-29',
+                transferredAt: '',
+                authorisationStepsRequired: '0',
+                lastUpdaterContactId: '8f639ab2-2b85-4327-9eb1-01ee4f0c77bc',
+                shortReference: '151027-ZMNZZB001',
+                conversionId: '5c4716dc-42dd-4571-b4bf-0aa299fff928',
+                failureReason: '',
+                payerId: 'e598308d-1829-430c-b3d8-662170811622',
+                payerDetailsSource: 'payer',
+              };
+        },
         delivery1: function() {
             return {
                 paymentDate: '2018-01-01',
