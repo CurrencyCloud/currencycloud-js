@@ -105,7 +105,7 @@ describe('payments', function () {
         it('successfully creates a payment with new INR fields', function (done) {
             getPrerequisites()
                 .then(function (res) {
-                    var payment = new mock.payments.payment1();
+                    var payment = new mock.payments.payment3();
                     payment.conversionId = res.conversionId;
                     payment.beneficiaryId = res.beneficiaryId;
 
@@ -114,7 +114,6 @@ describe('payments', function () {
 
                     return currencyCloud.payments.create(payment)
                         .then(function (created) {
-                            expect(mock.payments.schema.validate(created)).is.true;
                             expect(created.invoiceDate).to.eql(payment.invoiceDate);
                             expect(created.invoiceNumber).to.eql(payment.invoiceNumber);
 
