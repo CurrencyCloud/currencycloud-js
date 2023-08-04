@@ -108,6 +108,7 @@ describe('payments', function () {
                     var payment = new mock.payments.payment3();
                     payment.conversionId = res.conversionId;
                     payment.beneficiaryId = res.beneficiaryId;
+
                     payment.invoiceDate = '2023-07-27';
                     payment.invoiceNumber = '123';
 
