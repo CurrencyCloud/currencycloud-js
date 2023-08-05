@@ -824,9 +824,9 @@ nock('https://devapi.currencycloud.com:443')
   })
   .reply(200, {
     "payments": [{
-      "id": "70f693a4-27fe-4ea8-b363-9d6d28928d21",
+      "id": "855fa573-1ace-4da2-a55b-912f10103055",
       "amount": "10000.00",
-      "beneficiary_id": "4ccce6cb-7ae4-4266-bea4-dbbb0acabf84",
+      "beneficiary_id": "85fd10c0-0b6d-460e-a93a-ce97108ef81a",
       "currency": "EUR",
       "reference": "INVOICE 9876",
       "reason": "Salary for March",
@@ -837,13 +837,13 @@ nock('https://devapi.currencycloud.com:443')
       "transferred_at": "",
       "authorisation_steps_required": "0",
       "last_updater_contact_id": "8f639ab2-2b85-4327-9eb1-01ee4f0c77bc",
-      "short_reference": "151027-KSCDQW001",
-      "conversion_id": "5281b799-2af3-4a2d-a19c-ccbd376b0539",
+      "short_reference": "151027-BZMLHF001",
+      "conversion_id": "1c200c1d-f53b-42eb-a4b4-f14a08d5851e",
       "failure_reason": "",
       "payer_id": "e598308d-1829-430c-b3d8-662170811622",
       "payer_details_source": "payer",
-      "created_at": "2017-10-27T19:53:24+00:00",
-      "updated_at": "2017-10-27T19:53:24+00:00"
+      "created_at": "2017-10-27T19:53:27+00:00",
+      "updated_at": "2017-10-27T19:53:28+00:00"
     }],
     "pagination": {
       "total_entries": 1,
@@ -1244,7 +1244,6 @@ nock('https://devapi.currencycloud.com:443')
     "status": "pending",
     "submission_ref": "MXGGYAGJULIIQKDV"
   });
-
   
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
@@ -1548,9 +1547,28 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   'CF-RAY',
   '43d4ba2c19f33629-MAN' ]);
 
+  nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
+  .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
+  .reply(200, {"id":"7dc88e47-a536-455c-99d3-8e9d5767ae90"});
+
+
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
-  .post('/v2/payments/authorise', "payment_ids%5B%5D=91b1443d-8271-44ba-a902-f2ada263e0aa&payment_ids%5B%5D=9a4cb8ac-f9e0-4fab-9fe6-88e2fb5b5a69")
-  .reply(200, {"authorisations":[{"payment_id":"91b1443d-8271-44ba-a902-f2ada263e0aa","payment_status":"authorised","updated":true,"error":null,"auth_steps_taken":1,"auth_steps_required":1,"short_reference":"180720-MBLHLN001"},{"payment_id":"9a4cb8ac-f9e0-4fab-9fe6-88e2fb5b5a69","payment_status":"authorised","updated":true,"error":null,"auth_steps_taken":1,"auth_steps_required":1,"short_reference":"180720-MBLHLN002"}]}, [ 'Date',
+  .post('/v2/beneficiaries/create', "bank_account_holder_name=John%20Doe&bank_country=DE&currency=EUR&name=Employee%20Funds&email=john.doe%40acme.com&beneficiary_address=23%20Acacia%20Road&beneficiary_country=GB&account_number=13071472&routing_code_type_1=sort_code&routing_code_value_1=200605&routing_code_type_2=aba&routing_code_value_2=789&bic_swift=COBADEFF&iban=DE89370400440532013000&default_beneficiary=true&bank_address=4356%20Wisteria%20Lane&bank_name=HSBC%20Bank&bank_account_type=checking&beneficiary_entity_type=company&beneficiary_company_name=Some%20Company%20LLC&beneficiary_first_name=John&beneficiary_last_name=Doe&beneficiary_city=London&beneficiary_postcode=W11%202BQ&beneficiary_state_or_province=TX&beneficiary_date_of_birth=1990-07-20&beneficiary_identification_type=none")
+  .reply(200, {"id":"7dc88e47-a536-455c-99d3-8e9d5767ae90"});
+
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
+  .post('/v2/payments/create', "currency=EUR&amount=10000&reason=Salary%20for%20March&reference=INVOICE%209876&payment_type=regular&payer_entity_type=individual&payer_company_name=Some%20Company%20LLC&payer_first_name=John&payer_last_name=Doe&payer_city=London&payer_address=27%20Colmore%20Row&payer_postcode=W11%202BQ&payer_state_or_province=TX&payer_country=GB&payer_date_of_birth=1980-10-10&payer_identification_type=none&conversion_id=7dc88e47-a536-455c-99d3-8e9d5767ae90&beneficiary_id=7dc88e47-a536-455c-99d3-8e9d5767ae90")
+  .reply(200, {"id":"7dc88e47-a536-455c-99d3-8e9d5767ae90"});
+
+
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
+  .post('/v2/payments/create', "currency=EUR&amount=0.23&reason=Prepayment%20of%20salary%20for%20April&reference=INVOICE%20122%2F1&payment_type=regular&payer_entity_type=individual&payer_company_name=Jens%20enskild%20firma&payer_first_name=Jennifer&payer_last_name=Waylon&payer_city=Stockholm&payer_address=22%20Garvargatan&payer_postcode=12332&payer_state_or_province=Stockholm&payer_country=SE&payer_date_of_birth=1981-12-10&payer_identification_type=none&conversion_id=7dc88e47-a536-455c-99d3-8e9d5767ae90&beneficiary_id=7dc88e47-a536-455c-99d3-8e9d5767ae90")
+  .reply(200, {"id":"7dc88e47-a536-455c-99d3-8e9d5767ae90"});
+
+
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
+  .post('/v2/payments/authorise', "payment_ids%5B%5D=7dc88e47-a536-455c-99d3-8e9d5767ae90&payment_ids%5B%5D=7dc88e47-a536-455c-99d3-8e9d5767ae90")
+  .reply(200, {"authorisations":[{"payment_id":"7dc88e47-a536-455c-99d3-8e9d5767ae90","payment_status":"authorised","updated":true,"error":null,"auth_steps_taken":1,"auth_steps_required":1,"short_reference":"180720-MBLHLN001"},{"payment_id":"7dc88e47-a536-455c-99d3-8e9d5767ae90","payment_status":"authorised","updated":true,"error":null,"auth_steps_taken":1,"auth_steps_required":1,"short_reference":"180720-MBLHLN002"}]}, [ 'Date',
   'Fri, 20 Jul 2018 10:26:04 GMT',
   'Content-Type',
   'application/json;charset=utf-8',
@@ -1794,6 +1812,9 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
         ]
     });
 
+
+
+  
 nock('https://devapi.currencycloud.com:443')
     .post('/v2/payments/validate', {
         "currency": "GBP",
