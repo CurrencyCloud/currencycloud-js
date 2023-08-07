@@ -1,7 +1,10 @@
 language: node_js
 node_js:
-  - "20"
-  - "18.17.0"
+  - "node"
+  - "lts/*"
   - "16"
+  - "17"
+  - "18"
+  - "19"
 script:
   - npm test
