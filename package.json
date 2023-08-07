@@ -1,18 +1,9 @@
 {
   "name": "currency-cloud",
   "description": "Currencycloud API v2 JavaScript client",
-  "version": "4.5.0",
+  "version": "4.5.1",
   "author": "Currencycloud",
-  "contributors": [
-    {
-      "name": "Irina Gudkova",
-      "email": "irina.gudkova@gmail.com"
-    },
-    {
-      "name": "Ed Addario",
-      "email": "ed.addario@currencycloud.com"
-    }
-  ],
+  "contributors": [],
   "license": "MIT",
   "repository": {
     "type": "git",
