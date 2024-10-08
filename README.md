@@ -282,7 +282,7 @@ If you don't have a valid login or key, you can get them [here][registration]
 
 # Security Consideration
 1. Authentication
-  1. All data under [this folder](test/api/fixtures) provide and return dummy credentials to verify that authentication workflows behave as expected.
+    1. All data under [this folder](test/api/fixtures) provide and return dummy credentials to verify that authentication workflows behave as expected.
 
 # Copyright
 Copyright (c) 2015-2022 Currencycloud. See [LICENSE][license] for details.
