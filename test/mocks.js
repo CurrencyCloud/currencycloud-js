@@ -462,6 +462,24 @@ module.exports = {
         })
     },
 
+    termsAndConditions: {
+        accept: function(){
+            return {
+                type: 'VGSI',
+                version: '1.0',
+                referenceType: 'ACCOUNT',
+                referenceId: 'ebcaee2f-a733-11ef-8de2-0242ac1d0002',
+                firstName: 'firstName',
+                lastName: 'lastName',
+                email: 'development@currencycloud.com'
+            };
+        },
+        schema: new JSONschema({
+            acceptanceId: 'UUID',
+            acceptedAt: 'date'
+        })
+    },
+
     transactions: {
         schema: new JSONschema({
             id: 'UUID',
