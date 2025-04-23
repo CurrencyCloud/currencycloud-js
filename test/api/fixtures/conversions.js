@@ -6,7 +6,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
 
 //Create Conversion
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
-    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
+    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling+invoices&term_agreement=true")
     .reply(200, {
         "id": "339c30e2-eed6-4dc4-b043-354f6b3e605f",
         "settlement_date": "2018-11-27T14:30:00+00:00",
@@ -74,7 +74,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
     });
 //Get conversion
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
-    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
+    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling+invoices&term_agreement=true")
     .reply(200, {
         "id": "e183c95b-b0bd-4cdf-9215-75f6b1675dd1",
         "settlement_date": "2018-11-27T14:30:00+00:00",
@@ -143,7 +143,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
 
 //Find conversion
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
-    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
+    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling+invoices&term_agreement=true")
     .reply(200, {
         "id": "ffdf0544-a868-488f-b096-effe8926a857",
         "settlement_date": "2018-11-27T14:30:00+00:00",
@@ -224,7 +224,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
     });
 //Cancel conversion
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
-    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
+    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling+invoices&term_agreement=true")
     .reply(200, {
         "id": "18c1e19b-09fd-419c-933b-0dff80a2c4de",
         "settlement_date": "2018-11-27T14:30:00+00:00",
@@ -273,7 +273,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
     });
 //Change settlement date of conversion
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
-    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
+    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling+invoices&term_agreement=true")
     .reply(200, {
         "id": "8d56c87b-ef2f-45bb-8939-96c4a8d08426",
         "settlement_date": "2018-11-27T14:30:00+00:00",
@@ -320,7 +320,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
     });
 //Split conversion
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
-    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
+    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling+invoices&term_agreement=true")
     .reply(200, {
         "id": "fd8d1996-6cf2-4cc9-b157-4611c11837a3",
         "settlement_date": "2018-11-27T14:30:00+00:00",
@@ -409,7 +409,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
     });
 //Create date change quote for conversion
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
-    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
+    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling+invoices&term_agreement=true")
     .reply(200, {
         "id": "ed485d5a-b99e-4034-bd26-4f6322cd4d9f",
         "settlement_date": "2018-11-27T14:30:00+00:00",
@@ -457,7 +457,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
     });
 //Split preview of conversion
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
-    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling%20invoices&term_agreement=true")
+    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling+invoices&term_agreement=true")
     .reply(200, {
         "id": "f53f14ac-2c1b-4749-a1d9-f0f60aad68f6",
         "settlement_date": "2018-11-27T14:30:00+00:00",

@@ -124,7 +124,7 @@ module.exports = {
                 routingCodeType2: 'aba',
                 routingCodeValue2: '789',
                 bicSwift: 'COBADEFF',
-                iban: 'DE89370400440532013000',
+                iban: 'DE75512108001245126199',
                 defaultBeneficiary: true,
                 bankAddress: '4356 Wisteria Lane',
                 bankName: 'HSBC Bank',

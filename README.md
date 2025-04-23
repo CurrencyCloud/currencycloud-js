@@ -237,8 +237,8 @@ errors:
 
 ## Dependencies
 * [combined-stream][combined-stream]
-* [request][request]
-* [request-promise][request-promise]
+* [qs][qs]
+* [axios][axios]
 * [retry][retry]
 * [uuid][uuid]
 
@@ -290,9 +290,9 @@ Copyright (c) 2015-2022 Currencycloud. See [LICENSE][license] for details.
 [introduction]:    https://developer.currencycloud.com/overview/
 [overview]:        https://developer.currencycloud.com/overview/
 [examples]:        examples
-[request-promise]: https://www.npmjs.com/package/request-promise
+[axios]: https://www.npmjs.com/package/axios
+[qs]: https://www.npmjs.com/package/qs
 [combined-stream]: https://www.npmjs.com/package/combined-stream
-[request]:         https://www.npmjs.com/package/request
 [semver]:          http://semver.org/
 [mocha]:           https://mochajs.org/
 [chai]:            http://chaijs.com/

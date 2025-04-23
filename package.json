@@ -1,7 +1,7 @@
 {
   "name": "currency-cloud",
   "description": "Currencycloud API v2 JavaScript client",
-  "version": "4.6.0",
+  "version": "4.8.0",
   "author": "Currencycloud",
   "contributors": [
     {
@@ -34,9 +34,9 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
+    "axios": "^1.8.3",
     "combined-stream": "^1.0.8",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6",
+    "qs": "^6.14.0",
     "retry": "^0.12.0",
     "uuid": "^3.4.0"
   },
