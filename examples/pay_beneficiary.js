@@ -43,7 +43,7 @@ let payBeneficiary = {
     beneficiaryCountry: "DE",
     bankCountry: "DE",
     bicSwift: "COBADEFF",
-    iban: "DE89370400440532013000"
+    iban: "DE75512108001245126199"
   },
   payment: {
     reason: "Invoice Payment",
