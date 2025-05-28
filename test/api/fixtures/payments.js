@@ -1126,6 +1126,165 @@ nock('https://devapi.currencycloud.com:443')
     "submission_ref": "MXGGYAGJULIIQKDV"
   });
 
+
+  nock('https://devapi.currencycloud.com:443')
+  .post('/v2/conversions/create', {
+    "buy_currency": "EUR",
+    "sell_currency": "GBP",
+    "fixed_side": "buy",
+    "amount": "10000.23",
+    "reason": "Settling invoices",
+    "term_agreement": "true"
+  })
+  .reply(200, {
+    "id": "4db061b0-e81a-4c03-97f5-62efe82618be",
+    "settlement_date": "2017-10-29T14:00:00+00:00",
+    "conversion_date": "2017-10-29T00:00:00+00:00",
+    "short_reference": "20171027-ZGBRYR",
+    "creator_contact_id": "8f639ab2-2b85-4327-9eb1-01ee4f0c77bc",
+    "account_id": "78618e58-da3c-447f-ad59-1796accfeff9",
+    "currency_pair": "EURGBP",
+    "status": "awaiting_funds",
+    "buy_currency": "EUR",
+    "sell_currency": "GBP",
+    "client_buy_amount": "10000.23",
+    "client_sell_amount": "7215.17",
+    "fixed_side": "buy",
+    "mid_market_rate": "0.7216",
+    "core_rate": "0.7215",
+    "partner_rate": "",
+    "partner_buy_amount": "0.00",
+    "partner_sell_amount": "0.00",
+    "client_rate": "0.7215",
+    "deposit_required": false,
+    "deposit_amount": "0.00",
+    "deposit_currency": "",
+    "deposit_status": "not_required",
+    "deposit_required_at": "",
+    "payment_ids": [],
+    "created_at": "2017-10-27T19:53:10+00:00",
+    "updated_at": "2017-10-27T19:53:11+00:00"
+  });
+
+nock('https://devapi.currencycloud.com:443')
+  .post('/v2/beneficiaries/create', {
+    "bank_account_holder_name": "John Doe",
+    "bank_country": "DE",
+    "currency": "EUR",
+    "name": "Employee Funds",
+    "email": "john.doe@acme.com",
+    "beneficiary_address": "23 Acacia Road",
+    "beneficiary_country": "GB",
+    "account_number": "13071472",
+    "routing_code_type_1": "sort_code",
+    "routing_code_value_1": "200605",
+    "routing_code_type_2": "aba",
+    "routing_code_value_2": "789",
+    "bic_swift": "COBADEFF",
+    "iban": "DE75512108001245126199",
+    "default_beneficiary": "true",
+    "bank_address": "4356 Wisteria Lane",
+    "bank_name": "HSBC Bank",
+    "bank_account_type": "checking",
+    "beneficiary_entity_type": "company",
+    "beneficiary_company_name": "Some Company LLC",
+    "beneficiary_first_name": "John",
+    "beneficiary_last_name": "Doe",
+    "beneficiary_city": "London",
+    "beneficiary_postcode": "W11 2BQ",
+    "beneficiary_state_or_province": "TX",
+    "beneficiary_date_of_birth": "1990-07-20",
+    "beneficiary_identification_type": "none"
+  })
+  .reply(200, {
+    "id": "7b2989c5-c03e-44be-8f93-612cd2e90b10",
+    "bank_account_holder_name": "John Doe",
+    "name": "Employee Funds",
+    "email": null,
+    "payment_types": ["priority", "regular"],
+    "beneficiary_address": ["23 Acacia Road"],
+    "beneficiary_country": "GB",
+    "beneficiary_entity_type": "company",
+    "beneficiary_company_name": "Some Company LLC",
+    "beneficiary_first_name": "John",
+    "beneficiary_last_name": "Doe",
+    "beneficiary_city": "London",
+    "beneficiary_postcode": "W11 2BQ",
+    "beneficiary_state_or_province": "TX",
+    "beneficiary_date_of_birth": "1990-07-20",
+    "beneficiary_identification_type": "none",
+    "beneficiary_identification_value": null,
+    "bank_country": "DE",
+    "bank_name": "COMMERZBANK AG",
+    "bank_account_type": "checking",
+    "currency": "EUR",
+    "account_number": null,
+    "routing_code_type_1": null,
+    "routing_code_value_1": null,
+    "routing_code_type_2": null,
+    "routing_code_value_2": null,
+    "bic_swift": "COBADEFF",
+    "iban": "DE75512108001245126199",
+    "default_beneficiary": "true",
+    "creator_contact_id": "8f639ab2-2b85-4327-9eb1-01ee4f0c77bc",
+    "bank_address": ["KAISERSTRASSE 16", "60261 FRANKFURT AM MAIN"],
+    "created_at": "2017-10-27T19:53:11+00:00",
+    "updated_at": "2017-10-27T19:53:12+00:00"
+  });
+
+nock('https://devapi.currencycloud.com:443')
+  .post('/v2/payments/create', {
+    "currency": "EUR",
+    "amount": "10000",
+    "reason": "Salary for March",
+    "reference": "INVOICE 9876",
+    "payment_type": "regular",
+    "payer_entity_type": "individual",
+    "payer_company_name": "Some Company LLC",
+    "payer_first_name": "John",
+    "payer_last_name": "Doe",
+    "payer_city": "London",
+    "payer_address": "27 Colmore Row",
+    "payer_postcode": "W11 2BQ",
+    "payer_state_or_province": "TX",
+    "payer_country": "GB",
+    "payer_date_of_birth": "1980-10-10",
+    "payer_identification_type": "none",
+    "conversion_id": "4db061b0-e81a-4c03-97f5-62efe82618be",
+    "beneficiary_id": "7b2989c5-c03e-44be-8f93-612cd2e90b10"
+  })
+  .reply(200, {
+    "id": "ca717500-c1c2-46f1-996f-5c282a4c6db4",
+    "amount": "10000.00",
+    "beneficiary_id": "7b2989c5-c03e-44be-8f93-612cd2e90b10",
+    "currency": "EUR",
+    "reference": "INVOICE 9876",
+    "reason": "Salary for March",
+    "status": "ready_to_send",
+    "creator_contact_id": "8f639ab2-2b85-4327-9eb1-01ee4f0c77bc",
+    "payment_type": "regular",
+    "payment_date": "2017-10-29",
+    "transferred_at": "",
+    "authorisation_steps_required": "0",
+    "last_updater_contact_id": "8f639ab2-2b85-4327-9eb1-01ee4f0c77bc",
+    "short_reference": "151027-ZGBRYR001",
+    "conversion_id": "4db061b0-e81a-4c03-97f5-62efe82618be",
+    "failure_reason": "",
+    "payer_id": "e598308d-1829-430c-b3d8-662170811622",
+    "payer_details_source": "payer",
+    "created_at": "2017-10-27T19:53:13+00:00",
+    "updated_at": "2017-10-27T19:53:13+00:00"
+  });
+
+nock('https://devapi.currencycloud.com:443')
+  .get('/v2/payments/ca717500-c1c2-46f1-996f-5c282a4c6db4/submission_info')
+  .reply(200, {
+    "message": "{1:F01TCCLGB20AXXX0090000004}{2:I103BARCGB22XXXXN}{4: :20:20160617-ZSYWVY :23B:CRED :32A:160617GBP3000,0 :33B:GBP3000,0 :50K:/150618-00026 PCOMAPNY address New-York Province 555222 GB :53B:/20060513071472 :57C://SC200605 :59:/200605000 First Name Last Name e03036bf6c325dd12c58 London GB :70:test reference Test reason Payment group: 0160617-ZSYWVY :71A:SHA -}",
+    "format": "MT103",
+    "status": "pending",
+    "submission_ref": "MXGGYAGJULIIQKDV"
+  });
+
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
   .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000.23&reason=Settling+invoices&term_agreement=true")
   .reply(200, {"id":"7dc88e47-a536-455c-99d3-8e9d5767ae90","settlement_date":"2018-07-24T13:00:00+00:00","conversion_date":"2018-07-24T00:00:00+00:00","short_reference":"20180720-MNLQTG","creator_contact_id":"871b9f2f-f8a3-4010-b084-43e48ab4f404","account_id":"9ada9453-a104-478a-b4d4-47aaa52b8710","currency_pair":"EURGBP","status":"awaiting_funds","buy_currency":"EUR","sell_currency":"GBP","client_buy_amount":"10000.23","client_sell_amount":"8037.18","fixed_side":"buy","core_rate":"0.8037","partner_rate":"","partner_buy_amount":"0.00","partner_sell_amount":"0.00","client_rate":"0.8037","deposit_required":false,"deposit_amount":"0.00","deposit_currency":"","deposit_status":"not_required","deposit_required_at":"","payment_ids":[],"unallocated_funds":"0.00","unique_request_id":null,"created_at":"2018-07-20T10:25:56+00:00","updated_at":"2018-07-20T10:25:56+00:00","mid_market_rate":"0.8036"}, [ 'Date',
