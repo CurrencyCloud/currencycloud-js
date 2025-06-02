@@ -101,7 +101,8 @@ describe('currency-cloud', function () {
     it('returns properly structured error', function (done) {
       var params = {
         currency: 'US',
-        bankAccountCountry: 'US'
+        bankAccountCountry: 'US',
+        beneficiaryCountry: 'US'
       };
 
       currencyCloud.reference.getBeneficiaryRequiredDetails(params)

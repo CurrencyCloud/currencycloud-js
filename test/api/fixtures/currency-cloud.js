@@ -342,7 +342,7 @@ nock('https://devapi.currencycloud.com:443')
 
 nock('https://devapi.currencycloud.com:443')
   .get('/v2/reference/beneficiary_required_details')
-  .query({"currency": "US", "bank_account_country": "US"})
+  .query({"currency": "US", "bank_account_country": "US", "beneficiary_country": "US"})
   .reply(400, {
     "error_code": "beneficiary_required_details_failed",
     "error_messages": {
