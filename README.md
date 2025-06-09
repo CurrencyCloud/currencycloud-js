@@ -10,7 +10,7 @@ $ npm install currency-cloud --save
 ```
 
 ## Supported Node versions
-The current least supported Node version is 12.0.0.
+The current least supported Node version is 16+.
 
 # Usage
 The following example retrieves all tradeable currencies list:
