@@ -1,7 +1,7 @@
 /**
  * This is JavaScript implementation of the
- * {@link https://www.currencycloud.com/developers/cookbooks/ Currency Cloud API v2.0 Cookbook} example.
- * Additional documentation for each API endpoint can be found at {@link https://www.currencycloud.com/developers/overview}.
+ * {@link https://developer.currencycloud.com/guides/getting-started/introduction// Currency Cloud API v2.0 Cookbook} example.
+ * Additional documentation for each API endpoint can be found at {@link https://developer.currencycloud.com/api-reference/}.
  * If you have any queries or you require support, please contact our Support team at {@link support@currencycloud.com}.
  */
 
@@ -43,7 +43,7 @@ let payBeneficiary = {
     beneficiaryCountry: "DE",
     bankCountry: "DE",
     bicSwift: "COBADEFF",
-    iban: "DE89370400440532013000"
+    iban: "DE75512108001245126199"
   },
   payment: {
     reason: "Invoice Payment",
@@ -66,7 +66,7 @@ let payBeneficiary = {
 /**
  * 1. Authenticate using valid credentials.
  * If you do not have a valid Login ID and API Key, you can get one by registering at
- * {@link https://www.currencycloud.com/developers/register-for-an-api-key/}
+ * {@link https://developer.currencycloud.com/register-for-an-api-key/}
  */
 
 let login = () => {

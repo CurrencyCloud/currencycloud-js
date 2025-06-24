@@ -272,6 +272,38 @@ describe('payments', function () {
         });
     });
 
+    describe('getNewPaymentSubmission', function () {
+        it('fails if required parameters are missing', function () {
+            expect(function () {
+                currencyCloud.payments.retrieveSubmissionInfo(/*no params*/);
+            }).to.throw();
+        });
+
+        it('successfully gets a payment submission with format', function (done) {
+            getPrerequisites()
+                .then(function (res) {
+                    var payment = new mock.payments.payment1();
+                    payment.conversionId = res.conversionId;
+                    payment.beneficiaryId = res.beneficiaryId;
+
+                    return currencyCloud.payments.create(payment)
+                        .then(function (created) {
+                            return currencyCloud.payments.retrieveSubmissionInfo({
+                                id: created.id
+                            })
+                                .then(function (gotten) {
+                                    expect(gotten).to.have.property('message').that.is.not.null;
+                                    expect(gotten).to.have.property('format').that.is.not.null;
+                                    expect(gotten).to.have.property('status').that.is.not.null;
+                                    expect(gotten).to.have.property('submissionRef').that.is.not.null;
+                                    done();
+                                });
+                        });
+                })
+                .catch(done);
+        });
+    });
+
     describe('authorise', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {

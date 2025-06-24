@@ -63,6 +63,26 @@ describe('beneficiaries', function() {
     });
   });
 
+  describe('account_verification', function() {
+    it('successfully verifies an account', function(done) {
+      currencyCloud.beneficiaries.accountVerification({
+        "bank_country":"GB",
+        "account_number":"13071472",
+        "routing_code_type_1":"sort_code",
+        "routing_code_value_1":"200605", 
+        "beneficiary_entity_type": "individual", 
+        "beneficiary_first_name": "test", 
+        "beneficiary_last_name": "user"
+
+      })
+      .then(function(res) {
+        expect(res).is.not.empty;
+        done();
+      })
+      .catch(done);
+    });
+  });
+
   describe('create', function() {
     it('fails if required parameters are missing', function() {
       expect(function() {
