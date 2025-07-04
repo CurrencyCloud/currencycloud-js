@@ -16,7 +16,7 @@ module.exports = {
         try {
           isRec = require('../' + recPath);
         }
-        catch (e) {
+        catch (e) { // eslint-disable-line no-unused-vars
           nock.recorder.rec({
             dont_print: true
           });
