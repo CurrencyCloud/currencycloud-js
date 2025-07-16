@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/currency-cloud.svg)](https://www.npmjs.com/package/currency-cloud) [![Travis](https://travis-ci.org/CurrencyCloud/currencycloud-js.svg?branch=master)](https://github.com/CurrencyCloud/currencycloud-js) [![David](https://david-dm.org/CurrencyCloud/currencycloud-js.svg)](https://github.com/CurrencyCloud/currencycloud-js)
+[![npm](https://img.shields.io/npm/v/currency-cloud.svg)](https://www.npmjs.com/package/currency-cloud) [![CodeQL](https://github.com/CurrencyCloud/currencycloud-js/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/CurrencyCloud/currencycloud-js/actions/workflows/github-code-scanning/codeql)
 
 # Currencycloud
 This is the official Javascript SDK for v2 of Currencycloud's API. Additional documentation for each API endpoint can be found at [Currencycloud API documentation][introduction]. If you have any queries or you require support, please contact our development team at development@currencycloud.com
