@@ -17,6 +17,17 @@ nock('https://devapi.currencycloud.com:443')
   .reply(200, {"auth_token":"9ee85342c432434fbe3035db5d41f4dd"});
 
 nock('https://devapi.currencycloud.com:443')
+    .get('/v2/accounts/current')
+    .matchHeader("X-Auth-Token", "deadbeefdeadbeefexpireddeadbeefdeadbeef")
+    .reply(401, {"error_code":"auth_failed","error_messages":{"username":[{"code":"invalid_supplied_credentials","message":"Authentication failed with the supplied credentials","params":{}}]}});
+
+nock('https://devapi.currencycloud.com:443')
+    .post('/v2/authenticate/api', {
+        "login_id":"development@currencycloud.com","api_key":"deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+    })
+    .reply(200, {"auth_token":"e1f125fcd33af884fbbdf4597e18a2a1"});
+
+nock('https://devapi.currencycloud.com:443')
   .get('/v2/accounts/current')
   .reply(200, {"id":"3a7d2f90-ae1f-493c-a8d6-26ad43700259","account_name":"Currencycloud","brand":"currencycloud","your_reference":null,"status":"enabled","street":null,"city":null,"state_or_province":null,"country":null,"postal_code":null,"spread_table":"fxcg_rfx_default","legal_entity_type":null,"created_at":"2017-10-30T13:46:49+00:00","updated_at":"2017-10-30T13:52:32+00:00","identification_type":null,"identification_value":null,"short_reference":"151030-00006"});
 

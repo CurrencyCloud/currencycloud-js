@@ -69,15 +69,15 @@ describe('authentication', function() {
     });
     
     it('silently re-authenticates if token has expired', function(done) {
-      var expired = 'deadbeefdeadbeefdeadbeefdeadbeef';
-      
-      client._token.set(expired);
-      
+      var expired = 'deadbeefdeadbeefexpireddeadbeefdeadbeef';
+
       currencyCloud.authentication.login(mock.credentials)
-      .then(currencyCloud.accounts.getCurrent)
-      .then(function() {
+          .then(function() {
+            client._token.set(expired);
+            return currencyCloud.accounts.getCurrent();
+          })
+      .then(function(){
         expect(client._token.get()).not.equals(expired);
-        
         return currencyCloud.authentication.logout();
       })
       .then(done)
