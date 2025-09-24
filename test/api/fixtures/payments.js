@@ -1841,5 +1841,68 @@ nock('https://devapi.currencycloud.com:443')
     });
 
 nock('https://devapi.currencycloud.com:443')
+    .post('/v2/payments/validate', {
+        "currency": "USD",
+        "amount": "1000",
+        "reason": "validate_sca_authenticated_user",
+        "reference": "validate123",
+        "beneficiary_id": "46ed4827-7b6f-4491-a06f-b548d5a7512d"
+    })
+    .matchHeader('x-sca-to-authenticated-user', 'true')
+    .reply(200, {
+        "validation_result": "success"
+    }, {
+        "x-sca-id": "123e4567-e89b-12d3-a456-426614174000",
+        "x-sca-required": true,
+        "x-sca-type": "sms"
+    });
+
+nock('https://devapi.currencycloud.com:443')
+    .post('/v2/payments/create', {
+        "currency": "USD",
+        "amount": "2000",
+        "reason": "Salary for March",
+        "reference": "INVOICE 9876",
+        "payment_type": "regular",
+        "payer_entity_type": "individual",
+        "payer_company_name": "Some Company LLC",
+        "payer_first_name": "John",
+        "payer_last_name": "Doe",
+        "payer_city": "London",
+        "payer_address": "27 Colmore Row",
+        "payer_postcode": "W11 2BQ",
+        "payer_state_or_province": "TX",
+        "payer_country": "GB",
+        "payer_date_of_birth": "1980-10-10",
+        "payer_identification_type": "none",
+        "conversion_id": "4a709856-2f20-472d-8ebf-9f2826cec174",
+        "beneficiary_id": "15f75bad-2176-42b3-a3a5-a6f561c7a849"
+    })
+    .matchHeader('x-sca-id', '123e4567-e89b-12d3-a456-426614174000')
+    .matchHeader('x-sca-token', '123456')
+    .reply(200, {
+        "id": "a13df79f-6e1c-4427-b2cc-614547c5486a",
+        "amount": "2000.00",
+        "beneficiary_id": "15f75bad-2176-42b3-a3a5-a6f561c7a849",
+        "currency": "USD",
+        "reference": "INVOICE 9876",
+        "reason": "Salary for March",
+        "status": "ready_to_send",
+        "creator_contact_id": "8f639ab2-2b85-4327-9eb1-01ee4f0c77bc",
+        "payment_type": "regular",
+        "payment_date": "2017-10-29",
+        "transferred_at": "",
+        "authorisation_steps_required": "0",
+        "last_updater_contact_id": "8f639ab2-2b85-4327-9eb1-01ee4f0c77bc",
+        "short_reference": "151027-ZGBRYR001",
+        "conversion_id": "4a709856-2f20-472d-8ebf-9f2826cec174",
+        "failure_reason": "",
+        "payer_id": "e598308d-1829-430c-b3d8-662170811622",
+        "payer_details_source": "payer",
+        "created_at": "2017-10-27T19:53:13+00:00",
+        "updated_at": "2017-10-27T19:53:13+00:00"
+    });
+
+nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/close_session')
   .reply(200, {});
