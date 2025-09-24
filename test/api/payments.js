@@ -488,4 +488,38 @@ describe('payments', function () {
                 .catch(done);
         });
     });
+
+    describe('validate and create a payment with SCA enabled', function () {
+        it('successfully validates then creates a payment with SCA enabled', function (done) {
+            currencyCloud.payments.validate({
+                currency:"USD",
+                amount:1000,
+                beneficiaryId:"46ed4827-7b6f-4491-a06f-b548d5a7512d",
+                reason:"validate_sca_authenticated_user",
+                reference:'validate123'}, true)
+            .then(function (res) {
+                expect(res).is.not.empty;
+                expect(res).to.have.property('validationResult').that.eql("success");
+                expect(res.headers).to.have.property('x-sca-id').that.is.not.null;
+                expect(res.headers).to.have.property('x-sca-required').that.is.not.null;
+                expect(res.headers).to.have.property('x-sca-type').that.is.not.null;
+                expect(res.headers['x-sca-required']).to.equal('true');
+                expect(res.headers['x-sca-type']).to.equal('sms');
+                expect(res.headers['x-sca-id']).to.equal('123e4567-e89b-12d3-a456-426614174000');
+                done();
+            }).then(function(res) {
+                var payment = new mock.payments.payment1();
+                payment.conversionId = "4a709856-2f20-472d-8ebf-9f2826cec174";
+                payment.beneficiaryId = "15f75bad-2176-42b3-a3a5-a6f561c7a849";
+                payment.amount = 2000;
+                payment.currency = "USD";
+                currencyCloud.payments.create(payment, res.headers['x-sca-id'], "123456")
+                .then(function (created) {
+                    expect(mock.payments.schema.validate(created)).is.true;
+                    expect(created).to.have.property("id").that.eql("a13df79f-6e1c-4427-b2cc-614547c5486a")
+                    done();
+                }).catch(done);
+            });
+        });
+    });
 });
