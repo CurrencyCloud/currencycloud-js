@@ -491,4 +491,36 @@ describe('payments', function () {
             });
         });
     });
+    describe('retryNotifications', function () {
+        it('fails if required parameters are missing', function () {
+            expect(function () {
+                currencyCloud.payments.retryNotifications(/*no params*/);
+            }).to.throw();
+        });
+
+        it('fails on invalid notification types', async function () {
+            try {
+                await currencyCloud.payments.retryNotifications({
+                    id: 'ffbe0bcb-1cc0-43b8-b931-c40691cf09d9',
+                    notificationType: 'payment_notification'
+                });
+                throw new Error('Expected promise to be rejected');
+            } catch (err) {
+                expect(err).to.exist;
+                expect(err.errors[0].code).to.equal("notification_type_not_in_range");
+            }
+        });
+
+        it('successfully retries sending payment notifications', function (done) {
+            currencyCloud.payments.retryNotifications({
+                id: 'ffbe0bcb-1cc0-43b8-b931-c40691cf09d9',
+                notificationType: 'payment_released_notification'
+            })
+                .then(function (gotten) {
+                    expect(gotten).to.be.an('object');
+                    done();
+                })
+                .catch(done);
+        });
+    });
 });

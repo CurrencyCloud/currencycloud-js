@@ -1745,6 +1745,29 @@ nock('https://devapi.currencycloud.com:443')
         "updated_at": "2017-10-27T19:53:13+00:00"
     });
 
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
+    .post('/v2/payments/ffbe0bcb-1cc0-43b8-b931-c40691cf09d9/notifications/retry', {
+        "notification_type": "payment_notification"
+    })
+    .reply(400, {
+        "error_code": "payment_notification_retry_failed",
+        "error_messages": {
+            "notification_type": [{
+                "code": "notification_type_not_in_range",
+                "message": "notification_type should be in range: payment_ready_to_send_notification, payment_released_notification, payment_failed_notification",
+                "params": {
+                    "range": "payment_ready_to_send_notification, payment_released_notification, payment_failed_notification"
+                }
+            }]
+        }
+    });
+
+nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
+    .post('/v2/payments/ffbe0bcb-1cc0-43b8-b931-c40691cf09d9/notifications/retry', {
+        "notification_type": "payment_released_notification"
+    })
+    .reply(200, {})
+
 nock('https://devapi.currencycloud.com:443')
   .post('/v2/authenticate/close_session')
   .reply(200, {});
