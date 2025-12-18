@@ -315,6 +315,36 @@ module.exports = {
         })
     },
 
+    emulates: {
+        emulate1: function () {
+            return {
+                id: '5dcfb283-dc5a-4c0d-b038-7ee8cd9ac643',
+                receiverAccountNumber: '0335017186',
+                currency: 'USD',
+                amount: 12.5
+            };
+        },
+        schema: new JSONschema({
+            id: 'UUID',
+            accountId: 'UUID',
+            state: 'string',
+            senderName: 'string',
+            senderAddress: 'string',
+            senderCountry: 'string',
+            senderReference: 'string',
+            senderAccountNumber: 'string',
+            senderRoutingCode: 'number',
+            receiverAccountNumber: 'string',
+            receiverRoutingCode: 'string',
+            amount: 'number',
+            currency: 'string',
+            action: 'string',
+            shortReference: 'string',
+            createdAt: 'date',
+            updatedAt: 'date'
+        }),
+    },
+
     ibans: {
         schema: new JSONschema({
             id: 'UUID',
