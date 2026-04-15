@@ -64,4 +64,44 @@ describe('funding', function() {
         });
     });
 
+    describe('getFundingTransaction', function () {
+        it('fails if required parameters are missing', function () {
+            expect(function () {
+                currencyCloud.funding.getFundingTransaction(/*no params*/);
+            }).to.throw();
+        });
+
+        it('successfully gets a funding transaction', function (done) {
+            currencyCloud.funding.getFundingTransaction({
+                id: '4924919a-6c28-11ee-a3e3-63774946bad2'
+            })
+                .then(function (gotten) {
+                    expect(gotten).is.not.empty;
+                    expect(gotten).to.have.property('id').that.eql('4924919a-6c28-11ee-a3e3-63774946bad2');
+                    expect(gotten).to.have.property('amount').that.eql('1.11');
+                    expect(gotten).to.have.property('currency').that.eql('USD');
+                    expect(gotten).to.have.property('rail').that.eql('SEPA');
+                    expect(gotten).to.have.property('additionalInformation').that.eql('ABCD20231016143117');
+                    expect(gotten).to.have.property('receivingAccountRoutingCode').that.eql('123456789');
+                    expect(gotten).to.have.property('receivingAccountNumber').that.eql('32847346');
+                    expect(gotten).to.have.property('receivingAccountIban').that.eql(null);
+                    expect(gotten).to.have.property('valueDate').that.eql('2022-12-03T10:00:00+00:00');
+                    expect(gotten).to.have.property('createdAt').that.eql('2022-12-03T10:15:30+00:00');
+                    expect(gotten).to.have.property('updatedAt').that.eql('2022-12-03T10:15:30+00:00');
+                    expect(gotten).to.have.property('completedAt').that.eql('2022-12-03T10:15:30+00:00');
+                    expect(gotten).to.have.property('sender').that.is.not.null;
+                    expect(gotten.sender).to.have.property('senderAccountNumber').that.eql('8119645406');
+                    expect(gotten.sender).to.have.property('senderAddress').that.eql('Some street');
+                    expect(gotten.sender).to.have.property('senderBic').that.eql(null);
+                    expect(gotten.sender).to.have.property('senderCountry').that.eql('GB');
+                    expect(gotten.sender).to.have.property('senderIban').that.eql(null);
+                    expect(gotten.sender).to.have.property('senderId').that.eql('5c675fa4-fdf0-4ee6-b5bb-156b36765433');
+                    expect(gotten.sender).to.have.property('senderName').that.eql('Test sender');
+                    expect(gotten.sender).to.have.property('senderRoutingCode').that.eql(null);
+                    done();
+                })
+                .catch(done);
+        });
+    });
+
 });
