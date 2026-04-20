@@ -42,6 +42,33 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
         'Origin' ]);
 
 
+nock('https://devapi.currencycloud.com:443')
+    .get('/v2/funding_transactions/4924919a-6c28-11ee-a3e3-63774946bad2')
+    .reply(200, {
+        "id": "4924919a-6c28-11ee-a3e3-63774946bad2",
+        "amount": "1.11",
+        "currency": "USD",
+        "rail": "SEPA",
+        "additional_information": "ABCD20231016143117",
+        "receiving_account_routing_code": "123456789",
+        "receiving_account_number": "32847346",
+        "receiving_account_iban": null,
+        "value_date": "2022-12-03T10:00:00+00:00",
+        "created_at": "2022-12-03T10:15:30+00:00",
+        "updated_at": "2022-12-03T10:15:30+00:00",
+        "completed_at": "2022-12-03T10:15:30+00:00",
+        "sender": {
+            "sender_account_number": "8119645406",
+            "sender_address": "Some street",
+            "sender_bic": null,
+            "sender_country": "GB",
+            "sender_iban": null,
+            "sender_id": "5c675fa4-fdf0-4ee6-b5bb-156b36765433",
+            "sender_name": "Test sender",
+            "sender_routing_code": null
+        }
+    });
+
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams":true})
     .post('/v2/authenticate/close_session')
     .reply(200, {}, [ 'Date',
