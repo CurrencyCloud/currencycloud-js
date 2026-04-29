@@ -592,6 +592,49 @@ module.exports = {
         })
     },
 
+    quotes: {
+        quote1: function () {
+            return {
+                buyCurrency: 'USD',
+                sellCurrency: 'EUR',
+                fixedSide: 'sell',
+                amount: 100,
+                holdPeriod: '30s'
+            };
+        },
+        quote2: function () {
+            return {
+                buyCurrency: 'GBP',
+                sellCurrency: 'EUR',
+                fixedSide: 'buy',
+                amount: 5000,
+                holdPeriod: '3m',
+                conversionDatePreference: 'earliest'
+            };
+        },
+        schema: new JSONschema({
+            quoteId: 'UUID',
+            buyCurrency: 'string',
+            sellCurrency: 'string',
+            fixedSide: 'string',
+            clientBuyAmount: 'string',
+            clientSellAmount: 'string',
+            clientRate: 'string',
+            coreRate: 'string',
+            partnerRate: 'string',
+            partnerBuyAmount: 'string',
+            partnerSellAmount: 'string',
+            midMarketRate: 'string',
+            currencyPair: 'string',
+            depositRequired: 'string',
+            depositAmount: 'string',
+            depositCurrency: 'string',
+            settlementCutOffTime: 'string',
+            createdAt: 'string',
+            expiresAt: 'string'
+        })
+    },
+
     reports: {
         report1: function () {
             return {

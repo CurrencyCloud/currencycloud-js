@@ -87,28 +87,18 @@ describe('beneficiaries', function() {
     it('fails if required parameters are missing', function() {
       expect(function() {
         currencyCloud.beneficiaries.create({
-          bankCountry: 'present',
           currency: 'present',
           name: 'present'
         });
       }).to.throw();
       expect(function() {
         currencyCloud.beneficiaries.create({
-          bankAccountHolderName: 'present',
-          currency: 'present',
-          name: 'present'
-        });
-      }).to.throw();
-      expect(function() {
-        currencyCloud.beneficiaries.create({
-          bankAccountHolderName: 'present',
           bankCountry: 'present',
           name: 'present'
         });
       }).to.throw();
       expect(function() {
         currencyCloud.beneficiaries.create({
-          bankAccountHolderName: 'present',
           bankCountry: 'present',
           currency: 'present'
         });

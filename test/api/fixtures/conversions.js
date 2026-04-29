@@ -40,7 +40,7 @@ nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
     });
 //Create Conversion with conversion date preference
 nock('https://devapi.currencycloud.com:443', {"encodedQueryParams": true})
-    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000&conversion_date_preference=earliest&reason=Testing&term_agreement=true")
+    .post('/v2/conversions/create', "buy_currency=EUR&sell_currency=GBP&fixed_side=buy&amount=10000&conversion_date_preference=earliest&reason=Testing&term_agreement=true&quote_id=a1b2c3d4-e5f6-7890-abcd-ef1234567890")
     .reply(200, {
         "id": "d56d7553-19ab-4cde-b44b-79cac86989cb",
         "settlement_date": "2020-05-19T13:30:00+00:00",

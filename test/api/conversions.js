@@ -95,7 +95,10 @@ describe('conversions', function () {
     describe('createWithConversionDatePreference', function () {
 
         it('successfully creates a conversion with conversion date preference', function (done) {
-            currencyCloud.conversions.create(new mock.conversions.conversion2())
+            var conversion = new mock.conversions.conversion2();
+            conversion.quoteId = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890';
+
+            currencyCloud.conversions.create(conversion)
                 .then(function (created) {
                     expect(mock.conversions.schema.validate(created)).is.true;
                     expect(created).to.have.property('conversionDate').that.eql("2020-05-19T00:00:00+00:00");
