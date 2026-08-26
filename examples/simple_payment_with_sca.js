@@ -7,7 +7,7 @@
 
 'use strict';
 
-let currencyCloud = require('../lib/currency-cloud');
+let currencyCloud = require('../lib/currency-cloud').createClient();
 const uuid4 = require('uuid/v4');
 const opts = {
     retries: 3,
