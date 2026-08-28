@@ -1,6 +1,5 @@
 'use strict';
 
-var client = require('../lib/client');
 var mock = require('./mocks').authentication;
 var nock = require('nock');
 var path = require('path');
@@ -41,16 +40,14 @@ module.exports = {
   },
 
   setup: {
-    login: function () {
-      return client.authenticate(mock.credentials);
+    login: function (client) {
+      return client.authentication.login(mock.credentials);
     }
   },
 
   teardown: {
-    logout: function () {
-      return client.close({
-        url: '/v2/authenticate/close_session'
-      });
+    logout: function (client) {
+      return client.authentication.logout();
     }
   }
 };

@@ -15,7 +15,7 @@ The current least supported Node version is 20.
 # Usage
 The following example retrieves all tradeable currencies list:
 ```js
-var currencyCloud = require('currency-cloud');
+var currencyCloud = require('currency-cloud').createClient();
 
 currencyCloud.authentication.login({
   environment: 'demo', 
@@ -39,7 +39,7 @@ More extensive examples can be found in the [examples] folder.
 To interact with the various Currencycloud's APIs a service client object must be created; then a particular API can be accessed via the corresponding property of this object:
 ```js
 // create service client object
-var currencyCloud = require('currency-cloud');
+var currencyCloud = require('currency-cloud').createClient();
 
 // access authentication API
 currencyCloud.authentication.login({
@@ -57,12 +57,14 @@ currencyCloud.authentication.login({
 .then(console.log)
 .then(currencyCloud.authentication.logout);
 ```
+Each call to `createClient()` returns an isolated client with its own authentication token and `onBehalfOf` context. When handling multiple identities concurrently (for example a server acting for several accounts or contacts), create a separate client per identity so that credentials and context are never shared between them.
+
 Supported APIs are listed in the [Currencycloud API overview][overview].
 
 ## Authentication
 Prior to calling API functions authentication is required. It is performed as follows:
 ```js
-var currencyCloud = require('currency-cloud');
+var currencyCloud = require('currency-cloud').createClient();
 
 currencyCloud.authentication.login({
   environment: 'demo', // environment to run API calls against, one of those listed in 'settings' section of package.json 
@@ -80,7 +82,7 @@ When working with API is finished, it is recommended to close the session by cal
 ## Passing parameters
 SDK functions accept arguments as a single object, which holds both required and optional parameters: 
 ```js
-var currencyCloud = require('currency-cloud');
+var currencyCloud = require('currency-cloud').createClient();
 
 currencyCloud.accounts.create({
   /* required parameters */
@@ -125,7 +127,7 @@ If there're retries left, it will throw a special retry error that will be handl
 A typical use case is presented below. For more information see the [Cookbook examples][examples].
 
 ```js
-var currencyCloud = require('currency-cloud');
+var currencyCloud = require('currency-cloud').createClient();
 const opts = {
   retries: 5, //Retry up to five times before giving up
   factor: 2, // Use an exponential wait
@@ -152,7 +154,7 @@ let findBalances = () => {
 ## On Behalf Of
 Some API calls can be executed on behalf of another user (e.g. someone who has a sub-account with the logged in user). For this sake, `onBehalfOf` field with a value of corresponding contact id should be added to a parameters object of a SDK function:
 ```js
-var currencyCloud = require('currency-cloud');
+var currencyCloud = require('currency-cloud').createClient();
 
 currencyCloud.rates.get({
   buyCurrency: 'SEK', 
@@ -165,7 +167,7 @@ currencyCloud.rates.get({
 ```
 Another option is to run a bunch of API calls using `onBehalfOf(id, promise)` method; it expects contact id and a promise as parameters and returns the given promise resolved:
 ```js
-var currencyCloud = require('currency-cloud');
+var currencyCloud = require('currency-cloud').createClient();
 
 currencyCloud.onBehalfOf('8f639ab2-2b85-4327-9eb1-01ee4f0c77bc', function() {
   var beneficiary = {
@@ -197,7 +199,7 @@ currencyCloud.onBehalfOf('8f639ab2-2b85-4327-9eb1-01ee4f0c77bc', function() {
 ## Errors
 If an API call fails, the SDK function returns rejected promise with the error wrapped into `APIerror` class object. More specifically, it's an object of one of the classes, inheriting from `APIerror` and representing different types of errors. Apart from standard serialization methods they expose `toYAML()` method, which converts error object to human-readable YAML string:
 ```js
-var currencyCloud = require('currency-cloud');
+var currencyCloud = require('currency-cloud').createClient();
 
 currencyCloud.balances.get({
   currency: 'XYZ'

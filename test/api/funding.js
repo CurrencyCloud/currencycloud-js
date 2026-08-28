@@ -1,6 +1,6 @@
 'use strict';
 
-var currencyCloud = require('../../lib/currency-cloud');
+var currencyCloud = require('../../lib/currency-cloud').createClient();
 var expect = require('chai').expect;
 var prepost = require('../prepost');
 var recorder = prepost.recorder('funding');
@@ -10,14 +10,14 @@ var teardown = prepost.teardown;
 describe('funding', function() {
     before(function(done) {
         recorder.read();
-        setup.login()
+        setup.login(currencyCloud)
             .then(function() {
                 done();
             });
     });
 
     after(function(done) {
-        teardown.logout()
+        teardown.logout(currencyCloud)
             .then(function() {
                 recorder.write(done);
             });

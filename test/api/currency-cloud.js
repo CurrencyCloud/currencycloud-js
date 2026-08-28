@@ -1,6 +1,6 @@
 'use strict';
 
-var currencyCloud = require('../../lib/currency-cloud');
+var currencyCloud = require('../../lib/currency-cloud').createClient();
 var expect = require('chai').expect;
 var mock = require('../mocks');
 var contactsMock = mock.contacts();
@@ -27,14 +27,14 @@ var getPrerequisites = function () {
 describe('currency-cloud', function () {
   before(function (done) {
     recorder.read();
-    setup.login()
+    setup.login(currencyCloud)
       .then(function () {
         done();
       });
   });
 
   after(function (done) {
-    teardown.logout()
+    teardown.logout(currencyCloud)
       .then(function () {
         recorder.write(done);
       });
@@ -95,6 +95,23 @@ describe('currency-cloud', function () {
         })
         .catch(done);
     });
+
+    it('clears the onBehalfOf context when the operation rejects', function (done) {
+      var id = 'deadbeef-dead-beef-dead-beefdeadbeef';
+      currencyCloud.onBehalfOf(id, function () {
+        return Promise.reject(new Error('rejected'));
+      })
+        .catch(function () {})
+        .then(function () {
+          return currencyCloud.onBehalfOf(id, function () {
+            return Promise.resolve();
+          });
+        })
+        .then(function () {
+          done();
+        })
+        .catch(done);
+    });
   });
 
   describe('APIerror', function () {
@@ -125,5 +142,21 @@ describe('currency-cloud', function () {
           done();
         });
     });
+  });
+});
+
+describe('client instances', function () {
+  it('do not share authentication or onBehalfOf state', function () {
+    var createClient = require('../../lib/currency-cloud').createClient;
+    var a = createClient();
+    var b = createClient();
+
+    expect(a).to.not.equal(b);
+
+    a._client._token.set('token-a');
+    b._client._token.set('token-b');
+
+    expect(a._client._token.get()).to.equal('token-a');
+    expect(b._client._token.get()).to.equal('token-b');
   });
 });
