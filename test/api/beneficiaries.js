@@ -97,12 +97,15 @@ describe('beneficiaries', function() {
           name: 'present'
         });
       }).to.throw();
+    });
+
+    it('does not require name', function() {
       expect(function() {
         currencyCloud.beneficiaries.create({
           bankCountry: 'present',
           currency: 'present'
         });
-      }).to.throw();
+      }).to.not.throw();
     });
 
     it('successfully creates a beneficiary', function(done) {
